@@ -1,0 +1,2 @@
+class BrewStep < ApplicationRecord
+end
