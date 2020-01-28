@@ -1,0 +1,2 @@
+class BeerStep < ApplicationRecord
+end
