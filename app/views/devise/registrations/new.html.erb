@@ -1,25 +1,64 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '50', height: '50' %></h5>
+          <form class="form-signin">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <!-- <div class="form-label-group">
+              <%#= f.input :username,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+                input_html: { autocomplete: "username" },
+                class: 'form-control' %>
+            </div> -->
+            <div class="form-label-group">
+              <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                class: 'form-control' %>
+            </div>
+
+            <div class="form-label-group">
+              <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+            </div>
+
+            <div class="form-label-group">
+              <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-  </div>
+            </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up",
+              class: 'btn btn-lg btn-info btn-block text-uppercase' %>
+            </div>
+            <% end %>
+            <hr class="my-4">
+            <div class="login-social-link centered">
+              <div class="registration">
+              Already have an account ?<br/>
 
-<%= render "devise/shared/links" %>
+              <%= render "devise/shared/links" %>
+
+              </div>
+            </div>
+            <hr class="my-4">
+            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
