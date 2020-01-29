@@ -1,0 +1,2 @@
+class BeerStepsController < ApplicationController
+end
