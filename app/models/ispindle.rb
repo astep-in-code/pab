@@ -1,0 +1,2 @@
+class Ispindle < ApplicationRecord
+end
