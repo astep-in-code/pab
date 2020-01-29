@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm navbar-light navbar-pab-navigation">
+  <% if user_signed_in? %>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to root_path do %>
+          <div>
+            <%= image_tag '2navIcon1.png',
+            width: '50', height: '50' %>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to root_path do %>
+          <div>
+            <%= image_tag '2navIcon2.png',
+            width: '50', height: '50' %>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to root_path do %>
+          <div>
+            <%= image_tag '2navIcon3.png',
+            width: '50', height: '50' %>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+
+  <% end %>
+</nav>
+

@@ -4,7 +4,8 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '50', height: '50' %></h5>
-          <form class="form-signin">
+          <h4 style="text-align: center;">Prêt à Brasser</h4>
+          <div class="form-signin">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <!-- <div class="form-label-group">
               <%#= f.input :username,
@@ -27,9 +28,9 @@
                 input_html: { autocomplete: "current-password" } %>
             </div>
 
-            <div class="custom-control custom-checkbox mb-3">
-              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-            </div>
+            <!-- <div class="custom-control custom-checkbox mb-3">
+              <%#= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div> -->
             <div class="form-actions">
               <%= f.button :submit, "Log in",
               class: 'btn btn-lg btn-info btn-block text-uppercase' %>
@@ -43,7 +44,7 @@
 
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

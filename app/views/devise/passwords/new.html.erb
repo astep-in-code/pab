@@ -4,7 +4,8 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '50', height: '50' %></h5>
-          <form class="form-signin">
+          <h4 style="text-align: center;">Prêt à Brasser</h4>
+          <div class="form-signin">
 
           <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
             <%= f.error_notification %>
@@ -29,7 +30,7 @@
               </div>
             </div>
 
-          </form>
+          </div>
         </div>
       </div>
     </div>

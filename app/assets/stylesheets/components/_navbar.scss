@@ -18,3 +18,24 @@
 background-image: asset-url('navbaricon.png')!important;
 color: #fff;
 }
+
+.navbar-pab-navigation {
+  justify-content: space-between;
+  background: $yellow;
+}
+
+.navbar-pab-navigation .navbar-collapse {
+  flex-grow: 0;
+  .nav-link {
+    color: #fff;
+  }
+}
+
+.navbar-pab-navigation .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-light .navbar-toggler-icon{
+background-image: asset-url('navbaricon.png')!important;
+color: #fff;
+}
