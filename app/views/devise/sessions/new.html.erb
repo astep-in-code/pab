@@ -1,20 +1,51 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '50', height: '50' %></h5>
+          <form class="form-signin">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <!-- <div class="form-label-group">
+              <%#= f.input :username,
+                required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
+                input_html: { autocomplete: "username" },
+                class: 'form-control' %>
+            </div> -->
+            <div class="form-label-group">
+              <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" },
+                class: 'form-control' %>
+            </div>
+
+            <div class="form-label-group">
+              <%= f.input :password,
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+            </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+            <div class="custom-control custom-checkbox mb-3">
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Log in",
+              class: 'btn btn-lg btn-info btn-block text-uppercase' %>
+            </div>
+            <% end %>
+            <hr class="my-4">
+            <div class="login-social-link centered">
+              <div class="registration">
 
-<%= render "devise/shared/links" %>
+              <%= render "devise/shared/links" %>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

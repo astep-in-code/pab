@@ -1,12 +1,20 @@
-.navbar-lewagon {
+.navbar-pab {
   justify-content: space-between;
-  background: white;
+  background: $pab;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-pab .navbar-collapse {
   flex-grow: 0;
+  .nav-link {
+    color: #fff;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-pab .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-toggler-icon{
+background-image: asset-url('navbaricon.png')!important;
+color: #fff;
 }
