@@ -11,31 +11,47 @@
 }
 
 .navbar-pab .navbar-brand img {
-  width: 40px;
+  width: 69px;
 }
 
 .navbar-light .navbar-toggler-icon{
 background-image: asset-url('navbaricon.png')!important;
 color: #fff;
 }
+
+.navbar-toggler-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+// Second Nav
 
 .navbar-pab-navigation {
   justify-content: space-between;
   background: $yellow;
+  margin-bottom: 0px;
 }
 
-.navbar-pab-navigation .navbar-collapse {
-  flex-grow: 0;
-  .nav-link {
-    color: #fff;
-  }
+.tabs-underlined {
+  display: flex;
+  align-items: center;
 }
 
-.navbar-pab-navigation .navbar-brand img {
-  width: 40px;
+.tabs-underlined .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
 }
 
-.navbar-light .navbar-toggler-icon{
-background-image: asset-url('navbaricon.png')!important;
-color: #fff;
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
 }
+
+
+
