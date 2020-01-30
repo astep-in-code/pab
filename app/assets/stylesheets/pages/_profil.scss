@@ -29,3 +29,11 @@
   padding:0;
   margin:0;
 }
+
+.table-notifications {
+  border: 1px solid black;
+  th, td {
+    border: 1px solid black;
+    text-align: center;
+  }
+}
