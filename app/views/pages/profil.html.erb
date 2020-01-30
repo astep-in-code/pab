@@ -1,20 +1,50 @@
 <br>
 <div class="col-md-12">
   <section class="profil-panel profils-widget">
-    <p>Test test test</p>
-    <p>Test test test</p>
-    <p>Test test test</p>
-    <p>Test test test</p>
+    <h3>Mon Profil</h3>
+    <br>
+    <p><strong>Username : </strong><%= @user.username %></p>
+    <p><strong>Email : </strong><%= @user.email %></p>
+    <p><%= link_to 'Edit', edit_user_registration_path(@user), class: 'btn btn-warning' %> <%= link_to 'Supprimer mon compte', destroy_user_session_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> </p>
   </section>
 </div>
 <!--/col-md-12 -->
 <br>
 <div class="col-md-12">
   <section class="profil-panel profils-widget">
-    <p>Test test test</p>
-    <p>Test test test</p>
-    <p>Test test test</p>
-    <p>Test test test</p>
+    <h3>Mes Notifications</h3>
+    <br>
+    <table class="table-notifications" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Evènements</th>
+          <th>Notication</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody style="border: solid 1px black;">
+        <tr>
+          <td>Quand mon brassin est prêt pour l'étape suivante</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Quand mon brassin dépasse les valeurs prévues</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Quand une nouvelle recette est ajoutée</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+          <td>Quand mon brassin est prêt pour l'étape suivante</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </div>
 <!--/col-md-12 -->
