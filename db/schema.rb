@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_190006) do
+ActiveRecord::Schema.define(version: 2020_02_01_110552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,29 +27,25 @@ ActiveRecord::Schema.define(version: 2020_01_29_190006) do
     t.string "style"
     t.integer "volume"
     t.integer "fermentation"
-    t.integer "initial_density"
-    t.integer "final_density"
     t.string "color"
     t.integer "bitterness"
     t.integer "bitterness_ratio"
     t.string "alcohol"
     t.text "description"
     t.text "recipe"
-    t.integer "initial_density_max"
-    t.integer "initial_density_min"
-    t.integer "final_density_max"
-    t.integer "final_density_min"
-    t.integer "fermentation_temperature_max"
-    t.integer "fermentation_temperature_min"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "initial_density_target"
+    t.integer "final_density_target"
+    t.integer "fermentation_temperature_target"
   end
 
   create_table "brew_steps", force: :cascade do |t|
-    t.string "status"
     t.bigint "brew_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
     t.index ["brew_id"], name: "index_brew_steps_on_brew_id"
   end
 
@@ -78,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_190006) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.date "birthdate"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
