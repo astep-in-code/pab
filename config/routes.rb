@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :beers
+  resources :beers, only: [:index, :show]
+  resources :brews, only: [:create, :index, :show]
+  patch "brew_steps/:id", to: "brew_steps#update"
+
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
 
 
