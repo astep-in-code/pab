@@ -1,0 +1,35 @@
+<nav>
+  <% if user_signed_in? %>
+    <ul class="list-inline tabs-underlined navbar-pab-navigation">
+        <li class="tab-underlined active">
+          <%= link_to root_path do %>
+            <div>
+              <%= image_tag '2navIcon1.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+        <li class="tab-underlined">
+          <%= link_to root_path do %>
+            <div>
+              <%= image_tag '2navIcon2.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+        <li class="tab-underlined">
+          <%= link_to root_path do %>
+            <div>
+              <%= image_tag '2navIcon3.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    </ul>
+  <% end %>
+</nav>
+
+
+
+

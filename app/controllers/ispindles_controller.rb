@@ -1,0 +1,2 @@
+class IspindlesController < ApplicationController
+end

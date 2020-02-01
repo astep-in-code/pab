@@ -1,12 +1,57 @@
-.navbar-lewagon {
+.navbar-pab {
   justify-content: space-between;
-  background: white;
+  background: $pab;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-pab .navbar-collapse {
   flex-grow: 0;
+  .nav-link {
+    color: #fff;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-pab .navbar-brand img {
+  width: 69px;
 }
+
+.navbar-light .navbar-toggler-icon{
+  background-image: asset-url('navbaricon.png')!important;
+  color: #fff;
+}
+
+.navbar-toggler-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+// Second Nav
+
+.navbar-pab-navigation {
+  justify-content: space-between;
+  background: $yellow;
+  margin-bottom: 0px;
+}
+
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-underlined .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}
+
+
+

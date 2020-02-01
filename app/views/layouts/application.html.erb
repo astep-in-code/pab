@@ -11,9 +11,12 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <% if user_signed_in? %>
+    <%= render 'shared/secondNav' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-
+    <%= render 'shared/footer' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

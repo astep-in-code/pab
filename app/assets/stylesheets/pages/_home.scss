@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+.background-banner{
+  height: 40vh;
+  background-image: url('search-bg.jpg');
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.background-banner-recipe {
+  height: 15vh;
+  background-color: grey;
+  background-size: cover;
+  justify-content: center;
+}
+
+.list {
+  padding-inline-start: 0px!important;
+  .items {
+    list-style-type: none;
+    // padding: 10px;
+    align: center;
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+  }
+}
