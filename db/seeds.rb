@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Beer.destroy_all
+<<<<<<< HEAD
 Brew.destroy_all
 User.destroy_all
 Beer_step.destroy_all
@@ -17,6 +18,9 @@ myUser = User.create({
 })
 
 myBeer = Beer.new({
+=======
+myBeer = ({
+>>>>>>> 2007334e9fdce15eebdad57332fe62365a5f60e7
   name: "Smash 66",
   style: "Smash",
   volume: 23,
