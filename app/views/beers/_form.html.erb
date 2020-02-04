@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '100' %></h5>
+          <h4 style="text-align: center;">Prêt à Brasser</h4>
+          <div class="form-signin">
+            <%= simple_form_for(@beer) do |f| %>
+              <%= f.error_notification %>
+              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+              <div class="form-inputs">
+                <%= f.input :name %>
+                <%= f.input :style %>
+                <%= f.input :volume %>
+                <%= f.input :fermentation %>
+                <%= f.input :color %>
+                <%= f.input :bitterness %>
+                <%= f.input :bitterness_ratio %>
+                <%= f.input :alcohol %>
+                <%= f.input :description %>
+                <%= f.input :recipe %>
+                <%= f.input :initial_density_target %>
+                <%= f.input :final_density_target %>
+                <%= f.input :fermentation_temperature_target %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, class: 'btn btn-success' %>
+              </div>
+            <% end %>
+              <hr>
+              <%= link_to 'Back', root_path, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

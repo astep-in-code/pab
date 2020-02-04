@@ -16,33 +16,11 @@
 </div>
 
 <ul class="list row">
+  <% @beers.each do |beer| %>
   <li class="items col-6">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Citra I.P.A
+        <%= link_to beer.name, beer_path(beer), style: 'color: #fff' %>
     </div>
   </li>
-  <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Irish Red Ale
-    </div>
-  </li>
-  <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        WitBier
-    </div>
-  </li>
-  <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Hoppy Weat Ale
-    </div>
-    <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Citra I.P.A
-    </div>
-  </li>
-  <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        Irish Red Ale
-    </div>
-  </li>
+  <% end %>
 </ul>

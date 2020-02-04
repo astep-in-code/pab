@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :beers, only: [:index, :show]
+  resources :beers, only: [:index, :show, :new, :destroy]
   resources :brews, only: [:create, :index, :show]
   patch "brew_steps/:id", to: "brew_steps#update"
 
