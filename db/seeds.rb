@@ -18,9 +18,7 @@ myUser = User.create({
 })
 
 myBeer = Beer.new({
-=======
 myBeer = ({
->>>>>>> 2007334e9fdce15eebdad57332fe62365a5f60e7
   name: "Smash 66",
   style: "Smash",
   volume: 23,
@@ -44,7 +42,7 @@ myBeer = ({
         },
         "water": {
           "preboil": "15l à 67°c pour le Mash In",
-          "rince": "15l pour rincer le grain",
+          "rince": "15l à 82°c pour rincer le grain",
           "total": "Volume en fermentation : 23l"
         }
       },
