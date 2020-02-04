@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Beer.destroy_all
+Brew.destroy_all
+User.destroy_all
+Beer_step.destroy_all
+
+myUser = User.create({
+  email: "contact@pretabrasser.com",
+  password: "pretabrasser",
+  username: "Pret a Brasser"
+})
+
 myBeer = Beer.new({
   name: "Smash 66",
   style: "Smash",
@@ -47,5 +57,10 @@ myBeer = Beer.new({
   }
 })
 
-p myBeer.valid?
-myBeer.save
+p "Model valide et enregistrable" if myBeer.valid?
+p "Biere sauvegardee" if myBeer.save
+
+myBrew = Brew.new({
+  beer_id: Beer.last.id,
+  user_id: User.last.id
+})
