@@ -10,57 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_110552) do
+ActiveRecord::Schema.define(version: 2020_02_06_202035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beer_steps", force: :cascade do |t|
-    t.string "sub_step"
     t.string "step"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "beer_sub_steps", force: :cascade do |t|
+    t.string "sub_step"
+    t.bigint "beer_step_id", null: false
+    t.bigint "beer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["beer_id"], name: "index_beer_sub_steps_on_beer_id"
+    t.index ["beer_step_id"], name: "index_beer_sub_steps_on_beer_step_id"
+  end
+
   create_table "beers", force: :cascade do |t|
     t.string "style"
     t.integer "volume"
     t.integer "fermentation"
+    t.integer "initial_density_target"
+    t.integer "final_density_target"
+    t.integer "fermentation_temperature_target"
     t.string "color"
     t.integer "bitterness"
     t.integer "bitterness_ratio"
     t.string "alcohol"
     t.text "description"
     t.text "recipe"
+    t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.integer "initial_density_target"
-    t.integer "final_density_target"
-    t.integer "fermentation_temperature_target"
+    t.index ["beer_step_id"], name: "index_beers_on_beer_step_id"
   end
 
   create_table "brew_steps", force: :cascade do |t|
+    t.string "status"
     t.bigint "brew_id", null: false
+    t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status"
+    t.index ["beer_step_id"], name: "index_brew_steps_on_beer_step_id"
     t.index ["brew_id"], name: "index_brew_steps_on_brew_id"
   end
 
   create_table "brews", force: :cascade do |t|
     t.bigint "beer_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "ispindle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["beer_id"], name: "index_brews_on_beer_id"
+    t.index ["ispindle_id"], name: "index_brews_on_ispindle_id"
     t.index ["user_id"], name: "index_brews_on_user_id"
   end
 
   create_table "ispindles", force: :cascade do |t|
-    t.integer "temperature"
-    t.integer "density"
+    t.string "temperature"
+    t.string "density"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,13 +87,16 @@ ActiveRecord::Schema.define(version: 2020_02_01_110552) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.date "birthdate"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beer_sub_steps", "beer_steps"
+  add_foreign_key "beer_sub_steps", "beers"
+  add_foreign_key "beers", "beer_steps"
+  add_foreign_key "brew_steps", "beer_steps"
   add_foreign_key "brew_steps", "brews"
   add_foreign_key "brews", "beers"
+  add_foreign_key "brews", "ispindles"
   add_foreign_key "brews", "users"
 end

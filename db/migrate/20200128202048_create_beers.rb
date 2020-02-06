@@ -4,20 +4,16 @@ class CreateBeers < ActiveRecord::Migration[6.0]
       t.string :style
       t.integer :volume
       t.integer :fermentation
-      t.integer :initial_density
-      t.integer :final_density
+      t.integer :initial_density_target
+      t.integer :final_density_target
+      t.integer :fermentation_temperature_target
       t.string :color
       t.integer :bitterness
       t.integer :bitterness_ratio
       t.string :alcohol
       t.text :description
       t.text :recipe
-      t.integer :initial_density_max
-      t.integer :initial_density_min
-      t.integer :final_density_max
-      t.integer :final_density_min
-      t.integer :fermentation_temperature_max
-      t.integer :fermentation_temperature_min
+      t.references :beer_step, null: false, foreign_key: true
 
       t.timestamps
     end
