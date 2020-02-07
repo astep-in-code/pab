@@ -33,22 +33,21 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
   end
 
   create_table "beers", force: :cascade do |t|
+    t.string "name"
     t.string "style"
     t.integer "volume"
-    t.integer "fermentation"
+    t.string "fermentation"
     t.integer "initial_density_target"
     t.integer "final_density_target"
     t.integer "fermentation_temperature_target"
-    t.string "color"
+    t.integer "color"
     t.integer "bitterness"
     t.integer "bitterness_ratio"
     t.string "alcohol"
     t.text "description"
     t.text "recipe"
-    t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["beer_step_id"], name: "index_beers_on_beer_step_id"
   end
 
   create_table "brew_steps", force: :cascade do |t|
@@ -82,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "username"
+    t.datetime "date_of_birth"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -93,7 +94,6 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
 
   add_foreign_key "beer_sub_steps", "beer_steps"
   add_foreign_key "beer_sub_steps", "beers"
-  add_foreign_key "beers", "beer_steps"
   add_foreign_key "brew_steps", "beer_steps"
   add_foreign_key "brew_steps", "brews"
   add_foreign_key "brews", "beers"
