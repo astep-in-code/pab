@@ -1,1 +1,47 @@
+<div class="body-background">
+<br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <p>&nbsp;&nbsp;<strong>Name : </strong><%= @beer.name %></p>
+    </section>
+  </div>
+  <!--/col-md-12 -->
+  <br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5><strong>Caractéristiques</strong></h5>
+      <table cellpadding="15" class="table-beers-shows">
+        <tbody>
+          <tr><td><strong>Densité initiale : </strong></td><td><%= @beer.initial_density_target %></td></tr>
+          <tr><td><strong>Densité finale : </strong></td><td><%= @beer.final_density_target %></td></tr>
+          <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;</td></tr>
+          <tr><td><strong>Amertume : </strong></td><td><%= @beer.bitterness %></td></tr>
+          <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
+          <tr><td><strong>Alcool : </strong></td><td><%= @beer.alcohol %></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <!--/col-md-12 -->
 
+  <br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5><strong>Détails</strong></h5>
+      <p><%= @beer.description %></p>
+    </section>
+  </div>
+  <!--/col-md-12 -->
+
+  <br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5><strong>Résumé du Brassin</strong></h5>
+      <p><%= @beer.recipe %></p>
+    </section>
+  </div>
+  <!--/col-md-12 -->
+
+
+<br>
+</div>
