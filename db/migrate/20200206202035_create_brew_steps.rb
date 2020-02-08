@@ -3,6 +3,7 @@ class CreateBrewSteps < ActiveRecord::Migration[6.0]
     create_table :brew_steps do |t|
       t.string :status
       t.references :brew, null: false, foreign_key: true
+      t.references :beer_step, null: false, foreign_key: true
 
       t.timestamps
     end

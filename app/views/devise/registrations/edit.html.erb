@@ -11,6 +11,9 @@
 
             <div class="form-inputs">
               <%= f.input :username %>
+              <%= f.input :date_of_birth, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12,
+                              order: [:day, :month, :year] %>
               <%= f.input :email, required: true, autofocus: true %>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

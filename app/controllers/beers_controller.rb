@@ -18,6 +18,7 @@ class BeersController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
@@ -47,7 +48,7 @@ class BeersController < ApplicationController
   end
 
   def beer_params
-    params.require(:beer).permit(:style, :volume, :fermentation, :initial_density, :final_density, :color, :bitterness, :bitterness_ratio, :alcohol, :description, :recipe, :initial_density_max, :initial_density_min, :final_density_max, :final_density_min, :fermentation_temperature_max, :fermentation_temperature_min)
+    params.require(:beer).permit(:style, :volume, :fermentation, :color, :bitterness, :bitterness_ratio, :alcohol, :description, :recipe, :name, :initial_density_target, :final_density_target, :fermentation_temperature_target)
   end
 end
 

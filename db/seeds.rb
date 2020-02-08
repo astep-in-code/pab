@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Beer.destroy_all
-myBeer = Beer.new({
+myBeer = ({
   name: "Smash 66",
   style: "Smash",
   volume: 23,
@@ -47,5 +47,9 @@ myBeer = Beer.new({
   }
 })
 
-p myBeer.valid?
-myBeer.save
+# p myBeer.valid?
+# myBeer.save
+6.times do Beer.create(myBeer)
+end
+p "Ok Beers created"
+
