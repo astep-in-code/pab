@@ -22,9 +22,37 @@ myUser = User.create({
   date_of_birth: d1
 })
 
+# recipe = {
+#   "preparation": [{
+#     "ingredients": {
+#       "cereals": "6Kg de malt Pale Ale",
+#       "hops": {
+#         "bitterness": "fuggle 30 grammes à 60 minutes",
+#         "flavor": "Fuggle 20 grammes à 15 minutes",
+#         "Dryhop": "Fuggle 40 grammes à 3 jours"
+#       },
+#       "water": {
+#         "preboil": "15l à 67c pour le Mash In",
+#         "rince": "15l à 82c pour rincer le grain",
+#         "total": "Volume en fermentation  23l"
+#       }
+#     },
+#     "nettoyage": {
+#       "first_step": "ettoyer à l'eau chaude et auproduit",
+#       "second_step": "Rincer avec votre starSan dilué ou votre oxygène actif"
+#     }
+#   }],
+#   "brassage": [{
+#     "mashin": {
+#       "water": "Monter l'eau à temperature"
+#     }
+#   }]
+# }
+# recipe = {"preparation": "test", "brassage": "test"}
 myBeer = Beer.new({
   name: "Smash 66",
   style: "Smash",
+  photo: "https://res.cloudinary.com/dqyudfjjy/image/upload/v1581156334/biere-au-beurre_mtknsc.jpg",
   volume: 23,
   fermentation: "Mixte",
   initial_density_target: 1066,

@@ -11,6 +11,7 @@
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
               <div class="form-inputs">
                 <%= f.input :name %>
+                <%= f.file_field :photos, input_html: { multiple: true }, class: 'upload-photo' %>
                 <%= f.input :style %>
                 <%= f.input :volume %>
                 <%= f.input :fermentation %>
@@ -25,11 +26,11 @@
                 <%= f.input :fermentation_temperature_target %>
               </div>
               <div class="form-actions">
-                <%= f.button :submit, class: 'btn btn-success' %>
+                <%= f.button :submit, class: 'btn btn-lg btn-success btn-block text-uppercase' %>
               </div>
             <% end %>
               <hr>
-              <%= link_to 'Back', root_path, class: 'btn btn-danger' %>
+              <%= link_to 'Back', root_path, class: 'btn btn-lg btn- btn-block text-uppercase' %>
           </div>
         </div>
       </div>
