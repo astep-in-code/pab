@@ -8,7 +8,11 @@
           <div class="form-signin">
             <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
+<<<<<<< HEAD
+             <div class="form-label-group">
+=======
             <div class="form-label-group">
+>>>>>>> 0d1edcb515c3544132bdfa8ff8ce60d1d2b85c1b
               <%= f.input :username,
                 required: true,
                 autofocus: true,
@@ -16,6 +20,8 @@
                 placeholder: '@username',
                 class: 'form-control' %>
             </div>
+<<<<<<< HEAD
+=======
             <div class="form-label-group">
               <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
                               end_year: Date.today.year - 12,
@@ -25,6 +31,7 @@
                               input_html: { autocomplete: "date_of_birth"},
                               class: 'form-control' %>
             </div>
+>>>>>>> 0d1edcb515c3544132bdfa8ff8ce60d1d2b85c1b
             <div class="form-label-group">
               <%= f.input :email,
                 required: true,
@@ -32,7 +39,11 @@
                 input_html: { autocomplete: "email" },
                 class: 'form-control' %>
             </div>
-
+            <div class="form-label-group">
+              <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
+                  end_year: Date.today.year - 12,
+                  order: [:day, :month, :year] %>
+            </div>
             <div class="form-label-group">
               <%= f.input :password,
                 required: true,
