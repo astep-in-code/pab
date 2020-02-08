@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_100455) do
   enable_extension "plpgsql"
 
   create_table "beer_steps", force: :cascade do |t|
-    t.string "step"
+    t.integer "step"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_100455) do
   end
 
   create_table "brew_steps", force: :cascade do |t|
-    t.string "status"
+    t.integer "status"
     t.bigint "brew_id", null: false
     t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
