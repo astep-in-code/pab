@@ -9,6 +9,7 @@ Beer.destroy_all
 Brew.destroy_all
 User.destroy_all
 BeerStep.destroy_all
+Ispindle.destroy_all
 
 myUser = User.create({
   email: "contact@pretabrasser.com",
@@ -23,7 +24,7 @@ myBeer = Beer.new({
   fermentation: "Mixte",
   initial_density_target: 1.066,
   final_density_target: 1.012,
-  fermentation_temperature_target: 18,
+  fermentation_temperature_target: 1800,
   color: 14,
   bitterness: 26,
   bitterness_ratio: 0.47,
@@ -59,6 +60,7 @@ myBeer = Beer.new({
 
 p "Biere sauvegardee" if myBeer.save
 
+
 myBrew = Brew.new({
   beer_id: Beer.last.id,
   user_id: User.last.id
@@ -66,6 +68,18 @@ myBrew = Brew.new({
 
 # p myBrew.valid?
 p "My Brew saved" if myBrew.save
+
+10.times do |i|
+  myIspindle = Ispindle.new({
+    name: "Ispindel001",
+    temperature: rand(1700..1900),
+    density: rand(1008..1054),
+    brew_id: 1
+  })
+  myIspindle.valid?
+  myIspindle.save
+  p "Ispindle001 value :#{i} saved"
+end
 
 myBrewStep = BrewStep.new({
   status: 0,
