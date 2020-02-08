@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_102453) do
   end
 
   create_table "beer_steps", force: :cascade do |t|
-    t.string "step"
+    t.integer "step"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_102453) do
   end
 
   create_table "brew_steps", force: :cascade do |t|
-    t.string "status"
+    t.integer "status"
     t.bigint "brew_id", null: false
     t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -85,11 +85,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_102453) do
   create_table "brews", force: :cascade do |t|
     t.bigint "beer_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "ispindle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["beer_id"], name: "index_brews_on_beer_id"
-    t.index ["ispindle_id"], name: "index_brews_on_ispindle_id"
     t.index ["user_id"], name: "index_brews_on_user_id"
   end
 
@@ -98,6 +96,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_102453) do
     t.string "density"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.bigint "brew_id"
+    t.index ["brew_id"], name: "index_ispindles_on_brew_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,6 +121,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_102453) do
   add_foreign_key "brew_steps", "beer_steps"
   add_foreign_key "brew_steps", "brews"
   add_foreign_key "brews", "beers"
-  add_foreign_key "brews", "ispindles"
   add_foreign_key "brews", "users"
+  add_foreign_key "ispindles", "brews"
 end

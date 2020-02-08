@@ -1,5 +1,5 @@
 class BeerStep < ApplicationRecord
-  has_many :brew_steps
+  belongs_to :brew_step
 
   validates :sub_step, presence: true
   validates :step, presence: true
