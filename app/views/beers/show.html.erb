@@ -1,23 +1,50 @@
 <div class="body-background">
-<br>
-  <div class="col-md-12">
-    <section class="profil-panel profils-widget">
-      <p>&nbsp;&nbsp;<strong>Name : </strong><%= @beer.name %></p>
-    </section>
+
+  <div class="card-trip">
+    <%= cl_image_tag "https://res.cloudinary.com/dqyudfjjy/image/upload/v1581258563/tatiana-rodriguez-D_Rfjj3XV8M-unsplash_qc1xii.jpg" %>
+    <div class="margin-negative">
+      <%= link_to "Commencer un batch", new_beer_brew_path(@beer), class: 'btn btn-lg btn-info btn-block' %>
+    </div>
+    <div class="card-trip-infos">
+      <h2 class="beer-show-name"><strong><%= @beer.name %></strong></h2>
+    </div>
+    <div class="card-trip-infos">
+      <p><strong>Style: </strong> <%= @beer.style %></p>
+    </div>
+    <div class="card-trip-user">
+      <%= image_tag @beer.photo, width: 200, height: 200 %>
+    </div>
   </div>
-  <!--/col-md-12 -->
-  <br>
+
+  <br><br><br>
+
   <div class="col-md-12">
     <section class="profil-panel profils-widget">
       <h5><strong>Caractéristiques</strong></h5>
-      <table cellpadding="15" class="table-beers-shows">
+      <table cellpadding="10" class="table-beers-shows">
         <tbody>
-          <tr><td><strong>Densité initiale : </strong></td><td><%= @beer.initial_density_target %></td></tr>
-          <tr><td><strong>Densité finale : </strong></td><td><%= @beer.final_density_target %></td></tr>
-          <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;</td></tr>
-          <tr><td><strong>Amertume : </strong></td><td><%= @beer.bitterness %></td></tr>
+          <tr><td><strong>Densité initiale : </strong></td><td>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+            </div>
+          </td></tr>
+          <tr><td><strong>Densité finale : </strong></td><td>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
+            </div>
+            </td></tr>
+          <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
+          <tr><td><strong>Amertume : </strong></td><td>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
+            </div>
+            </td></tr>
           <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
-          <tr><td><strong>Alcool : </strong></td><td><%= @beer.alcohol %></td></tr>
+          <tr><td><strong>Alcool : </strong></td><td>
+            <div class="progress">
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %></div>
+            </div>
+            </td></tr>
         </tbody>
       </table>
     </section>
@@ -36,11 +63,80 @@
   <br>
   <div class="col-md-12">
     <section class="profil-panel profils-widget">
-      <h5><strong>Résumé du Brassin</strong></h5>
+
       <p><%= @recipe_parse["preparation"]["ingredients"]["cereals"] %></p>
     </section>
   </div>
   <!--/col-md-12 -->
+
+  <br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5><strong>Résumé du Brassin</strong></h5>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <span class="fa-stack fa-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                Préparation du matériel #1
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body show-beer">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <span class="fa-stack fa-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                Concassage du malt #2
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body show-beer">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <span class="fa-stack fa-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                L'empâtage #3
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body show-beer">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <!--/col-md-12 -->
+
 
 <br>
 </div>
