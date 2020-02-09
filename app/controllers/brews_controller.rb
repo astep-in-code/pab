@@ -1,12 +1,17 @@
 class BrewsController < ApplicationController
   before_action :set_brew, only: [:show, :edit, :update, :destroy]
+  before_action :set_beer, only: [:new, :create, :show]
 
   def new
-    @brew = Brew.new
+    # @brew = Brew.new
+    @brew = @beer.brews.build
   end
 
   def create
     @brew = Brew.new(brew_params)
+    # @brew.beer = @beer
+    @brew.user = current_user
+
     respond_to do |format|
       # raise
       if @brew.save
@@ -15,6 +20,11 @@ class BrewsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def index
+    @user = current_user
+    @brews = Brew.where(user_id: @user.id)
   end
 
   def show
@@ -41,6 +51,10 @@ class BrewsController < ApplicationController
   end
 
   private
+
+  def set_beer
+    @beer = Beer.find(params[:beer_id])
+  end
 
   def set_brew
     @brew = Brew.find(params[:id])

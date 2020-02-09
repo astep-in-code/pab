@@ -1,3 +1,65 @@
 .body-background {
   background-color: #F0ECEB;
 }
+
+// First Card
+.card-trip {
+  overflow: hidden;
+  // background: white;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip > img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.card-trip .margin-negative {
+  position: absolute;
+  margin-top: -170px;
+  margin-left: 15%;
+  // margin-right: 50%;
+}
+
+.card-trip h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 18px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 5px;
+  margin-right: 15px;
+  display: flex;
+  // justify-content: space-between;
+  // align-items: right;
+  flex-direction: row-reverse;
+  // position: relative;
+}
+
+.card-trip .card-trip-user {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: absolute;
+  // right: 16px;
+  left: 15px;
+  // top: -20px;
+  // width: 40px;
+  margin-top: -150px;
+    img{
+      border-radius: 5%;
+      // border: 3px solid grey;
+    }
+}
+
+.beer-show-name {
+
+}
