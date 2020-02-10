@@ -1,0 +1,31 @@
+<nav>
+  <% if user_signed_in? %>
+    <ul class="list-inline tabs-underlined navbar-pab-navigation-beer">
+        <li class="tab-underlined-beer active">
+          <%= link_to beers_path do %>
+            <div>
+              <%= image_tag 'current_step.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+        <li class="tab-underlined-beer">
+          <%= link_to beers_path do %>
+            <div>
+              <%= image_tag 'all_steps.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+        <li class="tab-underlined-beer">
+          <%= link_to beers_path do %>
+            <div>
+              <%= image_tag 'overview.png',
+              width: '50', height: '50' %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    </ul>
+  <% end %>
+</nav>
