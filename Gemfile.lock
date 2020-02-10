@@ -232,7 +232,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
-  chart-js-rails (~> 0.1.0)
+  chart-js-rails (~> 0.1.6)
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails

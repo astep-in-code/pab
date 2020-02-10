@@ -3,6 +3,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
+import Chart from 'chart.js';
 
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
   $(e.target)
