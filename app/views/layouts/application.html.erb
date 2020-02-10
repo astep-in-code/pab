@@ -14,9 +14,25 @@
     <% if user_signed_in? %>
     <%= render 'shared/secondNav' %>
     <% end %>
+
     <%= render 'shared/flashes' %>
+
     <%= yield %>
+
+    <%# if current_page?('/beers/id') %>
+    <% if params[:controller] == 'beers' && params[:action] == 'show' %>
+    <%= render 'shared/beerNav' %>
+    <% end %>
+
+    <% if params[:controller] == 'brews' && params[:action] == 'show' %>
+    <%= render 'shared/brewNav' %>
+    <% end %>
+
+    <%# unless current_page?('/beers') %>
+    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' %>
     <%= render 'shared/footer' %>
+    <% end %>
+
     <%= javascript_pack_tag 'application' %>
     <%#= javascript_include_tag "chart" %>
   </body>

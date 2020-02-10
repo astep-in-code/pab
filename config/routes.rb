@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :beers, only: [:index, :show, :new, :destroy] do
-    resources :brews, only: [:new, :create, :show] do
+    resources :brews, only: [:new, :create] do
     end
   end
-  resources :brews, only: [:index, :destroy]
+  resources :brews, only: [:index, :show, :destroy]
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
 
 

@@ -1,6 +1,6 @@
 class BrewsController < ApplicationController
   before_action :set_brew, only: [:show, :edit, :update, :destroy]
-  before_action :set_beer, only: [:new, :create, :show]
+  before_action :set_beer, only: [:new, :create]
 
   def new
     # @brew = Brew.new
@@ -28,6 +28,7 @@ class BrewsController < ApplicationController
   end
 
   def show
+    @brew_steps = BrewStep.where(brew_id: @brew.id)
   end
 
   def edit

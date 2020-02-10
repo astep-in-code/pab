@@ -21,3 +21,11 @@
   font-size: 10px;
   color: #ccd1d9;
 }
+
+.profil-panel.profils-widget {
+  .show-brew {
+    display: flex;
+    justify-content: flex-end;
+    // margin-top: -25px;
+  }
+}

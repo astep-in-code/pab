@@ -3,6 +3,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
+import $ from "jquery";
 import Chart from 'chart.js';
 
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
@@ -12,11 +13,11 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
     .toggleClass("fa-minus fa-plus");
 });
 
-$('.tab-underlined').on('click', function() {
-  // $('.active').removeClass('active');
-  $(this).addClass('active').siblings().removeClass('active');
+$('.tab-underlined').on('click', function(e) {
+  $('.active').removeClass('active');
+  // e.preventDefault();
+  $(this).addClass('active');
 });
 
 // internal imports
-
 
