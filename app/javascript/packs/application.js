@@ -5,6 +5,11 @@ require("channels")
 import "bootstrap";
 import $ from "jquery";
 import Chart from 'chart.js';
+require("chartkick")
+require("chart.js")
+
+
+// internal imports
 
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
   $(e.target)
@@ -18,6 +23,3 @@ $('.tab-underlined').on('click', function(e) {
   // e.preventDefault();
   $(this).addClass('active');
 });
-
-// internal imports
-

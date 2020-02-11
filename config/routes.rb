@@ -3,7 +3,10 @@ Rails.application.routes.draw do
     resources :brews, only: [:new, :create] do
     end
   end
-  resources :brews, only: [:index, :show, :destroy]
+  resources :brews, only: [:index, :show, :destroy] do
+    resources :ispindles, only: [:index] do
+    end
+  end
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
 
 
