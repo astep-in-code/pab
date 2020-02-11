@@ -1,4 +1,10 @@
-<div style="color: #fff;padding: 10px;">
+<div class="body-background">
+<br>
+<h5><strong>Détails du Brassin</strong></h5>
+
+<div style="padding: 10px;">
+  <% @collect_temperature = [] %>
+  <% @collect_density = [] %>
   <% @ispindles.each do |ip| %>
   <%= ip.name %>
   <%= ip.temperature %>
@@ -6,3 +12,38 @@
   <% end %>
 </div>
 
+<%#= line_chart Ispindle.group(:temperature).count %>
+<%#= line_chart Ispindle.group(:created_at).count %>
+<!-- <div class="col-md-12">
+  <section class="profil-panel profils-widget">
+    <%#= line_chart Ispindle.all.group(:temperature).count %>
+  </section>
+</div> -->
+
+<%#= area_chart Ispindle.group_by_minute(:created_at).maximum(:load_time) %>
+
+<%#= line_chart Ispindle.all.group(:created_at).count %>
+
+
+<div class="col-md-12">
+  <section class="profil-panel profils-widget">
+    <%= line_chart [
+     {name: "Temperature", data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.temperature; res }},
+     {name: "density", data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.density; res }}
+                 ] %>
+</section>
+</div>
+
+<br>
+</div>
+
+<div style="background-color: #F0ECEB">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
