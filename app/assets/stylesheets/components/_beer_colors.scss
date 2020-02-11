@@ -5,18 +5,33 @@
  *  CSS Compiled: timestamp()
  */
 
+.progress {
+  border-radius: 15px;
+}
+
 .ebc {
   height: 49px;
-  width: 49px;
+  width: 49px!important;
   display: inline-block;
+  margin: 5px 5px 5px 5px;
 }
 
 .table-beers-shows {
   border: 1px solid black;
+  // border-radius: 15px;
   th, td {
     border: 1px solid black;
     text-align: left;
+    width: 200px;
+
   }
+}
+
+
+.upload-photo {
+  height: 49px;
+  color: #fff;
+  padding: 10px 0px 0px;
 }
 
 .ebc-1 {

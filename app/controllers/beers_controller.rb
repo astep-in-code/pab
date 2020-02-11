@@ -1,5 +1,6 @@
 class BeersController < ApplicationController
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  require 'json'
 
   def new
     @beer = Beer.new
@@ -18,7 +19,12 @@ class BeersController < ApplicationController
   end
 
   def show
-
+    recipe = @beer.recipe
+    @recipe_parse = JSON.parse(recipe)
+    # @collect = []
+    # @recipe_parse.each do |recipe|
+    #   @collect << recipe
+    # end
   end
 
   def edit

@@ -4,6 +4,7 @@
     <h3>Mon Profil</h3>
     <br>
     <p><strong>Username : </strong><%= @user.username %></p>
+    <p><strong>Date de naissance : </strong><%= @user.date_of_birth.strftime("%d/%m/%Y") %></p>
     <p><strong>Email : </strong><%= @user.email %></p>
     <p><%= link_to 'Edit', edit_user_registration_path(@user), class: 'btn btn-warning' %> <%= link_to 'Supprimer mon compte', destroy_user_session_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> </p>
   </section>

@@ -10,13 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_202035) do
+ActiveRecord::Schema.define(version: 2020_02_08_102453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "beer_steps", force: :cascade do |t|
-    t.string "step"
+    t.integer "step"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,10 +69,11 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
     t.text "recipe"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo"
   end
 
   create_table "brew_steps", force: :cascade do |t|
-    t.string "status"
+    t.integer "status"
     t.bigint "brew_id", null: false
     t.bigint "beer_step_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -63,11 +85,9 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
   create_table "brews", force: :cascade do |t|
     t.bigint "beer_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "ispindle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["beer_id"], name: "index_brews_on_beer_id"
-    t.index ["ispindle_id"], name: "index_brews_on_ispindle_id"
     t.index ["user_id"], name: "index_brews_on_user_id"
   end
 
@@ -76,6 +96,9 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
     t.string "density"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.bigint "brew_id"
+    t.index ["brew_id"], name: "index_ispindles_on_brew_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,11 +115,12 @@ ActiveRecord::Schema.define(version: 2020_02_06_202035) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "beer_sub_steps", "beer_steps"
   add_foreign_key "beer_sub_steps", "beers"
   add_foreign_key "brew_steps", "beer_steps"
   add_foreign_key "brew_steps", "brews"
   add_foreign_key "brews", "beers"
-  add_foreign_key "brews", "ispindles"
   add_foreign_key "brews", "users"
+  add_foreign_key "ispindles", "brews"
 end

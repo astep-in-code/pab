@@ -8,15 +8,33 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= javascript_pack_tag 'chartkick' %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <% if user_signed_in? %>
     <%= render 'shared/secondNav' %>
     <% end %>
+
     <%= render 'shared/flashes' %>
+
     <%= yield %>
+    <%= yield :charts_js %>
+
+    <%# if current_page?('/beers/id') %>
+    <% if params[:controller] == 'beers' && params[:action] == 'show' %>
+    <%= render 'shared/beerNav' %>
+    <% end %>
+
+    <% if params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' %>
+    <%= render 'shared/brewNav' %>
+    <% end %>
+
+    <%# unless current_page?('/beers') %>
+    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' %>
     <%= render 'shared/footer' %>
+    <% end %>
+
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

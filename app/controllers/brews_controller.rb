@@ -1,12 +1,15 @@
 class BrewsController < ApplicationController
-  before_action :set_brew, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_beer, only: [:new, :create]
 
   def new
-    @brew = Brew.new
+    @brew = @beer.brews.build
   end
 
   def create
     @brew = Brew.new(brew_params)
+    @brew.user = current_user
+
     respond_to do |format|
       # raise
       if @brew.save
@@ -17,7 +20,13 @@ class BrewsController < ApplicationController
     end
   end
 
+  def index
+    @user = current_user
+    @brews = Brew.where(user_id: @user.id)
+  end
+
   def show
+    @brew_steps = BrewStep.where(brew_id: @brew.id)
   end
 
   def edit
@@ -47,6 +56,6 @@ class BrewsController < ApplicationController
   end
 
   def brew_params
-    params.require(:brew).permit(:user_id, :beer_id, :ispindle_id)
+    params.require(:brew).permit(:user_id, :beer_id)
   end
 end
