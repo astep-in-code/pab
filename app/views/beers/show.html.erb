@@ -25,12 +25,13 @@
         <tbody>
           <tr><td><strong>Densité initiale : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="2000" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+              <%= @density_width = (@beer.initial_density_target / 1080) * 100 %>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
             </div>
           </td></tr>
           <tr><td><strong>Densité finale : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @beer.final_density_target %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
             </div>
             </td></tr>
           <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
