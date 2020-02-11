@@ -22,4 +22,5 @@ $('.tab-underlined').on('click', function(e) {
   $('.active').removeClass('active');
   // e.preventDefault();
   $(this).addClass('active');
+  // e.preventDefault();
 });

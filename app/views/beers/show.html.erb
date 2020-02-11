@@ -25,7 +25,7 @@
         <tbody>
           <tr><td><strong>Densité initiale : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="2000" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
             </div>
           </td></tr>
           <tr><td><strong>Densité finale : </strong></td><td>
@@ -36,13 +36,13 @@
           <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
           <tr><td><strong>Amertume : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @beer.bitterness %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
             </div>
             </td></tr>
           <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
           <tr><td><strong>Alcool : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %></div>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @beer.alcohol %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %></div>
             </div>
             </td></tr>
         </tbody>
@@ -65,7 +65,7 @@
     <section class="profil-panel profils-widget">
 
       <p><%= @recipe_parse["preparation"]["ingredients"]["cereals"] %></p>
-      <%= raise %>
+      <%#= raise %>
     </section>
   </div>
   <!--/col-md-12 -->
