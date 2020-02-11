@@ -10,6 +10,8 @@ gem 'rails', '6.0.2.1'
 gem 'redis'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
+gem 'chart-js-rails', '~> 0.1.6'
+gem 'chartkick'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

@@ -1,0 +1,17 @@
+.accordion .btn {
+  width: 100%;
+  font-weight: bold;
+  color: black;
+  padding: 0;
+  text-align: left;
+}
+
+.accordion .btn-link:hover,
+.accordion .btn-link:focus {
+  text-decoration: none;
+}
+
+.show-beer {
+  background-color: #fff !important;
+  color: black !important;
+}

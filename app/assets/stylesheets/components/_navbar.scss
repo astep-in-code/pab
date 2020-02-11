@@ -53,5 +53,35 @@
   border-bottom: 3px solid #555555;
 }
 
+// Beer Nav
 
+.navbar-pab-navigation-beer {
+  justify-content: space-between;
+  background: #fff;
+  border-top: 2px solid #EEEEEE;
+  margin-bottom: 0px;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
+.tabs-underlined-beer {
+  display: flex;
+  align-items: center;
+}
+
+.tabs-underlined .tab-underlined-beer {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined-beer.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}

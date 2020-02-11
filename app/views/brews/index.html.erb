@@ -1,0 +1,95 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <div class="body-background">
+  <br>
+
+  <h5 style="padding: 10px;"><strong>Mes Brassins</strong></h5>
+
+  <% @brews.each do |br|  %>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+    <div class="show-brew">
+      <%= link_to brew_path(br) do %>
+          <%= image_tag 'show_brew.png',
+          width: '50', height: '50' %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong><%= br.beer.name %></strong>
+        </p>
+        <p><%#= br.status %>Fermentation en cours ..</p>
+      </div>
+      <div class="col-md-6">
+        <div class="white-panel pn">
+          <div class="white-header">
+            <h5>Avancement du Brassin</h5>
+          </div>
+          <canvas id="myChart" width="250" height="250"></canvas>
+          <script>
+          var ctx = document.getElementById('myChart');
+          data = {
+              datasets: [{
+                  data: [10, 20, 30],
+              backgroundColor: ["#EC3B41", "#FCB844","#00BAFF"]
+              }],
+
+              // These labels appear in the legend and in the tooltips when hovering different arcs
+              labels: [
+                  'Red',
+                  'Yellow',
+                  'Blue'
+                  ]
+              };
+          var myDoughnutChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: data,
+              options: {
+                title: {
+                  display: true,
+                  text: 'Progression du Brassin ..'
+                }
+              }
+          });
+          </script>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <table cellpadding="6" class="table-beers-shows">
+          <thead>
+            <tr>
+              <th colspan="2"><strong>Densité : <span style="color: #FFC65A">1041</span></strong></th>
+              <th><strong>Température : <span style="color: #FFC65A">22°C</span></strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Volume : 23L</td>
+              <td>Brassée le : 04/02/2020 <br>(il y a 1jour)</td>
+              <td>Suivant : Fermentation secondaire</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+  </div>
+  <!--/col-md-12 -->
+  <% end %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+
+
+
