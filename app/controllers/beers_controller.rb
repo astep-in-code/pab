@@ -20,7 +20,7 @@ class BeersController < ApplicationController
 
   def show
     recipe = @beer.recipe
-    @recipe_parse = JSON.parse(recipe, object_class: OpenStruct)
+    @recipe_parse = JSON.parse(recipe)
     # @collect = []
     # @recipe_parse.each do |recipe|
     #   @collect << recipe

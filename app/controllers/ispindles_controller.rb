@@ -1,4 +1,5 @@
 class IspindlesController < ApplicationController
+
   before_action :set_ispindle, only: [:show, :edit, :update, :destroy]
   before_action :set_brew, only: [:new, :create, :index]
 

@@ -1,7 +1,7 @@
 <nav>
   <% if user_signed_in? %>
     <ul class="list-inline tabs-underlined navbar-pab-navigation-beer">
-        <li class="tab-underlined-beer active">
+        <li class="tab-underlined-brew active">
           <%= link_to beers_path do %>
             <div>
               <%= image_tag 'current_step.png',
@@ -9,7 +9,7 @@
             </div>
           <% end %>
         </li>
-        <li class="tab-underlined-beer">
+        <li class="tab-underlined-brew">
           <%= link_to beers_path do %>
             <div>
               <%= image_tag 'all_steps.png',
@@ -17,7 +17,7 @@
             </div>
           <% end %>
         </li>
-        <li class="tab-underlined-beer">
+        <li class="tab-underlined-brew">
           <%= link_to brew_ispindles_path(@brew) do %>
             <div>
               <%= image_tag 'overview.png',

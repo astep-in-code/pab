@@ -3,10 +3,10 @@ require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
+
 import $ from "jquery";
 import Chart from 'chart.js';
-require("chartkick")
-require("chart.js")
+
 
 
 // internal imports
