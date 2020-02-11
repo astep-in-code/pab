@@ -35,11 +35,11 @@
                 input_html: { autocomplete: "email" },
                 class: 'form-control' %>
             </div>
-            <div class="form-label-group">
-              <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+            <!-- <div class="form-label-group">
+              <%#= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
                   end_year: Date.today.year - 12,
                   order: [:day, :month, :year] %>
-            </div>
+            </div> -->
             <div class="form-label-group">
               <%= f.input :password,
                 required: true,
