@@ -1,4 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <div class="body-background">
   <br>
 
@@ -24,7 +23,7 @@
           <div class="white-header">
             <h5>Avancement du Brassin</h5>
           </div>
-          <canvas id="myChart" width="250" height="250"></canvas>
+          <canvas id="myChart" width="150" height="150"></canvas>
           <script>
           var ctx = document.getElementById('myChart');
           data = {
@@ -66,9 +65,13 @@
           </thead>
           <tbody>
             <tr>
-              <td>Volume : 23L</td>
-              <td>Brassée le : 04/02/2020 <br>(il y a 1jour)</td>
-              <td>Suivant : Fermentation secondaire</td>
+              <% @start_date = br.beer.created_at %>
+              <% @date_now = DateTime.now %>
+              <% days_between = (@date_now - @start_date.to_date).to_i %>
+              <%#= raise %>
+              <td><strong>Volume : </strong><%= br.beer.volume %>L</td>
+              <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jour)</td>
+              <td><strong>Suivant :</strong> Fermentation secondaire</td>
             </tr>
           </tbody>
         </table>
@@ -78,6 +81,7 @@
   </div>
   <!--/col-md-12 -->
   <% end %>
+
 
 <br>
 <br>

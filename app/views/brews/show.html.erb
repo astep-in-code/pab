@@ -1,42 +1,59 @@
-<div class="body-background">
+<div class="body-background" style="padding: 5px">
 <br>
-<h5><strong>Détails du Brassin</strong></h5>
+
+<%= link_to brew_path(@brew), method: :delete, data: { confirm: "Do you really want to delete this Brew ?" } do %>
+        <i class="fas fa-trash-alt fa-2x" style="color: grey; float: right;" aria-hidden="true"></i><% end %>
+<br>
+<%# raise %>
   <% @brew_steps.each do |step|  %>
+
+  <h5><strong>Mon Brassin : <%= @brew.beer.name %></strong></h5>
+
     <div class="col-md-12">
       <section class="profil-panel profils-widget">
-        <div class="col-md-12">
-          <section class="profil-panel profils-widget">
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                      </span>
-                      Préparation du matériel #1
-                    </button>
-                  </h5>
-                </div>
+          <% @beer_step = BeerStep.find(step.beer_step_id) %>
+          <%# raise %>
+          <div class="card" style="padding: 10px">
+          <!-- Brew_steps Status : <%= step.status %> <br>
+          Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body show-beer">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
+          <h5><%= image_tag 'numberOne.png', width: '30', height: '30' %> <strong>Etape : </strong><%= @beer_step.description %></h5>
+          <%  @hash_sub_step.each do |k,v| %>
+          <% if k.to_s.to_i == step.status %>
+          <strong style="color: grey;">Etape <%= k.capitalize %> : </strong>
+             <p> <% if v.is_a?(Hash) %>
+              <% v.each do |k,v| %>
+                &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+              <% end %>
+              <% else %>
+                <%= v %> <br>
+              <% end %>
+            <% end %>
+          <% end %>
+            </p>
+          </div>
 
-            </div>
-          </section>
+<br>
+        <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Etape précédente</a>
+            </li>
+            <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Etape suivante</a>
+            </li>
+          </ul>
+        </nav>
+
+
         </div>
-        <!--/col-md-12 -->
-
       </section>
     </div>
     <!--/col-md-12 -->
   <% end %>
-<br>
 </div>
 
 <div style="background-color: #F0ECEB">

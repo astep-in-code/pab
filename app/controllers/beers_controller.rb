@@ -19,12 +19,28 @@ class BeersController < ApplicationController
   end
 
   def show
+    @brew = Brew.new
     recipe = @beer.recipe
-    @recipe_parse = JSON.parse(recipe)
-    # @collect = []
-    # @recipe_parse.each do |recipe|
-    #   @collect << recipe
-    # end
+    @hash_recipe = JSON.parse(recipe, symbolize_keys: true)
+    @hash_recipe.deep_symbolize_keys!
+
+    # ingredients
+    @hash_ingredients = @hash_recipe[:preparation][:ingredients]
+
+    # nettoyage
+    @hash_nettoyage = @hash_recipe[:preparation][:nettoyage]
+
+    # empatage
+    @hash_empatage = @hash_recipe[:Empâtage]
+
+    # ebullition
+    @hash_ebullition = @hash_recipe[:Ebullition]
+
+    # fermentation
+    @hash_fermentation = @hash_recipe[:Fermentation]
+
+    # embouteillage
+    @hash_embouteillage = @hash_recipe[:Embouteillage]
   end
 
   def edit

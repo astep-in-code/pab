@@ -1,16 +1,14 @@
 <div class="body-background">
 <br>
 <h5><strong>Détails du Brassin</strong></h5>
-
-<div style="padding: 10px;">
+<br>
   <% @collect_temperature = [] %>
   <% @collect_density = [] %>
   <% @ispindles.each do |ip| %>
-  <%= ip.name %>
-  <%= ip.temperature %>
-  <%= ip.density %> <br>
+  <% ip.name %>
+  <% @collect_temperature << ip.temperature %>
+  <% @collect_density << ip.density.to_i %>
   <% end %>
-</div>
 
 <%#= line_chart Ispindle.group(:temperature).count %>
 <%#= line_chart Ispindle.group(:created_at).count %>
@@ -23,19 +21,112 @@
 <%#= area_chart Ispindle.group_by_minute(:created_at).maximum(:load_time) %>
 
 <%#= line_chart Ispindle.all.group(:created_at).count %>
+<% @brew = Brew.find(params[:brew_id]) %>
+<% @beer_id = @brew.beer_id %>
+<% @beer = Beer.find(@beer_id) %>
+<%# @data_set = 10.@beer.fermentation_temperature_target * 50 %>
+<% @start_date = @beer.created_at.strftime("%Y-%m-%d") %>
+<% @end_date = @beer.created_at.next_month(1).time.strftime("%Y-%m-%d") %>
+<% @data_set = (@start_date ... @end_date).to_a %>
 
+<%# raise %>
+
+<div class="col-md-12">
+  <section class="profil-panel profils-widget">
+    <canvas id="myChart4" style="background-color: #fff;"></canvas>
+    <script>
+      var ctx = document.getElementById("myChart4");
+
+      var myChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+          datasets: [
+            {
+              label: 'Densité cible',
+              data: [{
+                  x: <%= @beer.initial_density_target %> ,
+                  y: 997.5
+              },
+              {
+                  x: <%= @beer.final_density_target %> ,
+                  y: 1060
+              }],
+              showLine: true,
+              fill: false,
+              borderColor: 'rgba(0, 200, 0, 1)'
+            },
+            {
+              label: 'Density constatée',
+              data: [{
+                  x: <%= @beer.initial_density_target %> ,
+                  y: 900
+              },
+              {
+                  x: <%= @beer.final_density_target %> ,
+                  y: 1100
+              }],
+              showLine: true,
+              fill: false,
+              borderColor: 'rgba(200, 0, 0, 1)'
+            }
+          ]
+        },
+        options: {
+          tooltips: {
+            mode: 'index',
+            intersect: false,
+          },
+          hover: {
+            mode: 'nearest',
+            intersect: true
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero:true
+              }
+            }]
+          },
+        }
+      });
+    </script>
+  </section>
+</div>
+<br>
 
 <div class="col-md-12">
   <section class="profil-panel profils-widget">
     <%= line_chart [
-     {name: "Temperature", data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.temperature; res }},
-     {name: "density", data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.density; res }}
+     {name: "Density relevée", color: 'black', data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.temperature; res }},
+     {name: "Density cible", color: '#00FF00', data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.density; res }}
+                 ] %>
+</section>
+</div>
+
+<div class="col-md-12">
+  <section class="profil-panel profils-widget">
+    <%= line_chart [
+     {name: "Temperature relevée", color: 'black', data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.temperature; res }},
+     {name: "Temperature cible", color: '#00FF00', data: @beer.fermentation_temperature_target }
+                 ] %>
+</section>
+</div>
+
+<br>
+
+<div class="col-md-12">
+  <section class="profil-panel profils-widget">
+    <%= line_chart [
+     {name: "Density relevée", color: 'black', data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.temperature; res }},
+     {name: "Density cible", color: '#00FF00', data: Ispindle.all.inject({}) {|res, v| res[v[:created_at]] = v.density; res }}
                  ] %>
 </section>
 </div>
 
 <br>
 </div>
+
+
 
 <div style="background-color: #F0ECEB">
   <br>

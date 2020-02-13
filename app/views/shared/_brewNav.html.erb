@@ -1,8 +1,8 @@
 <nav>
   <% if user_signed_in? %>
-    <ul class="list-inline tabs-underlined navbar-pab-navigation-beer">
+    <ul class="list-inline tabs-underlined navbar-pab-navigation-beer" role='tablist'>
         <li class="tab-underlined-brew active">
-          <%= link_to beers_path do %>
+          <%= link_to brew_path(@brew) do %>
             <div>
               <%= image_tag 'current_step.png',
               width: '50', height: '50' %>
@@ -29,3 +29,4 @@
     </ul>
   <% end %>
 </nav>
+

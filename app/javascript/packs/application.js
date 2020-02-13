@@ -5,7 +5,7 @@ require("channels")
 import "bootstrap";
 
 import $ from "jquery";
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
 
 
 
@@ -18,9 +18,18 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
     .toggleClass("fa-minus fa-plus");
 });
 
+
+// $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+//   e.target // newly activated tab
+//   e.relatedTarget // previous active tab
+// })
+
+
 $('.tab-underlined').on('click', function(e) {
   $('.active').removeClass('active');
   // e.preventDefault();
-  $(this).addClass('active');
+  $(this).addClass('active').prev();
   // e.preventDefault();
 });
+
+
