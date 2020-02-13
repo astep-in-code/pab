@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     <ul class="list-inline tabs-underlined navbar-pab-navigation-beer">
         <li class="tab-underlined-beer active">
-          <%= link_to beers_path do %>
+          <%= link_to beer_path(@beer, :anchor => "caracteristiques") do %>
             <div>
               <%= image_tag 'infos.png',
               width: '50', height: '50' %>
@@ -10,7 +10,7 @@
           <% end %>
         </li>
         <li class="tab-underlined-beer">
-          <%= link_to beers_path do %>
+          <%= link_to beer_path(@beer, :anchor => "details") do %>
             <div>
               <%= image_tag 'timeline.png',
               width: '50', height: '50' %>
@@ -18,7 +18,7 @@
           <% end %>
         </li>
         <li class="tab-underlined-beer">
-          <%= link_to beers_path do %>
+          <%= link_to beer_path(@beer, :anchor => "resume") do %>
             <div>
               <%= image_tag 'malt.png',
               width: '50', height: '50' %>

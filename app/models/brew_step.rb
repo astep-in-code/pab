@@ -6,5 +6,5 @@ class BrewStep < ApplicationRecord
   # has_many :beer_sub_steps, through: :beer_steps
   # has_many :ispindle, through: :brews
 
-  validates :status, presence: true
+  # validates :status, presence: true
 end
