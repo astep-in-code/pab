@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
 
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users
   root to: 'pages#home'
 
 
