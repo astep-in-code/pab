@@ -1,28 +1,46 @@
-.background-banner{
-  .search-form-control {
-    position: relative;
-    margin-top: 50%;
-    margin-bottom: 50%;
-  }
-
-  .search-form-control .btn {
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    // right: 8px;
-  }
-
-  .search-form-control .form-control {
-    height: 3.5rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    border: 1px solid #E7E7E7;
-    // border-radius: 5%;
-    width: 20rem;
-  }
-
-  .search-form-control .form-control:focus {
-    border: 1px solid #1EDD88;
-    outline: none !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  }
+.banner .search-form-control {
+  position: relative;
+  margin-top: 50%;
+  margin-bottom: 33%;
 }
+
+.box {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.search-form-control .form-control {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border: 1px solid #FFC65A;
+  width: 22rem;
+}
+
+.search-form-control .form-control:focus {
+  border: 1px solid #FFC65A;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.btn-search {
+color: white;
+padding: 8px 18px;
+border-radius: 4px;
+background: $pab;
+transition: background 0.3s ease;
+}
+
+.btn-search:hover {
+  background: $yellow;
+  color: white;
+}
+

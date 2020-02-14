@@ -8,36 +8,49 @@
       </button>
     </div>
   </form> -->
-    <div class="row">
-      <%= simple_form_for :search, url: root_path(@chefs), method: :get do |f| %>
-        <div class="search-form-control form-group">
-          <input class="form-control string required" type="search" name="query" id="search_query" placeholder="Trouver une recette" aria-label="Search" value="">
-          <button type="submit" class="btn btn-search">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      <% end %>
-    </div>
+
+
 </div>
 
-<div class="card-category" style="background-color: grey;">
-  Parcourir nos recettes
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dqyudfjjy/image/upload/v1581156334/search-bg_dfujf9.jpg);">
+  <div class="container">
+    <div class="box">
+      <div>
+        <%= simple_form_for :search, url: root_path(@chefs), method: :get do |f| %>
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="search" name="query" id="search_query" placeholder="Trouver une recette" aria-label="Search" value="">
+            <button type="submit" class="btn btn-search">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>
 
-<ul class="list row">
-  <% if params[:query].present?  %>
-    <% @query = params[:query].capitalize  %>
-    <% @beers = Beer.where("name ILIKE ?", "%#{@query}%")  %>
-  <% else  %>
-    <% @beers = Beer.all.order(:name)  %>
-  <% end %>
-  <% @beers.each do |beer| %>
-  <li class="items col-6">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= beer.photo %>)">
-        <%= link_to beer.name, beer_path(beer), style: 'color: #fff' %>
-    </div>
-  </li>
-  <% end %>
-</ul>
 
+<div class="card-category" style="background-image: url(https://res.cloudinary.com/dqyudfjjy/image/upload/v1581694263/Capture_d_e%CC%81cran_2020-02-14_a%CC%80_16.30.50_gudot9.png);">
+  <span style="color: black">Parcourir nos recettes</span>
+</div>
+
+
+<div class="container-beer" style="background-color: #fff">
+  <ul class="list row">
+    <% if params[:query].present?  %>
+      <% @query = params[:query].capitalize  %>
+      <% @beers = Beer.where("name ILIKE ?", "%#{@query}%")  %>
+    <% else  %>
+      <% @beers = Beer.all.order(:name)  %>
+    <% end %>
+    <% @beers.each do |beer| %>
+    <li class="items col-6">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= beer.photo %>)">
+          <%= link_to beer.name, beer_path(beer), style: 'color: #fff' %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<br>
+<br>
+</div>
 
