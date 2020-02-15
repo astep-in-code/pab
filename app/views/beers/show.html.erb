@@ -20,52 +20,53 @@
   </div>
 
   <br><br><br>
+  <div id="details" class="toggleWithMenu">
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget">
+        <h5><strong>Caractéristiques</strong></h5>
+        <table cellpadding="10" class="table-beers-shows">
+          <tbody>
+            <tr><td><strong>Densité initiale : </strong></td><td>
+              <div class="progress">
+                <% @density_width = ( @beer.initial_density_target.to_f - 1040 ) / 40.0 %>
+                <%# number_to_percentage((@density_width = @dens / 1080.0).to_f) %>
+                <%#= raise %>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+              </div>
+            </td></tr>
+            <tr><td><strong>Densité finale : </strong></td><td>
+              <div class="progress">
+                <% @final_dens = ( @beer.final_density_target.to_f - 980 ) / 35.0 %>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
+              </div>
+              </td></tr>
+            <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
+            <tr><td><strong>Amertume : </strong></td><td>
+              <div class="progress">
+                <% @amertume_width = ( @beer.bitterness.to_f - 10 ) / 70 %>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @amertume_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
+              </div>
+              </td></tr>
+            <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
+            <tr><td><strong>Alcool : </strong></td><td>
+              <div class="progress">
+                <% @alcohol_width = @beer.alcohol.to_f / 12 %>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @alcohol_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %> %</div>
+              </div>
+              </td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <!--/col-md-12 -->
 
-  <div class="col-md-12">
-    <section class="profil-panel profils-widget">
-      <h5><strong>Caractéristiques</strong></h5>
-      <table cellpadding="10" class="table-beers-shows">
-        <tbody>
-          <tr><td><strong>Densité initiale : </strong></td><td>
-            <div class="progress">
-              <% @density_width = ( @beer.initial_density_target.to_f - 1040 ) / 40.0 %>
-              <%# number_to_percentage((@density_width = @dens / 1080.0).to_f) %>
-              <%#= raise %>
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
-            </div>
-          </td></tr>
-          <tr><td><strong>Densité finale : </strong></td><td>
-            <div class="progress">
-              <% @final_dens = ( @beer.final_density_target.to_f - 980 ) / 35.0 %>
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
-            </div>
-            </td></tr>
-          <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
-          <tr><td><strong>Amertume : </strong></td><td>
-            <div class="progress">
-              <% @amertume_width = ( @beer.bitterness.to_f - 10 ) / 70 %>
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @amertume_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
-            </div>
-            </td></tr>
-          <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
-          <tr><td><strong>Alcool : </strong></td><td>
-            <div class="progress">
-              <% @alcohol_width = @beer.alcohol.to_f / 12 %>
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @alcohol_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %> %</div>
-            </div>
-            </td></tr>
-        </tbody>
-      </table>
-    </section>
-  </div>
-  <!--/col-md-12 -->
-
-  <br>
-  <div class="col-md-12">
-    <section class="profil-panel profils-widget" id="details">
-      <h5><strong>Détails</strong></h5>
-      <p><%= @beer.description %></p>
-    </section>
+    <br>
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget" id="details">
+        <h5><strong>Détails</strong></h5>
+        <p><%= @beer.description %></p>
+      </section>
+    </div>
   </div>
   <!--/col-md-12 -->
 
@@ -79,181 +80,195 @@
   </div>
   </col-md-12 -->
 
-  <br>
-  <div class="col-md-12">
-    <section class="profil-panel profils-widget" id="resume">
-      <h5><strong>Résumé du Brassin</strong></h5>
-      <div class="accordion" id="accordionExample">
+  <div id="resume" class="toggleWithMenu" style="display: none;">
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget" id="resume">
+        <h5><strong>Résumé du Brassin</strong></h5>
+        <div class="accordion" id="accordionExample">
 
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                <span class="fa-stack fa-sm">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                </span>
-                Préparation #1
-              </button>
-            </h5>
-          </div>
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <span class="fa-stack fa-sm">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  Préparation #1
+                </button>
+              </h5>
+            </div>
 
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body show-beer">
-              <h5>Les Ingredients</h5>
-              <%  @hash_ingredients.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body show-beer">
+                <!-- <h5>Les Ingredients</h5>
+                <%  @hash_ingredients.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                    <% else %>
-                      <%= v %> <br>
+                    <hr> -->
+                  <h5>Nettoyage</h5>
+                  <%  @hash_nettoyage.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <hr>
-                <h5>Nettoyage</h5>
-                <%  @hash_nettoyage.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
-                    <% end %>
-                    <% else %>
-                      <%= v %> <br>
-                    <% end %>
-                  <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <span class="fa-stack fa-sm">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                </span>
-                Empâtage #2
-              </button>
-            </h5>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body show-beer">
-              <%  @hash_empatage.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <span class="fa-stack fa-sm">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  Empâtage #2
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body show-beer">
+                <%  @hash_empatage.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                    <% else %>
-                      <%= v %> <br>
-                    <% end %>
-                  <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                <span class="fa-stack fa-sm">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                </span>
-                L'Ebullition #3
-              </button>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body show-beer">
-              <%  @hash_ebullition.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <span class="fa-stack fa-sm">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  L'Ebullition #3
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body show-beer">
+                <%  @hash_ebullition.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                    <% else %>
-                      <%= v %> <br>
-                    <% end %>
-                  <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" id="headingFour">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <span class="fa-stack fa-sm">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                </span>
-                Fermentation #4
-              </button>
-            </h5>
-          </div>
-          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-            <div class="card-body show-beer">
-              <%  @hash_fermentation.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <span class="fa-stack fa-sm">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  Fermentation #4
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body show-beer">
+                <%  @hash_fermentation.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                    <% else %>
-                      <%= v %> <br>
-                    <% end %>
-                  <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-header" id="headingFive">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <span class="fa-stack fa-sm">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-                </span>
-                Embouteillage #5
-              </button>
-            </h5>
-          </div>
-          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-            <div class="card-body show-beer">
-              <%  @hash_embouteillage.each do |k,v| %>
-                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
-                  <% if v.is_a?(Hash) %>
-                    <% v.each do |k,v| %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <span class="fa-stack fa-sm">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  Embouteillage #5
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+              <div class="card-body show-beer">
+                <%  @hash_embouteillage.each do |k,v| %>
+                  <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% end %>
+                      <% else %>
+                        <%= v %> <br>
+                      <% end %>
                     <% end %>
-                    <% else %>
-                      <%= v %> <br>
-                    <% end %>
-                  <% end %>
+              </div>
             </div>
           </div>
-        </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   </div>
   <!--/col-md-12 -->
+  <div id="ingredients" class="toggleWithMenu" style="display: none;">
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget">
+    <h5>Les Ingredients</h5>
+    <%  @hash_ingredients.each do |k,v| %>
+      <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
+        <% if v.is_a?(Hash) %>
+          <% v.each do |k,v| %>
+            &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+          <% end %>
+          <% else %>
+            <%= v %> <br>
+          <% end %>
+        <% end %>
+        <hr>
+      </section>
+    </div>
+  </div>
 
 
 <br>
 </div>
 
 <div style="background-color: #F0ECEB">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <br>
   <br>
   <br>

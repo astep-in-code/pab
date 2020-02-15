@@ -4,8 +4,8 @@
   <h5 style="padding: 10px;"><strong>Mes Brassins</strong></h5>
 
   <% @brews.each do |br|  %>
-  <div class="col-md-6">
-    <section class="profil-panel profils-widget">
+  <div class="col-md-12 p-0">
+    <section class="profil-panel profils-widget m-10">
     <div class="show-brew">
       <%= link_to brew_path(br) do %>
           <%= image_tag 'show_brew.png',
@@ -13,17 +13,20 @@
       <% end %>
     </div>
     <br>
-    <div class="row">
-      <div class="col-md-6">
-        <p><strong><%= br.beer.name %></strong>
-        </p>
-        <p><%#= br.status %>Fermentation en cours ..</p>
+    <div class="row no-gutters">
+      <div class="col-6">
+        <h2 class="beer_title"><%= br.beer.name %>
+        </h2>
+        <p><%#= br.status %>Fermentation primaire en cours</p>
+      </div>
+      <div class="col-6">
+        <canvas id="myChart" width="100" height="100"></canvas>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-6">
-        <table cellpadding="6" class="table-beers-shows">
+         <table cellpadding="6" class="table-beers-shows">
           <thead>
             <tr>
               <th colspan="2"><strong>Densité : <span style="color: #FFC65A">1041</span></strong></th>
@@ -49,8 +52,8 @@
           <div class="white-header">
             <h5>Avancement du Brassin</h5>
           </div>
-          <p>Progression du Brassin ..</p>
-          <canvas id="myChart"></canvas>
+          <p>Progression du Brassin</p>
+
           <script>
             var data = {
               labels: [
@@ -61,7 +64,7 @@
                   data: [40, 60],
                   backgroundColor: ["#FCB844", "#FFF"],
                   borderWidth: ['1px', '1px'],
-                  borderColor: ["#FFFFF", "#FFFFF"]
+                  borderColor: ["#FCB844", "#FCB844"]
                   }],
                 };
 
@@ -72,7 +75,8 @@
                 responsive: true,
                 legend: {
                   display: false
-                }
+                },
+                cutoutPercentage: 75
               }
             });
 

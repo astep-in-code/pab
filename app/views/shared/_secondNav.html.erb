@@ -1,7 +1,7 @@
 <nav id='secondNav'>
   <% if user_signed_in? %>
     <ul class="list-inline tabs-underlined navbar-pab-navigation">
-        <li class="tab-underlined active">
+        <li class="tab-underlined <%= 'active' if params[:controller] == 'beers' || params[:controller] == 'pages' %>">
           <%= link_to root_path do %>
             <div>
               <%= image_tag '2navIcon1.png',
@@ -9,7 +9,7 @@
             </div>
           <% end %>
         </li>
-        <li class="tab-underlined">
+        <li class="tab-underlined <%= "active" if params[:controller] == 'brews' || params[:controller] == 'ispindles' %>">
           <%= link_to brews_path do %>
             <div>
               <%= image_tag '2navIcon2.png',
@@ -29,5 +29,3 @@
     </ul>
   <% end %>
 </nav>
-
-
