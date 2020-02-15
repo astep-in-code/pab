@@ -23,13 +23,3 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
 //   e.target // newly activated tab
 //   e.relatedTarget // previous active tab
 // })
-
-
-$('.tab-underlined').on('click', function(e) {
-  $('.active').removeClass('active');
-  // e.preventDefault();
-  $(this).addClass('active').prev();
-  // e.preventDefault();
-});
-
-
