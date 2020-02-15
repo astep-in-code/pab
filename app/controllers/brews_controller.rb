@@ -1,23 +1,22 @@
 class BrewsController < ApplicationController
 
   before_action :set_beer, only: [:new, :create]
+  require 'json'
 
-  def new
-    @brew = @beer.brews.build
-  end
+  # def new
+  #   # @brew = Brew.new
+  #   @brew = @beer.brews.build
+  # end
 
   def create
-    @brew = Brew.new(brew_params)
+    @brew = Brew.new
+    # @beer = Beer.find(params[:id])
+    @brew.beer = @beer
     @brew.user = current_user
-
-    respond_to do |format|
       # raise
-      if @brew.save
-        format.html { redirect_to brew_path(@brew), notice: 'Brew was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    # @brew.create!
+    @brew.save!
+    redirect_to brews_path
   end
 
   def index
@@ -26,7 +25,16 @@ class BrewsController < ApplicationController
   end
 
   def show
+    # @brew_steps = BrewStep.all
     @brew_steps = BrewStep.where(brew_id: @brew.id)
+
+    @beer_sub_step = BeerSubStep.where(beer_id: @brew.beer.id)
+
+    sub_step = @beer_sub_step[0].sub_step
+    @hash_sub_step = JSON.parse(sub_step, symbolize_keys: true)
+    @hash_sub_step.deep_symbolize_keys!
+
+
   end
 
   def edit
@@ -45,7 +53,7 @@ class BrewsController < ApplicationController
   def destroy
     @brew.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Brew was successfully destroyed.' }
+      format.html { redirect_to brews_path, notice: 'Brew was successfully destroyed.' }
     end
   end
 
@@ -55,7 +63,7 @@ class BrewsController < ApplicationController
     @brew = Brew.find(params[:id])
   end
 
-  def brew_params
-    params.require(:brew).permit(:user_id, :beer_id)
-  end
+  # def brew_params
+  #   params.require(:brew).permit(:user_id, :beer_id)
+  # end
 end

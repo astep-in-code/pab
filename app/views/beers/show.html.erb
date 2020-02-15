@@ -3,16 +3,19 @@
   <div class="card-trip">
     <%= cl_image_tag "https://res.cloudinary.com/dqyudfjjy/image/upload/v1581258563/tatiana-rodriguez-D_Rfjj3XV8M-unsplash_qc1xii.jpg" %>
     <div class="margin-negative">
-      <%= link_to "Commencer un batch", new_beer_brew_path(@beer), class: 'btn btn-lg btn-info btn-block' %>
+      <%= simple_form_for [@beer, @brew] do |f| %>
+        <%= f.submit "Commencer un batch", class: 'btn btn-lg btn-info btn-block' %>
+      <% end %>
+      <%#= link_to "Commencer un batch", beer_brews_path(@beer), class: 'btn btn-lg btn-info btn-block' %>
     </div>
     <div class="card-trip-infos">
       <h2 class="beer-show-name"><strong><%= @beer.name %></strong></h2>
     </div>
-    <div class="card-trip-infos">
+    <div class="card-trip-infos" id="caracteristiques">
       <p><strong>Style: </strong> <%= @beer.style %></p>
     </div>
     <div class="card-trip-user">
-      <%= image_tag @beer.photo, width: 200, height: 200 %>
+      <%= image_tag @beer.photo, width: 180, height: 180 %>
     </div>
   </div>
 
@@ -25,25 +28,30 @@
         <tbody>
           <tr><td><strong>Densité initiale : </strong></td><td>
             <div class="progress">
-              <%= @density_width = (@beer.initial_density_target / 1080) * 100 %>
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+              <% @density_width = ( @beer.initial_density_target.to_f - 1040 ) / 40.0 %>
+              <%# number_to_percentage((@density_width = @dens / 1080.0).to_f) %>
+              <%#= raise %>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
             </div>
           </td></tr>
           <tr><td><strong>Densité finale : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @beer.final_density_target %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
+              <% @final_dens = ( @beer.final_density_target.to_f - 980 ) / 35.0 %>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
             </div>
             </td></tr>
           <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
           <tr><td><strong>Amertume : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @beer.bitterness %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
+              <% @amertume_width = ( @beer.bitterness.to_f - 10 ) / 70 %>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @amertume_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
             </div>
             </td></tr>
           <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
           <tr><td><strong>Alcool : </strong></td><td>
             <div class="progress">
-              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @beer.alcohol %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %></div>
+              <% @alcohol_width = @beer.alcohol.to_f / 12 %>
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @alcohol_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %> %</div>
             </div>
             </td></tr>
         </tbody>
@@ -54,7 +62,7 @@
 
   <br>
   <div class="col-md-12">
-    <section class="profil-panel profils-widget">
+    <section class="profil-panel profils-widget" id="details">
       <h5><strong>Détails</strong></h5>
       <p><%= @beer.description %></p>
     </section>
@@ -62,20 +70,21 @@
   <!--/col-md-12 -->
 
   <br>
-  <div class="col-md-12">
+<!--   <div class="col-md-12">
     <section class="profil-panel profils-widget">
 
-      <p><%= @recipe_parse["preparation"]["ingredients"]["cereals"] %></p>
+      <p><%#= @recipe_parse["preparation"]["ingredients"]["cereals"] %></p>
       <%#= raise %>
     </section>
   </div>
-  <!--/col-md-12 -->
+  </col-md-12 -->
 
   <br>
   <div class="col-md-12">
-    <section class="profil-panel profils-widget">
+    <section class="profil-panel profils-widget" id="resume">
       <h5><strong>Résumé du Brassin</strong></h5>
       <div class="accordion" id="accordionExample">
+
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
@@ -84,14 +93,36 @@
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                 </span>
-                Préparation du matériel #1
+                Préparation #1
               </button>
             </h5>
           </div>
 
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body show-beer">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <h5>Les Ingredients</h5>
+              <%  @hash_ingredients.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
+                  <hr>
+                <h5>Nettoyage</h5>
+                <%  @hash_nettoyage.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
             </div>
           </div>
         </div>
@@ -104,13 +135,22 @@
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                 </span>
-                Concassage du malt #2
+                Empâtage #2
               </button>
             </h5>
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body show-beer">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%  @hash_empatage.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
             </div>
           </div>
         </div>
@@ -123,13 +163,78 @@
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                 </span>
-                L'empâtage #3
+                L'Ebullition #3
               </button>
             </h5>
           </div>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body show-beer">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              <%  @hash_ebullition.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <span class="fa-stack fa-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                Fermentation #4
+              </button>
+            </h5>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body show-beer">
+              <%  @hash_fermentation.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <span class="fa-stack fa-sm">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+                Embouteillage #5
+              </button>
+            </h5>
+          </div>
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body show-beer">
+              <%  @hash_embouteillage.each do |k,v| %>
+                <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+                  <% if v.is_a?(Hash) %>
+                    <% v.each do |k,v| %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                    <% else %>
+                      <%= v %> <br>
+                    <% end %>
+                  <% end %>
             </div>
           </div>
         </div>

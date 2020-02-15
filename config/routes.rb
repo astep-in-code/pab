@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  # get 'brews/create'
   resources :beers, only: [:index, :show, :new, :destroy] do
-    resources :brews, only: [:new, :create] do
-    end
+    resources :brews, only: [:create]
   end
   resources :brews, only: [:index, :show, :destroy] do
     resources :ispindles, only: [:index] do
