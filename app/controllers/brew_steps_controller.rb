@@ -1,5 +1,6 @@
 class BrewStepsController < ApplicationController
 
+
 # before_action :set_brewstep, only: [:show, :edit, :update, :destroy]
 
 #   def new
@@ -50,5 +51,6 @@ class BrewStepsController < ApplicationController
 #   def brewstep_params
 #     # params.require(:brewstep).permit(:sub_step, :step, :description)
 #   end
+
 
 end
