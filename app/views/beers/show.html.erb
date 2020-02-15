@@ -20,7 +20,7 @@
   </div>
 
   <br><br><br>
-  <div id="caracteristiques">
+  <div id="details" class="toggleWithMenu">
     <div class="col-md-12">
       <section class="profil-panel profils-widget">
         <h5><strong>Caractéristiques</strong></h5>
@@ -80,8 +80,7 @@
   </div>
   </col-md-12 -->
 
-  <br>
-  <div id="resume">
+  <div id="resume" class="toggleWithMenu" style="display: none;">
     <div class="col-md-12">
       <section class="profil-panel profils-widget" id="resume">
         <h5><strong>Résumé du Brassin</strong></h5>
@@ -102,7 +101,7 @@
 
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body show-beer">
-                <h5>Les Ingredients</h5>
+                <!-- <h5>Les Ingredients</h5>
                 <%  @hash_ingredients.each do |k,v| %>
                   <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
                     <% if v.is_a?(Hash) %>
@@ -113,7 +112,7 @@
                         <%= v %> <br>
                       <% end %>
                     <% end %>
-                    <hr>
+                    <hr> -->
                   <h5>Nettoyage</h5>
                   <%  @hash_nettoyage.each do |k,v| %>
                   <strong style="color: grey;"><%= k.capitalize %> : </strong>
@@ -246,7 +245,9 @@
     </div>
   </div>
   <!--/col-md-12 -->
-  <div id="ingredients">
+  <div id="ingredients" class="toggleWithMenu" style="display: none;">
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget">
     <h5>Les Ingredients</h5>
     <%  @hash_ingredients.each do |k,v| %>
       <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
@@ -259,6 +260,8 @@
           <% end %>
         <% end %>
         <hr>
+      </section>
+    </div>
   </div>
 
 
@@ -266,11 +269,6 @@
 </div>
 
 <div style="background-color: #F0ECEB">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <br>
   <br>
   <br>
