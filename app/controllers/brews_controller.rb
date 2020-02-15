@@ -1,7 +1,8 @@
 class BrewsController < ApplicationController
-
+  before_action :set_brew, only: [:show, :edit, :update, :destroy]
   before_action :set_beer, only: [:new, :create]
   require 'json'
+
 
   # def new
   #   # @brew = Brew.new
@@ -58,6 +59,10 @@ class BrewsController < ApplicationController
   end
 
   private
+
+  def set_beer
+    @beer = Beer.find(params[:beer_id])
+  end
 
   def set_brew
     @brew = Brew.find(params[:id])
