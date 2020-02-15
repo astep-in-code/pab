@@ -23,3 +23,15 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
 //   e.target // newly activated tab
 //   e.relatedTarget // previous active tab
 // })
+const beersubnav = document.getElementsByClassName("tab-underlined-beer");
+var deletenavactive = () => {
+  for (var i  = 0; i < beersubnav.length; i++) {
+    beersubnav[i].classList.remove('active');
+  }
+};
+for (var i  = 0; i < beersubnav.length; i++) {
+  beersubnav[i].addEventListener("click", event => {
+    deletenavactive();
+    event.currentTarget.classList.add('active');
+  });
+}
