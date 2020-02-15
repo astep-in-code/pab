@@ -4,7 +4,7 @@
   <h5 style="padding: 10px;"><strong>Mes Brassins</strong></h5>
 
   <% @brews.each do |br|  %>
-  <div class="col-md-12">
+  <div class="col-md-6">
     <section class="profil-panel profils-widget">
     <div class="show-brew">
       <%= link_to brew_path(br) do %>
@@ -54,7 +54,7 @@
           <script>
             var data = {
               labels: [
-                "Yellow"
+                "Brassin : <%= br.beer.name %>"
               ],
               datasets: [
                 {
@@ -102,7 +102,8 @@
     </div>
     </section>
   </div>
-  <!--/col-md-12 -->
+  <br>
+  <!--/col-md-6 -->
   <% end %>
 
 

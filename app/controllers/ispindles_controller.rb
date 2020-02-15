@@ -61,6 +61,6 @@ class IspindlesController < ApplicationController
   end
 
   def ispindle_params
-    params.require(:ispindle).permit(:name, :temperature, :density, :brew_id, :brew_id)
+    params.require(:ispindle).permit(:name, :temperature, :density, :brew_id)
   end
 end

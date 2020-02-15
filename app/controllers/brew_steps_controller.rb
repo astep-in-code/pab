@@ -1,3 +1,2 @@
 class BrewStepsController < ApplicationController
-
 end
