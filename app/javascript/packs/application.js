@@ -9,8 +9,10 @@ import $ from "jquery";
 
 
 
-// internal imports
+// ---- internal imports ---- //
 
+
+// Show Beers
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
   $(e.target)
     .prev()
@@ -19,10 +21,7 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
 });
 
 
-// $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-//   e.target // newly activated tab
-//   e.relatedTarget // previous active tab
-// })
+// Show Brew + Display Bloc logic with Nav Tab-underlined
 const beersubnav = document.getElementsByClassName("tab-underlined-beer");
 const toggleWithMenu = document.getElementsByClassName("toggleWithMenu");
 var deletenavactive = () => {
@@ -52,3 +51,57 @@ for (var i  = 0; i < beersubnav.length; i++) {
     // }
   });
 }
+
+// Ispindle Datas
+
+const form = document.querySelector('form');
+const ul = document.querySelector('.list-unstyled');
+const uld = document.querySelector('.list-unstyled-d');
+const tokenDemo = 'BBFF-pHN344E9nnRodJqLHbjeAVrfundHeX3Pd9N0F0yGjMM8s8A2vznK0IU'
+
+const sendOnSubmitSearch = (e) => {
+  // getting user search (density or gravity allowed) => we get both data
+  const inputSearchTemperature = 'temperature';
+  const inputSearchDensity = 'gravity';
+
+  // getting user name of Ispindle app
+  const inputNameApp = document.getElementById('nameIspindle').value;
+
+  // getting token from user
+  const tokenSearch = document.getElementById('token').value;
+
+  // building request (Temperature)
+  const url = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchTemperature}/values/?token=${tokenSearch}`;
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      // console.log(data)
+      const resultsIspindle = data.results;
+      // console.log(resultsIspindle)
+      resultsIspindle.forEach((e) => {
+        ul.insertAdjacentHTML('beforeend',
+          `<li class='resultsIspindle' data-time='${e.timestamp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchTemperature} : ${e.value}</li>`
+          );
+      });
+    });
+
+  // building request (Density)
+  const url2 = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchDensity}/values/?token=${tokenSearch}`;
+  fetch(url2)
+    .then(response => response.json())
+    .then((data) => {
+      // console.log(data)
+      const resultsIspindle2 = data.results;
+      // console.log(resultsIspindle)
+      resultsIspindle2.forEach((e) => {
+        ul.insertAdjacentHTML('beforeend',
+          `<li class='resultsIspindleDensity' data-name='${inputNameApp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchDensity} : ${e.value}</li>`
+          );
+      });
+    });
+};
+
+form.addEventListener('submit', sendOnSubmitSearch);
+
+
+

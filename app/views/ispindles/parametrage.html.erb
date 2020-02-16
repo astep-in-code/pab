@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body" style="padding: 10px;">
+          <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '100' %></h5>
+          <h4 style="text-align: center;">Collecte des données du Ispindle</h4>
+          <div class="form-signin">
+          <form action="#" style="padding: 5px;">
+          <div class="form-label-group">
+            <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
+            <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
+            <p><input class="btn btn-success" type="submit" value="Récupérer les données">
+          </div>
+          </form>
+          <br>
+          <div class="text-center" style="background-color: grey; color: black;">
+            <ul class="list-unstyled" id="Ispindle">
+              <!-- Append here -->
+            </ul>
+          </div>
+          <br>
+          <br>
+          <div class="text-center" style="background-color: grey; color: black;">
+            <ul class="list-unstyled-d" id="Ispindle">
+              <!-- Append here -->
+            </ul>
+          </div>
+          <br>
+          <hr class="my-4">
+          <div class="form-label-group">
+            <button id="clickme" class="btn btn-primary btn-lg">
+              Send to DB!
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <br>
+  <br>
+<% @brew = Brew.find(params[:id]) %>
+
+<script>
+
+  // let collect_data = [];
+  const collectResultsTemp = document.getElementsByClassName('resultsIspindle');
+  const collectResultsDensity = document.getElementsByClassName('resultsIspindleDensity');
+  let collect_time = [];
+  let collect_temp = [];
+  let collect_dens = [];
+
+
+  const sendOnSubmitToDB = (e) => {
+
+    for (let i = 0; i < collectResultsTemp.length; i++ ) {
+        collect_time.push(collectResultsTemp[i].dataset.time);
+        collect_temp.push(collectResultsTemp[i].dataset.value);
+    };
+
+    for (let i = 0; i < collectResultsDensity.length; i++ ) {
+        collect_dens.push(collectResultsDensity[i].dataset.value);
+    };
+
+    // console.log(collectResultsDensity);
+    // let count = 0;
+    for (let i = 0; i < collect_time.length; i++) {
+      var mdate = collect_time[i];
+      var mtemp = collect_temp[i];
+      var mdens = collect_dens[i];
+      var mname = collectResultsDensity[0].dataset.name;
+      var mbrew = '<%= @brew.id %>'
+      breakme: if (mdate && mtemp && mdens && mname && mbrew) {
+        window.open("http://localhost:3000//brews/:id/ispindles/parametrage/create_ispindle?mdate="+mdate+"&mtemp="+mtemp+"&mdens="+mdens+"&mname="+mname+"&mbrew="+mbrew,"_self")
+        console.log("Sending")
+      }
+      else
+      {
+          alert("Cancelled");
+          break breakme;
+          // return 'cancelled';
+      };
+    };
+  };
+
+  document.getElementById('clickme').addEventListener('click', (event) => {
+    sendOnSubmitToDB();
+  });
+</script>
+
+

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     end
   end
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
-
+  match 'brews/:id/ispindles/parametrage', to: 'ispindles#parametrage', via: [:get], as: :parametrage
+  match 'brews/:id/ispindles/parametrage/create_ispindle', to: 'ispindles#create_ispindle', via: [:get, :post], as: :create_ispindle
 
   devise_for :users
   root to: 'pages#home'

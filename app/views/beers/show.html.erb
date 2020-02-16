@@ -234,8 +234,8 @@
                       <% end %>
                       <% else %>
                         <%= v %> <br>
-                      <% end %>
                     <% end %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -248,22 +248,21 @@
   <div id="ingredients" class="toggleWithMenu" style="display: none;">
     <div class="col-md-12">
       <section class="profil-panel profils-widget">
-    <h5>Les Ingredients</h5>
-    <%  @hash_ingredients.each do |k,v| %>
-      <strong style="color: grey;"><%= k.capitalize %> : </strong><br>
-        <% if v.is_a?(Hash) %>
-          <% v.each do |k,v| %>
-            &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
-          <% end %>
-          <% else %>
-            <%= v %> <br>
-          <% end %>
+        <h5>Les Ingredients</h5>
+        <%  @hash_ingredients.each do |k,v| %>
+          <strong style="color: grey;"><%= k.capitalize %> : </strong> <br>
+            <% if v.is_a?(Hash) %>
+              <% v.each do |k,v| %>
+                &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+            <% end %>
+            <% else %>
+              <%= v %> <br>
+            <% end %>
         <% end %>
         <hr>
       </section>
     </div>
   </div>
-
 
 <br>
 </div>
@@ -272,4 +271,10 @@
   <br>
   <br>
   <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
+
