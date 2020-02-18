@@ -21,7 +21,7 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
 });
 
 
-// Show Brew + Display Bloc logic with Nav Tab-underlined
+// Show Beer + Display Bloc logic with Nav Tab-underlined
 const beersubnav = document.getElementsByClassName("tab-underlined-beer");
 const toggleWithMenu = document.getElementsByClassName("toggleWithMenu");
 var deletenavactive = () => {
@@ -46,9 +46,6 @@ for (var i  = 0; i < beersubnav.length; i++) {
     if (event.currentTarget.innerHTML.includes('caracteristiques')){
       document.getElementById('details').style.display = "block";
     }
-    // if (event.currentTarget.firstChild.classList == 'resume') {
-    //   console.log(event);
-    // }
   });
 }
 
@@ -102,8 +99,8 @@ const sendOnSubmitSearch = (e) => {
     });
 };
 
+
 if (form) {
   form.addEventListener('submit', sendOnSubmitSearch);
 };
-
 
