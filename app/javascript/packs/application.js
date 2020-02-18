@@ -52,6 +52,7 @@ for (var i  = 0; i < beersubnav.length; i++) {
   });
 }
 
+
 // Ispindle Datas
 
 const form = document.querySelector('form');
@@ -101,7 +102,8 @@ const sendOnSubmitSearch = (e) => {
     });
 };
 
-form.addEventListener('submit', sendOnSubmitSearch);
-
+if (form) {
+  form.addEventListener('submit', sendOnSubmitSearch);
+};
 
 
