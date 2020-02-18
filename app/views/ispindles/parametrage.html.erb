@@ -75,7 +75,7 @@
       var mname = collectResultsDensity[0].dataset.name;
       var mbrew = '<%= @brew.id %>'
       breakme: if (mdate && mtemp && mdens && mname && mbrew) {
-        window.open("http://localhost:3000//brews/:id/ispindles/parametrage/create_ispindle?mdate="+mdate+"&mtemp="+mtemp+"&mdens="+mdens+"&mname="+mname+"&mbrew="+mbrew,"_self")
+        window.open("/brews/:id/ispindles/parametrage/create_ispindle?mdate="+mdate+"&mtemp="+mtemp+"&mdens="+mdens+"&mname="+mname+"&mbrew="+mbrew,"_self")
         console.log("Sending")
       }
       else

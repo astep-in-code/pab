@@ -108,17 +108,19 @@ p myBeer.id
 # p myBrew.valid?
 p "My Brew saved" if myBrew.save!
 
-10.times do |i|
+30.times do |i|
   myIspindle = Ispindle.new({
     name: "Ispindel001",
-    temperature: rand(1700..1900),
-    density: rand(1008..1054),
+    temperature: rand(16..22),
+    density: rand(1034..1086),
     brew_id: myBrew.id
   })
   myIspindle.valid?
   myIspindle.save
+  myIspindle.update_attribute :created_at, (i).days.ago
   p "Ispindle001 value :#{i} saved"
 end
+
 
 myBeerStep = BeerStep.new({
    step: 0,
