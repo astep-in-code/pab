@@ -10,7 +10,8 @@ import $ from "jquery";
 
 
 // ---- internal imports ---- //
-
+import { subSteps } from '../component/_brews.js';
+let val = subSteps();
 
 // Show Beers
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
