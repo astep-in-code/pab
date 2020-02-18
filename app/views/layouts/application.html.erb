@@ -26,12 +26,12 @@
     <%= render 'shared/beerNav' %>
     <% end %>
 
-    <% if params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' %>
+    <% if params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' %>
     <%= render 'shared/brewNav' %>
     <% end %>
 
     <%# unless current_page?('/beers') %>
-    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' %>
+    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' %>
     <%= render 'shared/footer' %>
     <% end %>
 

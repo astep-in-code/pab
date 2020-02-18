@@ -1,6 +1,6 @@
 class IspindlesController < ApplicationController
 
-  before_action :set_ispindle, only: [:show, :edit, :update, :destroy, :parametrage]
+  before_action :set_ispindle, only: [:show, :edit, :update, :destroy]
   before_action :set_brew, only: [:new, :create, :index]
 
   def new
@@ -24,6 +24,7 @@ class IspindlesController < ApplicationController
 
   def index
     @ispindles = Ispindle.where(brew_id: @brew.id)
+    @beer = @brew.beer
   end
 
   def show
@@ -54,21 +55,22 @@ class IspindlesController < ApplicationController
   end
 
   def create_ispindle
+    # Ispindle.destroy_all => à prevoir
     @ispindle = Ispindle.new
     @brew = Brew.find(params[:mbrew].to_i)
     @beer = @brew.beer
     @ispindle.temperature = params[:mtemp].to_f
     @ispindle.density = params[:mdens].to_f
-    date = params[:mdate]
-    @ispindle.created_at = DateTime.strptime(date,'%s')
+    date = params[:mdate].to_i / 1000
+    @ispindle.created_at = DateTime.strptime(date.to_s,'%s')
     @ispindle.name = params[:mname]
     @ispindle.brew = @brew
     # @ispindle.beer = @beer
     respond_to do |format|
       if @ispindle.save
-        format.html { redirect_to brew_ispindles_path(@brew), notice: 'ispindle was successfully created.' }
+        format.html { redirect_to brew_ispindles_path(@brew), notice: 'Datas was successfully created.' }
       else
-        format.html { redirect_to brew_ispindles_path(@brew), notice: 'ispindle can not be created.' }
+        format.html { redirect_to brew_ispindles_path(@brew), notice: 'Datas can not be created.' }
       end
     end
     # raise
