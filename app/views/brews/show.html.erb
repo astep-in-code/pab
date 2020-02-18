@@ -13,36 +13,37 @@
       <section class="profil-panel profils-widget">
           <% @beer_step = BeerStep.find(step.beer_step_id) %>
           <%# raise %>
-          <div class="card" style="padding: 10px">
+          <div class="card" style="padding: 10px" data-value="<%= step.status.to_i %>">
           <!-- Brew_steps Status : <%= step.status %> <br>
           Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
-          <h5><%= image_tag 'numberOne.png', width: '30', height: '30' %> <strong>Etape : </strong><%= @beer_step.description %></h5>
+          <h5><%= image_tag 'numberOne.png', width: '30', height: '30' %> <strong><%= @beer_step.description %></strong></h5>
           <%  @hash_sub_step.each do |k,v| %>
-          <% if k.to_s.to_i == step.status %>
-          <strong style="color: grey;">Etape <%= k.capitalize %> : </strong>
-             <p> <% if v.is_a?(Hash) %>
-              <% v.each do |k,v| %>
-                &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
-              <% end %>
-              <% else %>
-                <%= v %> <br>
-              <% end %>
-            <% end %>
+            <div class="substep">
+              <strong style="color: grey;">Etape <%= k.to_s.to_i + 1 %> : </strong>
+              <p>
+                <% if v.is_a?(Hash) %>
+                  <% v.each do |k,v| %>
+                    <%if v.to_s != "0" %>
+                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </p>
+            </div>
           <% end %>
-            </p>
           </div>
 
 <br>
         <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
           <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
+            <li class="page-item disabled" id="previous-substep">
               <a class="page-link" href="#" tabindex="-1">Etape précédente</a>
             </li>
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-            <li class="page-item">
+            <li class="page-item" id="next-substep" >
               <a class="page-link" href="#">Etape suivante</a>
             </li>
           </ul>
