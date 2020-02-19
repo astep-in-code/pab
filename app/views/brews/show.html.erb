@@ -26,7 +26,7 @@
                   <% v.each do |k,v| %>
                     <% if k.to_s == "photo" %>
                     <div class="photo">
-                      <%= image_tag v, width: '300' %>
+                    <%= cl_image_tag v, height: 190, crop: :fill %> <br>
                     </div>
                     <% end %>
                     <% if v.to_s != "0" && k.to_s != "photo" %>
@@ -40,6 +40,7 @@
                     <% end %>
                   <% end %>
                 <% end %>
+                <%# raise %>
               </p>
             </div>
           <% end %>
