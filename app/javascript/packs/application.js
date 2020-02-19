@@ -13,6 +13,9 @@ import $ from "jquery";
 import { subSteps } from '../component/_brews.js';
 let val = subSteps();
 
+import { getmyelementid } from '../component/_timer.js';
+let countdown = getmyelementid();
+
 // Show Beers
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
   $(e.target)
@@ -104,4 +107,3 @@ const sendOnSubmitSearch = (e) => {
 if (form) {
   form.addEventListener('submit', sendOnSubmitSearch);
 };
-

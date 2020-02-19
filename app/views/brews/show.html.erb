@@ -18,7 +18,7 @@
           Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
           <h5><%= image_tag '1.png', width: '30', height: '30' %> <strong><%= @beer_step.description %></strong></h5>
-          <%  @hash_sub_step.each do |k,v| %>
+          <%  @hash_sub_step.each_with_index do |(k,v), index| %>
             <div class="substep" style="display: none;">
               <strong style="color: grey;">Etape <%= k.to_s.to_i + 1 %> : </strong>
               <p>
@@ -33,6 +33,10 @@
                     <div class="content">
                       &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
                     </div>
+                    <% end %>
+                    <% if v.to_s != "0" && k.to_s == "time" %>
+                    <div id="timer<%= index %>" data-value="<%= v %>"></div><button class="start" data-value="<%= index %>">start</button>
+                    <button id="stop<%= index %>">stop</button>
                     <% end %>
                   <% end %>
                 <% end %>
