@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match '/pages/profil', to: 'pages#profil', via: [:get], as: :profil
   match 'brews/:id/ispindles/parametrage', to: 'ispindles#parametrage', via: [:get], as: :parametrage
   match 'brews/:id/ispindles/parametrage/create_ispindle', to: 'ispindles#create_ispindle', via: [:get, :post], as: :create_ispindle
+  match 'brews/:id/ispindles/parametrage/destroy_all', to: 'ispindles#destroy_all_ispindle', via: [:get, :delete], as: :destroy_all_ispindle
 
   devise_for :users
   root to: 'pages#home'
