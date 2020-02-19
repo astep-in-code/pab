@@ -24,8 +24,15 @@
               <p>
                 <% if v.is_a?(Hash) %>
                   <% v.each do |k,v| %>
-                    <%if v.to_s != "0" %>
+                    <% if k.to_s == "photo" %>
+                    <div class="photo">
+                      <%= image_tag v, width: '300' %>
+                    </div>
+                    <% end %>
+                    <% if v.to_s != "0" && k.to_s != "photo" %>
+                    <div class="content">
                       &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                    </div>
                     <% end %>
                   <% end %>
                 <% end %>
