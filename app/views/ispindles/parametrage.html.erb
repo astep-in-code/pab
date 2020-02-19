@@ -10,7 +10,12 @@
           <div class="form-label-group">
             <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
             <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
-            <p><input class="btn btn-success" type="submit" value="Récupérer les données">
+            <p><button id="search_data" class="btn btn-success btn-lg">
+              Récupérer les données
+            </button></p>
+            <p><button id="clickme" class="btn btn-primary btn-lg">
+              Send to DB!
+            </button></p>
           </div>
           </form>
           <br>
@@ -29,9 +34,6 @@
           <br>
           <hr class="my-4">
           <div class="form-label-group">
-            <button id="clickme" class="btn btn-primary btn-lg">
-              Send to DB!
-            </button>
           </div>
           </div>
         </div>
@@ -80,16 +82,20 @@
       }
       else
       {
-          alert("Cancelled");
           break breakme;
+          alert("Cancelled");
+
           // return 'cancelled';
       };
     };
   };
 
-  document.getElementById('clickme').addEventListener('click', (event) => {
-    sendOnSubmitToDB();
-  });
+  if (document.getElementById('clickme') != null){
+    document.getElementById('clickme').addEventListener('click', (event) => {
+      sendOnSubmitToDB();
+    });
+  };
+
 </script>
 
 
