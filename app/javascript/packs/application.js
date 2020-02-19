@@ -13,6 +13,9 @@ import $ from "jquery";
 import { subSteps } from '../component/_brews.js';
 let val = subSteps();
 
+import { getmyelementid } from '../component/_timer.js';
+let countdown = getmyelementid();
+
 // Show Beers
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
   $(e.target)
@@ -53,4 +56,3 @@ for (var i  = 0; i < beersubnav.length; i++) {
 // Ispindle
 import { sendOnSubmitSearch } from '../component/_ispindle.js';
 sendOnSubmitSearch;
-
