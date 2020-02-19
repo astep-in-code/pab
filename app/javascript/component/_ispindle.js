@@ -41,8 +41,12 @@ const sendOnSubmitSearch = () => {
           .then((data2) => {
 
             let resultsIspindle2 = data2.results;
-            let test_rest = data2.results.value;
-            if (test_rest > 0) {
+            // if (data2.results[0].value != undefined) {
+            //   return test_result = true;
+            // } else {
+            //   return test_result = false;
+            // };
+            if (resultsIspindle2 != []) {
               resultsIspindle2.forEach((e) => {
                 ul.insertAdjacentHTML('beforeend',
                   `<li class='resultsIspindle' data-time='${e.timestamp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchTemperature} : ${e.value}</li>`
@@ -53,7 +57,7 @@ const sendOnSubmitSearch = () => {
         });
         count += 1;
         console.log(`Page ${count} ... Loading`);
-      }  while (count < 20);
+      }  while (count <= 5);
     };
   });
 
@@ -84,8 +88,12 @@ const sendOnSubmitSearch = () => {
             .then((data3) => {
 
             let resultsIspindle4 = data3.results;
-            let test_rest2 = data3.results.value;
-            if (test_rest2 > 0) {
+            // if (data3.results[0].value != undefined) {
+            //   return test_result2 = true;
+            // } else {
+            //   return test_result2 = false;
+            // };
+            if (resultsIspindle4 != []) {
               resultsIspindle4.forEach((e) => {
                 uld.insertAdjacentHTML('beforeend',
                   `<li class='resultsIspindleDensity' data-name='${inputNameApp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchDensity} : ${e.value}</li>`
@@ -96,7 +104,7 @@ const sendOnSubmitSearch = () => {
           });
           count2 += 1;
           console.log(`Page ${count2} ... Loading`);
-        } while (count2 < 20);
+        } while (count2 <= 5);
       };
   });
 // End of function

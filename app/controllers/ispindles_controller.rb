@@ -54,8 +54,19 @@ class IspindlesController < ApplicationController
     @brew = Brew.find(params[:id])
   end
 
+  def destroy_all_ispindle
+    @brew = Brew.find(params[:id])
+    @ispindles = Ispindle.where(brew_id: @brew.id)
+    @ispindles.each do |i|
+      i.destroy
+    end
+
+    redirect_to parametrage_path(@brew)
+  end
+
   def create_ispindle
     # Ispindle.destroy_all => à prevoir
+    # Ispindle.destroy_all
     @ispindle = Ispindle.new
     @brew = Brew.find(params[:mbrew].to_i)
     @beer = @brew.beer

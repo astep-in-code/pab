@@ -13,7 +13,8 @@
             <p><button id="search_data" class="btn btn-success btn-lg">
               Récupérer les données
             </button></p>
-            <p><button id="clickme" class="btn btn-primary btn-lg">
+            <p><%= link_to 'Cleaner la DB', destroy_all_ispindle_path(@brew), class: 'btn btn-danger btn-lg', id: 'destroy_all' %>&nbsp;&nbsp;
+              <button id="clickme" class="btn btn-primary btn-lg">
               Send to DB!
             </button></p>
           </div>
