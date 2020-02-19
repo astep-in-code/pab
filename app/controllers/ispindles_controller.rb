@@ -65,6 +65,7 @@ class IspindlesController < ApplicationController
     @ispindle.created_at = DateTime.strptime(date.to_s,'%s')
     @ispindle.name = params[:mname]
     @ispindle.brew = @brew
+    # raise
     # @ispindle.beer = @beer
     respond_to do |format|
       if @ispindle.save

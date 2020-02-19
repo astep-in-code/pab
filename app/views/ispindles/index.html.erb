@@ -25,10 +25,11 @@
 <% @collect_dens = [] %>
 <% @collect_date_temp = [] %>
 <% @collect_date = [] %>
-<% @ispindles.each do |ip| %>
+<% @test = @ispindles.sort_by { |obj| obj.created_at } %>
+<% @test.each do |ip| %>
 <% ip.name %>
 <% @collect_temp << ip.temperature %>
-<% @collect_dens << ip.density.to_i %>
+<% @collect_dens << ip.density.to_f %>
 <% @collect_date_temp << ip.created_at.strftime("%Y-%m-%d" "%H-%M-%s") %>
 <% @collect_date << ip.created_at.strftime("%Y-%m-%d") %>
 <% end %>
@@ -36,10 +37,10 @@
 <% @brew = Brew.find(params[:brew_id]) %>
 <% @beer_id = @brew.beer_id %>
 <% @beer = Beer.find(@beer_id) %>
-<% @beer_fermentation_temp_target = @beer.fermentation_temperature_target / 100 %>
+<% @beer_fermentation_temp_target = @beer.fermentation_temperature_target.to_f / 100 %>
 <% @beer_final_dens = @beer.final_density_target %>
 <% @beer_initial_dens = @beer.initial_density_target %>
-<% @collect_date.sort %>
+<%# @collect_date.sort %>
 <%# raise %>
 
 <div class="row">
@@ -62,6 +63,13 @@
         };
         console.log(array_h_temp);
         console.log(array_h_temp_target);
+
+        // array_h_temp.sort(function(a, b) {
+        //   parseInt(a, 10).x - parseInt(b, 10).x;
+        // });
+
+        // console.log(array_h_temp);
+        console.log('oki');
 
         const colors = {
           green: {
@@ -91,7 +99,7 @@
                 label: 'Temperature constatée',
                 data: array_h_temp,
                 showLine: true,
-                fill: true,
+                fill: false,
                 borderColor: colors.darkBlue.stroke,
                 backgroundColor: colors.lightBlue.fill
               },
@@ -116,15 +124,20 @@
             scales: {
               xAxes: [{
               type: 'time',
-                time: {
-                    parser: 'YYYY-MM-DD HH:mm:ss',
-                    unit: 'minute',
-                    displayFormats: {
-                        'minute': 'YYYY-MM-DD HH:mm:ss',
-                        'hour': 'YYYY-MM-DD HH:mm:ss'
-                    }
-                },
-            }]
+              time: {
+                  parser: 'YYYY-MM-DD HH:mm:ss',
+                  unit: 'minute',
+                  displayFormats: {
+                      'minute': 'YYYY-MM-DD HH:mm:ss',
+                      'hour': 'YYYY-MM-DD HH:mm:ss'
+                  }
+              },
+            }],
+              yAxes: [{
+                  ticks: {
+                      suggestedMin: 19
+                  }
+              }]
             },
           }
         });
@@ -142,21 +155,17 @@
         var array_dens = [];
         var array_h_dens = [];
         var array_h_dens_target = [];
-        var temp_target = <%= @beer_fermentation_temp_target %>;
         var dens_cible = <%= @beer_initial_dens %>;
-        var dens = <%= @collect_dens %>;
+        var dens = <%= raw @collect_dens %>;
         var date = <%= raw @collect_date_temp %>;
         // date.replace(/&quot;/g, '"');
 
-        for (let i=0; i < temp.length; i++){
-          array_h_temp.push({x: date[i], y: parseFloat(temp[i])});
+        for (let i=0; i < date.length; i++){
           array_h_dens.push({x: date[i], y: dens[i]});
-          array_h_temp_target.push({x: date[i], y: temp_target });
           array_h_dens_target.push({x: date[i], y: dens_cible });
         };
-        console.log(array_h_temp);
         console.log(array_h_dens);
-        console.log(array_h_temp_target);
+        console.log(array_h_dens_target);
 
         var ctx = document.getElementById("myChartDens");
         var myChart = new Chart(ctx, {
@@ -190,7 +199,7 @@
             },
             scales: {
               xAxes: [{
-              type: 'time',
+                type: 'time',
                 time: {
                     parser: 'YYYY-MM-DD HH:mm:ss',
                     unit: 'minute',
@@ -199,7 +208,12 @@
                         'hour': 'YYYY-MM-DD HH:mm:ss'
                     }
                 },
-            }]
+              }],
+              yAxes: [{
+                  ticks: {
+                      suggestedMin: 1013
+                  }
+              }]
             },
           }
         });
@@ -208,20 +222,20 @@
   </div>
   <br>
 
-  <div class="col-md-6">
+<!--   <div class="col-md-6">
     <section class="profil-panel profils-widget">
       <h5>Focus : Temperature</h5> <br>
-      <%= area_chart Ispindle.group_by_day(:created_at).maximum(:temperature), min: 10, max: 25, colors: ["#b00", "#666"] %>
+      <%#= area_chart Ispindle.group_by_minute(:created_at).maximum(:temperature), min: 10, max: 40, colors: ["#b00", "#666"] %>
     </section>
   </div>
 
   <div class="col-md-6">
     <section class="profil-panel profils-widget">
       <h5>Focus : Density</h5> <br>
-      <%= line_chart Ispindle.group_by_day(:created_at).maximum(:density), min: 1000, max: 1100, colors: ["#3FBF7F", "#3FBF8F"], dataset: {borderWidth: 20} %>
+      <%#= line_chart Ispindle.group_by_day(:created_at).maximum(:density), min: 1000, max: 1100, colors: ["#3FBF7F", "#3FBF8F"], dataset: {borderWidth: 20} %>
     </section>
   </div>
-</div>
+</div> -->
 
 
 

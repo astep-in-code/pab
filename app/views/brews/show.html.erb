@@ -25,10 +25,16 @@
                 <% if v.is_a?(Hash) %>
                   <% v.each do |k,v| %>
                     <%if v.to_s != "0" %>
-                      &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> : </strong><%= v %> <br>
+                      <% if k == :photo %>
+                        <br></strong><%= cl_image_tag v, height: 190, crop: :fill %> <br>
+                      <% else %>
+                        &nbsp;&nbsp;&nbsp;<strong style="color: #FFC65A;"><%= k.capitalize %> :
+                        </strong><%= v %> <br>
+                      <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
+                <%# raise %>
               </p>
             </div>
           <% end %>
