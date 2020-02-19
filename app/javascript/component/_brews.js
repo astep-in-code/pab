@@ -27,22 +27,26 @@ const displayNone = () => {
 }
 
 var next = (current_substep) => {
-  if (mySubStep < sub_steps.length) {
+  if (mySubStep < sub_steps.length - 1) {
     button_previous.classList.remove('disabled');
     mySubStep += 1;
     displayNone();
     sub_steps[mySubStep].style.display = "block";
-  } else if (mySubStep == sub_steps.length){
-
+  }
+  if (mySubStep == sub_steps.length - 1){
+    button_next.classList.add('disabled');
   }
 }
 
 var previous = (current_substep) => {
+
   if (mySubStep > 0) {
+    button_next.classList.remove('disabled');
     mySubStep -= 1;
     displayNone();
     sub_steps[mySubStep].style.display = "block";
-  } else if (mySubStep == 0) {
+  }
+  if (mySubStep == 0) {
     button_previous.classList.add('disabled');
   }
 }
