@@ -17,9 +17,9 @@
           <!-- Brew_steps Status : <%= step.status %> <br>
           Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
-          <h5><%= image_tag 'numberOne.png', width: '30', height: '30' %> <strong><%= @beer_step.description %></strong></h5>
+          <h5><%= image_tag '1.png', width: '30', height: '30' %> <strong><%= @beer_step.description %></strong></h5>
           <%  @hash_sub_step.each do |k,v| %>
-            <div class="substep">
+            <div class="substep" style="display: none;">
               <strong style="color: grey;">Etape <%= k.to_s.to_i + 1 %> : </strong>
               <p>
                 <% if v.is_a?(Hash) %>
