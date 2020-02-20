@@ -17,7 +17,7 @@
           <!-- Brew_steps Status : <%= step.status %> <br>
           Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
-          <h5><%= image_tag '1.png', width: '30', height: '30' %> <strong><%= @beer_step.description %></strong></h5>
+          <h5><%= image_tag "#{step.beer_step_id}.png", width: '30', height: '30' %> <strong><span id="stepname"><%= @beer_step.description %></span></strong></h5>
           <%  @hash_sub_step.each_with_index do |(k,v), index| %>
             <div class="substep" style="display: none;">
               <strong style="color: grey;">Etape <%= k.to_s.to_i + 1 %> : </strong>
@@ -56,9 +56,12 @@
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item" id="next-substep" >
-              <a class="page-link" href="#">Etape suivante</a>
+              <a class="page-link" id="next-substep-link" href="#">Etape suivante</a>
             </li>
-          </ul>
+            <li class="page-item" id="next-step" style="display: none;">
+              <%= link_to 'Valider les étapes', update_step_path(@brew), data: { confirm: "Do you really want to go to the Next Step ?" }, class: "page-link", style: "background: #5cb85c;color: #fff; border: #5cb85c;" %>
+            </li>
+            </ul>
         </nav>
 
 
