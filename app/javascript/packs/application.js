@@ -10,11 +10,7 @@ import $ from "jquery";
 
 
 // ---- internal imports ---- //
-import { subSteps } from '../component/_brews.js';
-let val = subSteps();
 
-import { getmyelementid } from '../component/_timer.js';
-let countdown = getmyelementid();
 
 // Show Beers
 $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
@@ -24,6 +20,14 @@ $("#accordionExample").on("hide.bs.collapse show.bs.collapse", e => {
     .toggleClass("fa-minus fa-plus");
 });
 
+// Dash Brassin : Timeline
+
+$("#accordionDash").on("hide.bs.collapse show.bs.collapse", e => {
+  $(e.target)
+    .prev()
+    .find("i:last-child")
+    .toggleClass("fa-minus fa-plus");
+});
 
 // Show Beer + Display Bloc logic with Nav Tab-underlined
 const beersubnav = document.getElementsByClassName("tab-underlined-beer");
@@ -52,6 +56,14 @@ for (var i  = 0; i < beersubnav.length; i++) {
     }
   });
 }
+
+// SubSteps
+import { subSteps } from '../component/_brews.js';
+let val = subSteps();
+
+// Timer
+import { getmyelementid } from '../component/_timer.js';
+let countdown = getmyelementid();
 
 // Ispindle
 import { sendOnSubmitSearch } from '../component/_ispindle.js';

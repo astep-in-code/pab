@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   match 'brews/:id/ispindles/parametrage', to: 'ispindles#parametrage', via: [:get], as: :parametrage
   match 'brews/:id/ispindles/parametrage/create_ispindle', to: 'ispindles#create_ispindle', via: [:get, :post], as: :create_ispindle
   match 'brews/:id/ispindles/parametrage/destroy_all', to: 'ispindles#destroy_all_ispindle', via: [:get, :delete], as: :destroy_all_ispindle
-
+  match 'brews/:id/brew_steps/dash/dash', to: 'brew_steps#dash', via: [:get], as: :dash
   devise_for :users
   root to: 'pages#home'
 

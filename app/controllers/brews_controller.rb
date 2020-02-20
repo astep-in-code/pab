@@ -15,8 +15,14 @@ class BrewsController < ApplicationController
     @brew.beer = @beer
     @brew.user = current_user
       # raise
-    # @brew.create!
     @brew.save!
+
+    @brew_step = BrewStep.new
+    @brew_step.status = 0
+    @brew_step.brew = @brew
+    @brew_step.beer_step_id = 1
+    @brew_step.save!
+    # raise
     redirect_to brews_path
   end
 
@@ -66,7 +72,7 @@ class BrewsController < ApplicationController
     @brew = Brew.find(params[:id])
   end
 
-  # def brew_params
-  #   params.require(:brew).permit(:user_id, :beer_id)
-  # end
+  def brew_params
+    params.require(:brew).permit(:user_id, :beer_id)
+  end
 end

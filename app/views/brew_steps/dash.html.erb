@@ -1,0 +1,98 @@
+<div class="body-background" style="padding: 5px">
+<br>
+
+  <div class="col-md-12">
+      <section class="profil-panel profils-widget">
+        <h5><strong>Légende</strong></h5><br>
+        <div class="accordion" style="display: flex; justify-content: space-between;">
+          <button class="btn btn-link">
+          <span class="fa-stack fa-sm">
+            <i class="fas fa-circle fa-stack-2x success"></i>
+            <i class="fas fa-plus fa-stack-1x"></i>
+          </span>
+          <p>Etape complétée</p>
+          </button>
+          <button class="btn btn-link">
+          <span class="fa-stack fa-sm">
+            <i class="fas fa-circle fa-stack-2x info"></i>
+            <i class="fas fa-plus fa-stack-1x"></i>
+          </span>
+          <p>Etape en cours ..</p>
+          </button>
+          <button class="btn btn-link">
+          <span class="fa-stack fa-sm">
+            <i class="fas fa-circle fa-stack-2x warning"></i>
+            <i class="fas fa-plus fa-stack-1x"></i>
+          </span>
+          <p>Etapes suivantes</p>
+          </button>
+        </div>
+      </section>
+  </div>
+
+  <br>
+  <!--main content start-->
+    <div class="col-md-12">
+      <section class="profil-panel profils-widget">
+        <h5><strong>Timeline du Brassin</strong></h5><br>
+        <div class="accordion" id="accordionDash">
+
+        <% @beerStep.each do |step| %>
+          <div class="card">
+            <div class="card-header" id="heading<%= step.step %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%= step.step %>" aria-expanded="false" aria-controls="collapse<%= step.step %>">
+                  <span class="fa-stack fa-sm">
+                    <% if step.step == 0 %>
+                    <i class="fas fa-circle fa-stack-2x info"></i>
+                    <% else %>
+                    <i class="fas fa-circle fa-stack-2x warning"></i>
+                    <% end %>
+                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                  <%= step.description %>
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapse<%= step.step %>" class="collapse" aria-labelledby="heading<%= step.step %>" data-parent="#accordionDash">
+              <div class="card-body show-beer">
+                <% sub_step = @beer_sub_step[step.step].sub_step %>
+                <% @hash_sub_step = JSON.parse(sub_step, symbolize_keys: true) %>
+                <% @hash_sub_step.deep_symbolize_keys! %>
+                <%  @hash_sub_step.each do |k,v| %>
+                  <p>
+                  <strong style="color: #24261E;">Etape <%= k.to_s.to_i %> : </strong>
+                    <% if v.is_a?(Hash) %>
+                      <% v.each do |k,v| %>
+                        <% if k.to_s == "title" %>
+                          <%= v %>
+                          <span class="badge badge-secondary">à faire</span>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                    <%# raise %>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    <!-- /MAIN CONTENT -->
+        </div>
+      </section>
+    </div>
+    <!--main content end-->
+<%# raise %>
+</div>
+
+<div style="background-color: #F0ECEB">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
