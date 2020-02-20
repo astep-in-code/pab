@@ -34,7 +34,8 @@ var next = (current_substep) => {
     sub_steps[mySubStep].style.display = "block";
   }
   if (mySubStep == sub_steps.length - 1){
-    button_next.classList.add('disabled');
+    document.getElementById('next-step').style.display = "block";
+    document.getElementById('next-substep-link').style.display = "none";
   }
 }
 
@@ -45,6 +46,8 @@ var previous = (current_substep) => {
     mySubStep -= 1;
     displayNone();
     sub_steps[mySubStep].style.display = "block";
+    document.getElementById('next-step').style.display = "none";
+    document.getElementById('next-substep-link').style.display = "block";
   }
   if (mySubStep == 0) {
     button_previous.classList.add('disabled');
