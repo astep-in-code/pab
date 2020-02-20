@@ -2,6 +2,7 @@ var sub_steps = document.getElementsByClassName("substep");
 var current_substep = document.getElementsByClassName("card")[0].dataset.value;
 var mySubStep = parseInt(current_substep, 10);
 var button_next = document.getElementById("next-substep");
+var button_next_step = document.getElementById("next-step");
 var button_previous = document.getElementById("previous-substep");
 
 document.addEventListener("DOMContentLoaded", event => {
@@ -34,8 +35,8 @@ var next = (current_substep) => {
     sub_steps[mySubStep].style.display = "block";
   }
   if (mySubStep == sub_steps.length - 1){
-    document.getElementById('next-step').style.display = "block";
-    document.getElementById('next-substep-link').style.display = "none";
+    button_next.style.display = "none";
+    button_next_step.style.display = "block";
   }
 }
 
@@ -46,8 +47,8 @@ var previous = (current_substep) => {
     mySubStep -= 1;
     displayNone();
     sub_steps[mySubStep].style.display = "block";
-    document.getElementById('next-step').style.display = "none";
-    document.getElementById('next-substep-link').style.display = "block";
+    button_next.style.display = "none";
+    button_next_step.style.display = "block";
   }
   if (mySubStep == 0) {
     button_previous.classList.add('disabled');
