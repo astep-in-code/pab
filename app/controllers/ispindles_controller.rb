@@ -1,5 +1,5 @@
 class IspindlesController < ApplicationController
-
+  protect_from_forgery except: [:new, :create_ispindle]
   before_action :set_ispindle, only: [:show, :edit, :update, :destroy]
   before_action :set_brew, only: [:new, :create, :index]
 
@@ -70,6 +70,7 @@ class IspindlesController < ApplicationController
     @ispindle = Ispindle.new
     @brew = Brew.find(params[:mbrew].to_i)
     @beer = @brew.beer
+    # raise
     @ispindle.temperature = params[:mtemp].to_f
     @ispindle.density = params[:mdens].to_f
     date = params[:mdate].to_i / 1000

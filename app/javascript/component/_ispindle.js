@@ -32,33 +32,33 @@ const sendOnSubmitSearch = () => {
           );
         });
     console.log('First Page');
-    if (resultPage != null) {
-      let count = 0;
-      do {
-        let url = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchTemperature}/values/?token=${tokenSearch}&page=${count}`;
-        fetch(url)
-          .then(response => response.json())
-          .then((data2) => {
+    // if (resultPage != null) {
+    //   let count = 2;
+    //   do {
+    //     let url = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchTemperature}/values/?token=${tokenSearch}&page=${count}`;
+    //     fetch(url)
+    //       .then(response => response.json())
+    //       .then((data2) => {
 
-            let resultsIspindle2 = data2.results;
-            // if (data2.results[0].value != undefined) {
-            //   return test_result = true;
-            // } else {
-            //   return test_result = false;
-            // };
-            if (resultsIspindle2 != []) {
-              resultsIspindle2.forEach((e) => {
-                ul.insertAdjacentHTML('beforeend',
-                  `<li class='resultsIspindle' data-time='${e.timestamp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchTemperature} : ${e.value}</li>`
-                );
-              });
-            };
-            var result = data2.next;
-        });
-        count += 1;
-        console.log(`Page ${count} ... Loading`);
-      }  while (count <= 5);
-    };
+    //         let resultsIspindle2 = data2.results;
+    //         // if (data2.results[0].value != undefined) {
+    //         //   return test_result = true;
+    //         // } else {
+    //         //   return test_result = false;
+    //         // };
+    //         if (resultsIspindle2 != []) {
+    //           resultsIspindle2.forEach((e) => {
+    //             ul.insertAdjacentHTML('beforeend',
+    //               `<li class='resultsIspindle' data-time='${e.timestamp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchTemperature} : ${e.value}</li>`
+    //             );
+    //           });
+    //         };
+    //         var result = data2.next;
+    //     });
+    //     count += 1;
+    //     console.log(`Page ${count - 1} ... Loading`);
+    //   }  while (count < 3);
+    // };
   });
 
 
@@ -79,41 +79,38 @@ const sendOnSubmitSearch = () => {
         });
 
       console.log('First Page');
-      if (resultPageDens != null) {
-        let count2 = 0;
-        do {
-          let url2 = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchDensity}/values/?token=${tokenSearch}&page=${count2}`;
-          fetch(url2)
-            .then(response => response.json())
-            .then((data3) => {
+      // if (resultPageDens != null) {
+      //   let count2 = 2;
+      //   do {
+      //     let url2 = `https://things.ubidots.com/api/v1.6/devices/${inputNameApp}/${inputSearchDensity}/values/?token=${tokenSearch}&page=${count2}`;
+      //     fetch(url2)
+      //       .then(response => response.json())
+      //       .then((data3) => {
 
-            let resultsIspindle4 = data3.results;
-            // if (data3.results[0].value != undefined) {
-            //   return test_result2 = true;
-            // } else {
-            //   return test_result2 = false;
-            // };
-            if (resultsIspindle4 != []) {
-              resultsIspindle4.forEach((e) => {
-                uld.insertAdjacentHTML('beforeend',
-                  `<li class='resultsIspindleDensity' data-name='${inputNameApp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchDensity} : ${e.value}</li>`
-                );
-              });
-            };
-            var result2 = data3.next;
-          });
-          count2 += 1;
-          console.log(`Page ${count2} ... Loading`);
-        } while (count2 <= 5);
-      };
+      //       let resultsIspindle4 = data3.results;
+      //       // if (data3.results[0].value != undefined) {
+      //       //   return test_result2 = true;
+      //       // } else {
+      //       //   return test_result2 = false;
+      //       // };
+      //       if (resultsIspindle4 != []) {
+      //         resultsIspindle4.forEach((e) => {
+      //           uld.insertAdjacentHTML('beforeend',
+      //             `<li class='resultsIspindleDensity' data-name='${inputNameApp}' data-value='${e.value}'>timestamp : ${e.timestamp} and ${inputSearchDensity} : ${e.value}</li>`
+      //           );
+      //         });
+      //       };
+      //       var result2 = data3.next;
+      //     });
+      //     count2 += 1;
+      //     console.log(`Page ${count2 - 1} ... Loading`);
+      //   } while (count2 < 3);
+      // };
   });
 // End of function
 };
-
-if (document.getElementById('search_data') != null){
-  document.getElementById('search_data').addEventListener('click', (event) => {
-    sendOnSubmitSearch();
-  });
-};
+document.getElementById('search_data').addEventListener('click', (event) => {
+  sendOnSubmitSearch();
+});
 
 export { sendOnSubmitSearch };
