@@ -47,8 +47,8 @@ var previous = (current_substep) => {
     mySubStep -= 1;
     displayNone();
     sub_steps[mySubStep].style.display = "block";
-    button_next.style.display = "none";
-    button_next_step.style.display = "block";
+    button_next.style.display = "block";
+    button_next_step.style.display = "none";
   }
   if (mySubStep == 0) {
     button_previous.classList.add('disabled');
