@@ -31,6 +31,7 @@ var next = (current_substep) => {
   if (mySubStep < sub_steps.length - 1) {
     button_previous.classList.remove('disabled');
     mySubStep += 1;
+    console.log(mySubStep);
     displayNone();
     sub_steps[mySubStep].style.display = "block";
   }
@@ -45,6 +46,7 @@ var previous = (current_substep) => {
   if (mySubStep > 0) {
     button_next.classList.remove('disabled');
     mySubStep -= 1;
+    console.log(mySubStep);
     displayNone();
     sub_steps[mySubStep].style.display = "block";
     button_next.style.display = "block";
