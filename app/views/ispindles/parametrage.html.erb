@@ -8,12 +8,13 @@
           <div class="form-signin">
           <form action="#" style="padding: 5px;">
           <div class="form-label-group">
+            <br>
+            <p><%= link_to 'Cleaner la DB', destroy_all_ispindle_path(@brew), class: 'btn btn-danger btn-lg', id: 'destroy_all' %>
             <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
             <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
             <p><button id="search_data" class="btn btn-success btn-lg">
               Récupérer les données
-            </button></p>
-            <p><%= link_to 'Cleaner la DB', destroy_all_ispindle_path(@brew), class: 'btn btn-danger btn-lg', id: 'destroy_all' %>&nbsp;&nbsp;
+            </button><p></p>
               <button id="clickme" class="btn btn-primary btn-lg">
               Send to DB!
             </button></p>
@@ -49,7 +50,6 @@
 <% @brew = Brew.find(params[:id]) %>
 
 <script>
-
   // let collect_data = [];
   const collectResultsTemp = document.getElementsByClassName('resultsIspindle');
   const collectResultsDensity = document.getElementsByClassName('resultsIspindleDensity');
@@ -58,7 +58,7 @@
   let collect_dens = [];
 
 
-  const sendOnSubmitToDB = (e) => {
+  const sendOnSubmitToDB = () => {
 
     for (let i = 0; i < collectResultsTemp.length; i++ ) {
         collect_time.push(collectResultsTemp[i].dataset.time);
@@ -79,7 +79,7 @@
       var mbrew = '<%= @brew.id %>'
       breakme: if (mdate && mtemp && mdens && mname && mbrew) {
         window.open("/brews/:id/ispindles/parametrage/create_ispindle?mdate="+mdate+"&mtemp="+mtemp+"&mdens="+mdens+"&mname="+mname+"&mbrew="+mbrew,"_self")
-        console.log("Sending")
+        console.log(`Ispindle ${i} ... Loading`)
       }
       else
       {
