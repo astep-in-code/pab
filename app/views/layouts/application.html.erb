@@ -26,7 +26,7 @@
     <%= render 'shared/beerNav' %>
     <% end %>
 
-    <% if params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' %>
+    <% if params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' || params[:controller] == 'brew_steps' && params[:action] == 'dash'%>
     <%= render 'shared/brewNav' %>
     <% end %>
 

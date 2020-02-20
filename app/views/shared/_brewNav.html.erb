@@ -9,7 +9,7 @@
             </div>
           <% end %>
         </li>
-        <li class="tab-underlined-brew">
+        <li class="tab-underlined-brew <%= 'active' if params[:controller] == 'brew_steps' && params[:action] == 'dash' %>">
           <%= link_to dash_path(@brew) do %>
             <div>
               <%= image_tag 'all_steps.png',
