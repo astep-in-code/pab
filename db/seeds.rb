@@ -121,7 +121,7 @@ p "My Brew saved" if myBrew.save!
   p "Ispindle001 value :#{i} saved"
 end
 
-
+# Beer Step
 myBeerStep = BeerStep.new({
    step: 0,
    description:"Préparation de la recette"
@@ -129,7 +129,39 @@ myBeerStep = BeerStep.new({
  myBeerStep.valid?
  myBeerStep.save!
 
- myBrewStep = BrewStep.new({
+myBeerStep = BeerStep.new({
+   step: 1,
+   description:"L'empâtage"
+ })
+ myBeerStep.valid?
+ myBeerStep.save!
+
+myBeerStep = BeerStep.new({
+   step: 2,
+   description:"L'ébullition"
+ })
+ myBeerStep.valid?
+ myBeerStep.save!
+
+myBeerStep = BeerStep.new({
+   step: 3,
+   description:"Fermentage"
+ })
+ myBeerStep.valid?
+ myBeerStep.save!
+
+myBeerStep = BeerStep.new({
+   step: 4,
+   description:"Embouteillage"
+ })
+ myBeerStep.valid?
+ myBeerStep.save!
+
+p "5 BeerStep saved"
+
+
+# Brew Step
+myBrewStep = BrewStep.new({
    status: 0,
    brew_id: myBrew.id,
    beer_step_id: 1
@@ -140,8 +172,8 @@ myBrewStep.save!
 p "BrewStep saved"
 
 myBeerSubStep = BeerSubStep.new({
-  beer_step_id: myBeerStep.id,
-  beer_id: myBeer.id,
+  beer_step_id: 1,
+  beer_id: 1,
   sub_step: '{'\
     '"0": {'\
       '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
@@ -178,6 +210,163 @@ myBeerSubStep = BeerSubStep.new({
  p myBeerSubStep.valid?
  myBeerSubStep.save!
 
+myBeerSubStep = BeerSubStep.new({
+  beer_step_id: 2,
+  beer_id: 1,
+  sub_step: '{'\
+    '"5": {'\
+      '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
+      '"content": "Vous aurez besoin de vous munir de votre produit de rinçage. Dans le kit vous est fourni un flacon d\'Oxy. C\'est une solution à base d\'oxygène actif qui va permettre de désinfecter votre matériel qui sera en contact avec le moût afin d\'éviter tout risque d\'infection. Vous aurez également besoin de votre seau de fermentation, d\'un récipient de 7 litres minimum, de votre ispindle, de votre syphon et de votre barboteur.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056251/Step_1_-_Substep_0_-_om78un.jpg",'\
+      '"time": "0"'\
+    '},'\
+    '"6": {'\
+      '"title": "Nettoyage des éléments de brassage",'\
+      '"content": "Munissez-vous d\'un seau et remplissez-le d\'eau. Lorsque celui-ci est plein, mélangez votre produit de rinçage dans l\'eau et mélangez bien. Prenez ensuite l\'ensemble des ustensiles que vous avez précédement réunis et plongez-les dans l\'eau. L\'oxygène actif que vous utilisez lors de cette étape de brassage doit agir durant une durée d\'au moins 10 minutes. Pendant que le produit agit, vous pouvez passer à l\'étape suivante.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056329/Step_1_-_Substep_1_agw9rg.jpg",'\
+      '"time": 900'\
+    '},'\
+    '"7": {'\
+      '"title": "Préparation de l\'eau de rinçage",'\
+      '"content": "Munissez-vous d\'un seau et placez-y 7L d\'eau. Cette eau devra être portée à une température de 82°C lors de votre rinçage et permettra d\'extraire un maximum de sucre du moût.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056451/Step_1_-_Substep_2_geieqa.jpg",'\
+      '"time": 0'\
+    '},'\
+    '"8": {'\
+      '"title": "Préchauffe de l\'eau de brassage",'\
+      '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
+      '"time": "900"'\
+    '},'\
+    '"9": {'\
+      '"title": "Préparation du matériel de brassage",'\
+      '"content": "Pendant que votre eau préchauffe, munissez-vous de : votre grain concassé, votre houblon, votre spatule de brassage et votre sac de brassage.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056527/Step_1_-_Substep_4_qqavw6.jpg",'\
+      '"time": "0"'\
+    '}'\
+  '}'
+})
+ p myBeerSubStep.valid?
+ myBeerSubStep.save!
+
+myBeerSubStep = BeerSubStep.new({
+  beer_step_id: 3,
+  beer_id: 1,
+  sub_step: '{'\
+    '"10": {'\
+      '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
+      '"content": "Vous aurez besoin de vous munir de votre produit de rinçage. Dans le kit vous est fourni un flacon d\'Oxy. C\'est une solution à base d\'oxygène actif qui va permettre de désinfecter votre matériel qui sera en contact avec le moût afin d\'éviter tout risque d\'infection. Vous aurez également besoin de votre seau de fermentation, d\'un récipient de 7 litres minimum, de votre ispindle, de votre syphon et de votre barboteur.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056251/Step_1_-_Substep_0_-_om78un.jpg",'\
+      '"time": "0"'\
+    '},'\
+    '"11": {'\
+      '"title": "Nettoyage des éléments de brassage",'\
+      '"content": "Munissez-vous d\'un seau et remplissez-le d\'eau. Lorsque celui-ci est plein, mélangez votre produit de rinçage dans l\'eau et mélangez bien. Prenez ensuite l\'ensemble des ustensiles que vous avez précédement réunis et plongez-les dans l\'eau. L\'oxygène actif que vous utilisez lors de cette étape de brassage doit agir durant une durée d\'au moins 10 minutes. Pendant que le produit agit, vous pouvez passer à l\'étape suivante.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056329/Step_1_-_Substep_1_agw9rg.jpg",'\
+      '"time": 900'\
+    '},'\
+    '"12": {'\
+      '"title": "Préparation de l\'eau de rinçage",'\
+      '"content": "Munissez-vous d\'un seau et placez-y 7L d\'eau. Cette eau devra être portée à une température de 82°C lors de votre rinçage et permettra d\'extraire un maximum de sucre du moût.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056451/Step_1_-_Substep_2_geieqa.jpg",'\
+      '"time": 0'\
+    '},'\
+    '"13": {'\
+      '"title": "Préchauffe de l\'eau de brassage",'\
+      '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
+      '"time": "900"'\
+    '},'\
+    '"14": {'\
+      '"title": "Préparation du matériel de brassage",'\
+      '"content": "Pendant que votre eau préchauffe, munissez-vous de : votre grain concassé, votre houblon, votre spatule de brassage et votre sac de brassage.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056527/Step_1_-_Substep_4_qqavw6.jpg",'\
+      '"time": "0"'\
+    '}'\
+  '}'
+})
+ p myBeerSubStep.valid?
+ myBeerSubStep.save!
+
+myBeerSubStep = BeerSubStep.new({
+  beer_step_id: 4,
+  beer_id: 1,
+  sub_step: '{'\
+    '"15": {'\
+      '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
+      '"content": "Vous aurez besoin de vous munir de votre produit de rinçage. Dans le kit vous est fourni un flacon d\'Oxy. C\'est une solution à base d\'oxygène actif qui va permettre de désinfecter votre matériel qui sera en contact avec le moût afin d\'éviter tout risque d\'infection. Vous aurez également besoin de votre seau de fermentation, d\'un récipient de 7 litres minimum, de votre ispindle, de votre syphon et de votre barboteur.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056251/Step_1_-_Substep_0_-_om78un.jpg",'\
+      '"time": "0"'\
+    '},'\
+    '"16": {'\
+      '"title": "Nettoyage des éléments de brassage",'\
+      '"content": "Munissez-vous d\'un seau et remplissez-le d\'eau. Lorsque celui-ci est plein, mélangez votre produit de rinçage dans l\'eau et mélangez bien. Prenez ensuite l\'ensemble des ustensiles que vous avez précédement réunis et plongez-les dans l\'eau. L\'oxygène actif que vous utilisez lors de cette étape de brassage doit agir durant une durée d\'au moins 10 minutes. Pendant que le produit agit, vous pouvez passer à l\'étape suivante.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056329/Step_1_-_Substep_1_agw9rg.jpg",'\
+      '"time": 900'\
+    '},'\
+    '"17": {'\
+      '"title": "Préparation de l\'eau de rinçage",'\
+      '"content": "Munissez-vous d\'un seau et placez-y 7L d\'eau. Cette eau devra être portée à une température de 82°C lors de votre rinçage et permettra d\'extraire un maximum de sucre du moût.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056451/Step_1_-_Substep_2_geieqa.jpg",'\
+      '"time": 0'\
+    '},'\
+    '"18": {'\
+      '"title": "Préchauffe de l\'eau de brassage",'\
+      '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
+      '"time": "900"'\
+    '},'\
+    '"19": {'\
+      '"title": "Préparation du matériel de brassage",'\
+      '"content": "Pendant que votre eau préchauffe, munissez-vous de : votre grain concassé, votre houblon, votre spatule de brassage et votre sac de brassage.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056527/Step_1_-_Substep_4_qqavw6.jpg",'\
+      '"time": "0"'\
+    '}'\
+  '}'
+})
+ p myBeerSubStep.valid?
+ myBeerSubStep.save!
+
+myBeerSubStep = BeerSubStep.new({
+  beer_step_id: 5,
+  beer_id: 1,
+  sub_step: '{'\
+    '"20": {'\
+      '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
+      '"content": "Vous aurez besoin de vous munir de votre produit de rinçage. Dans le kit vous est fourni un flacon d\'Oxy. C\'est une solution à base d\'oxygène actif qui va permettre de désinfecter votre matériel qui sera en contact avec le moût afin d\'éviter tout risque d\'infection. Vous aurez également besoin de votre seau de fermentation, d\'un récipient de 7 litres minimum, de votre ispindle, de votre syphon et de votre barboteur.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056251/Step_1_-_Substep_0_-_om78un.jpg",'\
+      '"time": "0"'\
+    '},'\
+    '"21": {'\
+      '"title": "Nettoyage des éléments de brassage",'\
+      '"content": "Munissez-vous d\'un seau et remplissez-le d\'eau. Lorsque celui-ci est plein, mélangez votre produit de rinçage dans l\'eau et mélangez bien. Prenez ensuite l\'ensemble des ustensiles que vous avez précédement réunis et plongez-les dans l\'eau. L\'oxygène actif que vous utilisez lors de cette étape de brassage doit agir durant une durée d\'au moins 10 minutes. Pendant que le produit agit, vous pouvez passer à l\'étape suivante.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056329/Step_1_-_Substep_1_agw9rg.jpg",'\
+      '"time": 900'\
+    '},'\
+    '"22": {'\
+      '"title": "Préparation de l\'eau de rinçage",'\
+      '"content": "Munissez-vous d\'un seau et placez-y 7L d\'eau. Cette eau devra être portée à une température de 82°C lors de votre rinçage et permettra d\'extraire un maximum de sucre du moût.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056451/Step_1_-_Substep_2_geieqa.jpg",'\
+      '"time": 0'\
+    '},'\
+    '"23": {'\
+      '"title": "Préchauffe de l\'eau de brassage",'\
+      '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
+      '"time": "900"'\
+    '},'\
+    '"24": {'\
+      '"title": "Préparation du matériel de brassage",'\
+      '"content": "Pendant que votre eau préchauffe, munissez-vous de : votre grain concassé, votre houblon, votre spatule de brassage et votre sac de brassage.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056527/Step_1_-_Substep_4_qqavw6.jpg",'\
+      '"time": "0"'\
+    '}'\
+  '}'
+})
+ p myBeerSubStep.valid?
+ myBeerSubStep.save!
+
+p "5 x 5 Beer SubSteps"
 
 myBeer2 = Beer.new({
   name: "Citra I.P.A",

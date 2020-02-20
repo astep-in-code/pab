@@ -109,8 +109,10 @@ const sendOnSubmitSearch = () => {
   });
 // End of function
 };
-document.getElementById('search_data').addEventListener('click', (event) => {
-  sendOnSubmitSearch();
-});
+if (document.getElementById('clickme') != null){
+  document.getElementById('search_data').addEventListener('click', (event) => {
+    sendOnSubmitSearch();
+  });
+};
 
 export { sendOnSubmitSearch };
