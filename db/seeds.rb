@@ -30,7 +30,7 @@ myBeer = Beer.new({
   fermentation: "Mixte",
   initial_density_target: 1015,
   final_density_target: 1012,
-  fermentation_temperature_target: 1969,
+  fermentation_temperature_target: 2025,
   color: 8,
   bitterness: 28,
   bitterness_ratio: 047,
