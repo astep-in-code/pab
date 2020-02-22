@@ -17,41 +17,54 @@
     </div>
   </div>
 
-  <br><br><br>
-  <div id="details" class="toggleWithMenu">
-    <div class="col-md-12">
+  <div id="details" class="toggleWithMenu mt-3">
+    <div class="col-md-12 beer_caracteristics">
       <section class="profil-panel profils-widget">
-        <h5><strong>Caractéristiques</strong></h5>
+        <h5>Caractéristiques</h5>
         <table cellpadding="10" class="table-beers-shows">
           <tbody>
-            <tr><td><strong>Densité initiale : </strong></td><td>
+            <div class="table-borders-corners">
+            <tr><td><strong>Densité initiale : </strong></td>
+              <td class="table-border-right"><%= @beer.initial_density_target %></td>
+              <td>
+              <div> <% @density_width = ( @beer.initial_density_target.to_f - 1040 ) / 40.0 %></div>
               <div class="progress">
-                <% @density_width = ( @beer.initial_density_target.to_f - 1040 ) / 40.0 %>
                 <%# number_to_percentage((@density_width = @dens / 1080.0).to_f) %>
                 <%#= raise %>
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.initial_density_target %></div>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.initial_density_target %>" aria-valuemin="1040" aria-valuemax="1080" style="width: <%= @density_width * 100 %>%;background-color: #E6AF2E; border-radius: 15px; color: #E6AF2E;">
+                  <!-- <span class="sr-only">70% Complete</span> -->
+                </div>
               </div>
             </td></tr>
-            <tr><td><strong>Densité finale : </strong></td><td>
+            <tr><td><strong>Densité finale : </strong></td>
+              <td class="table-border-right"><%= @beer.final_density_target %></td>
+              <td>
               <div class="progress">
                 <% @final_dens = ( @beer.final_density_target.to_f - 980 ) / 35.0 %>
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #E6AF2E; border-radius: 15px; color: #E6AF2E;"></div>
               </div>
               </td></tr>
-            <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>">&nbsp;&nbsp;<%= @beer.color %></td></tr>
-            <tr><td><strong>Amertume : </strong></td><td>
+            <tr><td><strong>Couleur : </strong></td>
+              <td class="table-border-right"><%= @beer.color %> EBC</td>
+              <td class="ebc ebc-<%= @beer.color %>">&nbsp;&nbsp;</td></tr>
+            <tr><td><strong>Amertume : </strong></td>
+              <td class="table-border-right"><%= @beer.bitterness %></td>
+              <td>
               <div class="progress">
                 <% @amertume_width = ( @beer.bitterness.to_f - 10 ) / 70 %>
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @amertume_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.bitterness %></div>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.bitterness %>" aria-valuemin="10" aria-valuemax="80" style="width: <%= @amertume_width * 100 %>%; background-color: #E6AF2E; border-radius: 15px; color: #E6AF2E;"></div>
               </div>
               </td></tr>
-            <tr><td><strong>Ratio IBU/DI : </strong></td><td><%= @beer.bitterness_ratio %></td></tr>
-            <tr><td><strong>Alcool : </strong></td><td>
+            <tr><td><strong>Ratio IBU/DI : </strong></td><td class="table-border-right"><%= @beer.bitterness_ratio %></td><td></td></tr>
+            <tr><td><strong>Alcool : </strong></td>
+              <td class="table-border-right"><%= @beer.alcohol %>%</td>
+              <td>
               <div class="progress">
                 <% @alcohol_width = @beer.alcohol.to_f / 12 %>
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @alcohol_width * 100 %>%; background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.alcohol %> %</div>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= @beer.alcohol %>" aria-valuemin="0" aria-valuemax="12" style="width: <%= @alcohol_width * 100 %>%; background-color: #E6AF2E; border-radius: 15px; color: #E6AF2E;"> %</div>
               </div>
               </td></tr>
+            </div>
           </tbody>
         </table>
       </section>
@@ -59,7 +72,7 @@
     <!--/col-md-12 -->
 
     <br>
-    <div class="col-md-12">
+    <div class="col-md-12 beer_caracteristics">
       <section class="profil-panel profils-widget" id="details">
         <h5><strong>Détails</strong></h5>
         <p><%= @beer.description %></p>
@@ -79,7 +92,7 @@
   </col-md-12 -->
 
   <div id="resume" class="toggleWithMenu" style="display: none;">
-    <div class="col-md-12">
+    <div class="col-md-12 beer_caracteristics">
       <section class="profil-panel profils-widget" id="resume">
         <h5><strong>Résumé du Brassin</strong></h5>
         <div class="accordion" id="accordionExample">

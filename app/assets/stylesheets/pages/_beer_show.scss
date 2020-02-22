@@ -9,6 +9,11 @@
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.beer_caracteristics {
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
+
 .card-trip > img {
   height: 250px;
   width: 100%;
@@ -37,11 +42,11 @@
 }
 
 .beer-show-name{
-  font-family: 'Fasthand', serif;
+  font-family: 'Lato', serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 24px;
-  line-height: 32px;;
+  line-height: 32px;
 }
 
 .card-trip-infos {
@@ -87,4 +92,21 @@
   margin-top: -60px;
   border-radius: 6px;
   position: relative;
+}
+
+h5 {
+strong{
+  font-weight: 300px;
+}
+
+}
+
+.table-border-right {
+  color: #E6AF2E;
+  border-right-color: white!important;
+  width: 100px!important;
+}
+
+.table-borders-corners {
+  border-radius: 10px!important;
 }
