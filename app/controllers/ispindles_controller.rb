@@ -2,6 +2,8 @@ class IspindlesController < ApplicationController
   protect_from_forgery except: [:new, :create_ispindle]
   before_action :set_ispindle, only: [:show, :edit, :update, :destroy]
   before_action :set_brew, only: [:new, :create, :index]
+  require 'json'
+  require 'open-uri'
 
   def new
     # @ispindle = ispindle.new
@@ -52,6 +54,40 @@ class IspindlesController < ApplicationController
 
   def parametrage
     @brew = Brew.find(params[:id])
+  end
+
+  def send_to_DB
+    @ispindle = Ispindle.new
+    @brew = Brew.find(params[:mnum].to_i)
+    @beer = @brew.beer
+    @inputNameApp = params[:mname]
+    @tokenSearch = params[:mtoken]
+    @inputSearchTemperature = 'temperature'
+    @inputSearchDensity = 'gravity'
+
+    urlt = "https://things.ubidots.com/api/v1.6/devices/#{@inputNameApp}/#{@inputSearchTemperature}/values/?token=#{@tokenSearch}";
+    serialized_urlt = open(urlt).read
+    data_t = JSON.parse(serialized_urlt)
+
+    urld = "https://things.ubidots.com/api/v1.6/devices/#{@inputNameApp}/#{@inputSearchDensity}/values/?token=#{@tokenSearch}";
+    serialized_urld = open(urld).read
+    data_d = JSON.parse(serialized_urld)
+    length = data_t["results"].length
+
+    i = 0
+    while i < length
+      @ispindle.name = @inputNameApp
+      @ispindle.temperature = data_t["results"][i]["value"]
+      @ispindle.density = data_d["results"][i]["value"]
+      @ispindle.brew = @brew
+      @ispindle.save!
+      date = data_t["results"][i]["timestamp"]
+      date = date.to_i / 1000
+      date = DateTime.strptime(date.to_s,'%s')
+      @ispindle.update(created_at: date)
+    end
+
+    raise
   end
 
   def destroy_all_ispindle

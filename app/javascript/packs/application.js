@@ -66,5 +66,6 @@ import { getmyelementid } from '../component/_timer.js';
 let countdown = getmyelementid();
 
 // Ispindle
-import { sendOnSubmitSearch } from '../component/_ispindle.js';
-sendOnSubmitSearch;
+// import { sendOnSubmitSearch } from '../component/_ispindle.js';
+// sendOnSubmitSearch();
+

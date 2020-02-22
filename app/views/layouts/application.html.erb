@@ -31,7 +31,7 @@
     <% end %>
 
     <%# unless current_page?('/beers') %>
-    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' %>
+    <% unless params[:controller] == 'beers' && params[:action] == 'show' || params[:controller] == 'brews' && params[:action] == 'show' || params[:controller] == 'ispindles' && params[:action] == 'index' || params[:controller] == 'ispindles' && params[:action] == 'parametrage' || params[:controller] == 'brew_steps' && params[:action] == 'dash' %>
     <%= render 'shared/footer' %>
     <% end %>
 
