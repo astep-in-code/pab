@@ -7,7 +7,9 @@
 
 .progress {
   border-radius: 15px;
+  border: 1px solid #b6c5c9;
 }
+
 
 .ebc {
   height: 49px;
@@ -17,13 +19,14 @@
 }
 
 .table-beers-shows {
-  border: 1px solid black;
+  border: 1px solid #b6c5c9;
   // border-radius: 15px;
   th, td {
-    border: 1px solid black;
+    border: 1px solid #b6c5c9;
     text-align: left;
+    font-weight: 400;
     width: 200px;
-
+    border-radius: 5px;
   }
 }
 
