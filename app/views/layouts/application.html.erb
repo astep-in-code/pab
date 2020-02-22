@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'chartkick' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar', title: @title %>
     <% if user_signed_in? %>
     <%= render 'shared/secondNav' %>
     <% end %>
