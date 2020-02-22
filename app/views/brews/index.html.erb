@@ -2,14 +2,9 @@
   <br>
 
   <% @brews.each do |br|  %>
+  <%= link_to brew_path(br) do %>
   <div class="col-md-12 p-0">
     <section class="profil-panel profils-widget m-10">
-    <div class="show-brew">
-      <%= link_to brew_path(br) do %>
-          <%= image_tag 'show_brew.png',
-          width: '50', height: '50' %>
-      <% end %>
-    </div>
     <br>
     <div class="row no-gutters">
       <div class="col-6">
@@ -52,7 +47,7 @@
       </div>
       <div class="col-md-6">
         <div class="white-panel pn">
-          <div class="white-header">
+          <!-- <div class="white-header">
             <h5>Avancement du Brassin</h5>
           </div>
 
@@ -124,6 +119,7 @@
     </div>
     </section>
   </div>
+  <% end %>
   <br>
   <!--/col-md-6 -->
   <% end %>

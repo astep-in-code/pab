@@ -56,16 +56,14 @@ for (var i  = 0; i < beersubnav.length; i++) {
     }
   });
 }
-
-// SubSteps
-import { subSteps } from '../component/_brews.js';
-let val = subSteps();
-
-// Timer
-import { getmyelementid } from '../component/_timer.js';
-let countdown = getmyelementid();
-
 // Ispindle
 // import { sendOnSubmitSearch } from '../component/_ispindle.js';
 // sendOnSubmitSearch();
 
+// SubSteps
+import { brewStepsGestion } from '../component/_brews.js';
+let val = brewStepsGestion();
+
+// Timer
+import { getmyelementid } from '../component/_timer.js';
+let countdown = getmyelementid();

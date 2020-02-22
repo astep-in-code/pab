@@ -10,7 +10,7 @@
       <section class="profil-panel profils-widget">
           <% @beer_step = BeerStep.find(step.beer_step_id) %>
           <%# raise %>
-          <div class="card" style="padding: 10px" data-value="<%= step.status.to_i %>">
+          <div id="card" class="card" style="padding: 10px" data-value="<%= step.status.to_i %>">
           <!-- Brew_steps Status : <%= step.status %> <br>
           Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
