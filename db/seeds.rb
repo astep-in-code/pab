@@ -28,7 +28,7 @@ myBeer = Beer.new({
   photo: "https://res.cloudinary.com/dqyudfjjy/image/upload/v1581255960/smash66_i8wa88.jpg",
   volume: 23,
   fermentation: "Mixte",
-  initial_density_target: 1016,
+  initial_density_target: 1015,
   final_density_target: 1012,
   fermentation_temperature_target: 1969,
   color: 8,
@@ -108,18 +108,18 @@ p myBeer.id
 # p myBrew.valid?
 p "My Brew saved" if myBrew.save!
 
-30.times do |i|
-  myIspindle = Ispindle.new({
-    name: "Ispindel001",
-    temperature: rand(16..22),
-    density: rand(1034..1086),
-    brew_id: myBrew.id
-  })
-  myIspindle.valid?
-  myIspindle.save
-  myIspindle.update_attribute :created_at, (i).days.ago
-  p "Ispindle001 value :#{i} saved"
-end
+# 30.times do |i|
+#   myIspindle = Ispindle.new({
+#     name: "Ispindel001",
+#     temperature: rand(16..22),
+#     density: rand(1034..1086),
+#     brew_id: myBrew.id
+#   })
+#   myIspindle.valid?
+#   myIspindle.save
+#   myIspindle.update_attribute :created_at, (i).days.ago
+#   p "Ispindle001 value :#{i} saved"
+# end
 
 # Beer Step
 myBeerStep = BeerStep.new({
