@@ -18,17 +18,43 @@
         <%= image_tag @beer.photo, width: 150, height: 150 %>
         <h5><strong>Ispindle du Brassin : </strong><%= @beer.name %>
       <br><br>
-        <strong>Collecte Data Ispindle </strong>&nbsp;&nbsp;
-        <div id="search_control">
-              <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
-              <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
-               <p><strong>Temp Target : </strong><input type="text" id="temp_target" size="40" style="padding: 5px;" value='<%= @beer_fermentation_temp_target %>'></p>
-                <p><strong>Dens Target : </strong><input type="text" id="dens_target" size="40" style="padding: 5px;" value='<%= @beer_initial_dens %>'></p>
+        <p><strong>Collecte Data Ispindle </strong>
+        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"><i style="color: #282F44;" class="fas fa-cloud-download-alt fa-2x"></i>
+        </button></p>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div id="search_control">
+                  <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="25" style="padding: 5px; border-color: #D3D3D3"></p>
+                  <p><strong>Token API : </strong><input type="text" id="token" size="25" style="padding: 5px; border-color: #D3D3D3"></p>
+                  <p><strong>Temp Target : </strong><input type="text" id="temp_target" size="25" style="padding: 5px; border-color: #D3D3D3" value='<%= @beer_fermentation_temp_target %>'></p>
+                  <p><strong>Dens Target : </strong><input type="text" id="dens_target" size="25" style="padding: 5px; border-color: #D3D3D3" value='<%= @beer_initial_dens %>'></p>
+                </div>
+                <br>
+                <p><button id="clickme" class="btn btn-info btn-lg">
+                  <strong>Récupérer les données</strong>
+                </button><p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
             </div>
-            <br>
-            <p><button id="clickme" class="btn btn-success btn-lg">
-              Récupérer les données
-            </button><p>
+          </div>
+        </div>
+
+
+
+
         </h5>
       </div>
     </section>
@@ -38,7 +64,7 @@
 <div class="row">
   <div class="col-md-6">
     <section class="profil-panel profils-widget">
-      <h5>Data from DB : Temperature</h5> <br>
+      <h5><strong style="color: #282F44;">Ispindle :</strong> Temperature</h5> <br>
       <canvas id="myChartTemp" style="background-color: #fff;"></canvas>
       <!-- appears here bitch ! -->
     </section>
@@ -47,7 +73,7 @@
   <br>
   <div class="col-md-6">
     <section class="profil-panel profils-widget">
-      <h5>Data from DB : Density</h5> <br>
+      <h5><strong style="color: #282F44;">Ispindle :</strong> Density</h5> <br>
       <canvas id="myChartDens" style="background-color: #fff;"></canvas>
       <!-- appears here bitch ! -->
     </section>
