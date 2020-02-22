@@ -8,6 +8,7 @@ class BrewStepsController < ApplicationController
     @brew_step = BrewStep.where(brew_id: @brew.id)
     @brewSteps = BrewStep.all
     @beer_sub_step = BeerSubStep.where(beer_id: @brew.beer.id)
+    @title = "Mon brassin : #{@brew.beer.name}" 
   end
 
   def update_step

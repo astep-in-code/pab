@@ -41,6 +41,8 @@ class BeersController < ApplicationController
 
     # embouteillage
     @hash_embouteillage = @hash_recipe[:Embouteillage]
+
+    @title = "Recette : #{@beer.name}"
   end
 
   def edit
@@ -73,5 +75,3 @@ class BeersController < ApplicationController
     params.require(:beer).permit(:style, :volume, :fermentation, :color, :bitterness, :bitterness_ratio, :alcohol, :description, :recipe, :name, :initial_density_target, :final_density_target, :fermentation_temperature_target)
   end
 end
-
-

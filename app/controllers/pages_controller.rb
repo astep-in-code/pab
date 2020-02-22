@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @beers = Beer.all
+    @title = "Rechercher"
   end
 
   def profil
