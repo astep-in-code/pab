@@ -14,6 +14,7 @@
   width: 100%;
   object-fit: cover;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  opacity: 0.9
 }
 
 .card-trip .margin-negative {
@@ -35,14 +36,23 @@
   margin: 0;
 }
 
+.beer-show-name{
+  font-family: 'Fasthand', serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;;
+}
+
+.card-trip-infos {
+  margin-left: 24px;
+}
 
 .card-trip .card-trip-infos {
   padding: 5px;
   margin-right: 15px;
-  display: flex;
   // justify-content: space-between;
   // align-items: right;
-  flex-direction: row-reverse;
   // position: relative;
 }
 
@@ -58,4 +68,23 @@
       border-radius: 5%;
       // border: 3px solid grey;
     }
+}
+
+.beer-style {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #282F44;
+}
+.beer-rounded-image {
+  width: 144px;
+  height: 144px;
+  margin-left: 8px;
+  margin-top: -60px;
+  border-radius: 6px;
+  position: relative;
 }
