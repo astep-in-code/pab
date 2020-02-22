@@ -4,18 +4,16 @@
     <%= cl_image_tag "https://res.cloudinary.com/dqyudfjjy/image/upload/v1581258563/tatiana-rodriguez-D_Rfjj3XV8M-unsplash_qc1xii.jpg" %>
     <div class="margin-negative">
       <%= simple_form_for [@beer, @brew] do |f| %>
-        <%= f.submit "Commencer un batch", class: 'btn btn-lg btn-info btn-block' %>
+        <%= f.submit "Commencer un batch", class: 'start-a-batch-btn' %>
       <% end %>
       <%#= link_to "Commencer un batch", beer_brews_path(@beer), class: 'btn btn-lg btn-info btn-block' %>
     </div>
-    <div class="card-trip-infos">
-      <h2 class="beer-show-name"><strong><%= @beer.name %></strong></h2>
-    </div>
-    <div class="card-trip-infos" id="caracteristiques">
-      <p><strong>Style: </strong> <%= @beer.style %></p>
-    </div>
-    <div class="card-trip-user">
-      <%= image_tag @beer.photo, width: 180, height: 180 %>
+    <div class="d-flex flex-row ">
+        <%= image_tag @beer.photo, class: 'beer-rounded-image' %>
+        <div class="d-flex flex-column card-trip-infos">
+          <h2><strong class="beer-show-name"><%= @beer.name %></strong></h2>
+          <p class="">Style: <%= @beer.style %></p>
+        </div>
     </div>
   </div>
 
@@ -40,7 +38,7 @@
                 <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<% @beer.final_density_target %>" aria-valuemin="980" aria-valuemax="1015" style="width: <%= @final_dens * 100 %>%;background-color: #FFC65A; border-radius: 15px; color: black;"><%= @beer.final_density_target %></div>
               </div>
               </td></tr>
-            <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>" style="padding: 15px;">&nbsp;&nbsp;<%= @beer.color %></td></tr>
+            <tr><td><strong>Couleur : </strong></td><td class="ebc ebc-<%= @beer.color %>">&nbsp;&nbsp;<%= @beer.color %></td></tr>
             <tr><td><strong>Amertume : </strong></td><td>
               <div class="progress">
                 <% @amertume_width = ( @beer.bitterness.to_f - 10 ) / 70 %>

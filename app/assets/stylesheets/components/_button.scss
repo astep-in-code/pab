@@ -11,3 +11,18 @@
 .page-link:hover {
   opacity: 1;
 }
+
+.start-a-batch-btn {
+  background-color: #d9b00d;
+  border: none;
+  color: white;
+  padding: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 0px 10px;
+  border-radius: 10px;
+  // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
