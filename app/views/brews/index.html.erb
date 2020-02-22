@@ -10,7 +10,9 @@
       <div class="col-6">
         <h2 class="beer_title"><%= br.beer.name %>
         </h2>
-        <p><%#= br.status %>Fermentation primaire en cours</p>
+        <% @brew_step = BrewStep.find(br.id) %>
+        <% @beer_step = BeerStep.where(step: @brew_step.status) %>
+        <p><%#= br.status %><%= @beer_step[0].description %></p>
       </div>
       <div class="col-6">
         <canvas id="myChart" width="100" height="100"></canvas>
@@ -34,19 +36,37 @@
               <%#= raise %>
               <td><strong>Volume : </strong><%= br.beer.volume %>L</td>
               <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jour)</td>
-              <td><strong>Suivant :</strong> Fermentation secondaire</td>
+              <% @step_next = @brew_step.status + 1 %>
+              <% @beer_step_next = BeerStep.where(step: @step_next) %>
+              <td><strong>Suivant : </strong><%= @beer_step_next[0].description %> </td>
             </tr>
           </tbody>
         </table>
         <br>
+
       </div>
       <div class="col-md-6">
         <div class="white-panel pn">
           <!-- <div class="white-header">
             <h5>Avancement du Brassin</h5>
           </div>
-          <p>Progression du Brassin</p> -->
 
+<% @step = @beer_step[0].step %>
+<% case @step %>
+<% when 0 %>
+<% @percentage = '20%' %>
+<% when 1 %>
+<% @percentage = '40%' %>
+<% when 2 %>
+<% @percentage = '60%' %>
+<% when 3 %>
+<% @percentage = '80%' %>
+<% when 4 %>
+<% @percentage = '100%' %>
+<% else %>
+<% "Error: capacity has an invalid value (#{@step}" %>
+<% end %>
+<%# raise %>
           <script>
             var data = {
               labels: [
@@ -84,7 +104,7 @@
                 ctx.font = fontSize + "em sans-serif";
                 ctx.textBaseline = "middle";
 
-                var text = "40%",
+                var text = "<%= @percentage %>",
                     textX = Math.round((width - ctx.measureText(text).width) / 2),
                     textY = height / 2;
 

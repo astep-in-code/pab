@@ -30,7 +30,7 @@ myBeer = Beer.new({
   fermentation: "Mixte",
   initial_density_target: 1015,
   final_density_target: 1012,
-  fermentation_temperature_target: 1969,
+  fermentation_temperature_target: 2025,
   color: 8,
   bitterness: 28,
   bitterness_ratio: 047,
@@ -131,21 +131,21 @@ myBeerStep = BeerStep.new({
 
 myBeerStep = BeerStep.new({
    step: 1,
-   description:"L'empâtage"
+   description:"La cuisine: L'empâtage & Ebullition"
  })
  myBeerStep.valid?
  myBeerStep.save!
 
 myBeerStep = BeerStep.new({
    step: 2,
-   description:"L'ébullition"
+   description:"Fermentation primaire"
  })
  myBeerStep.valid?
  myBeerStep.save!
 
 myBeerStep = BeerStep.new({
    step: 3,
-   description:"Fermentage"
+   description:"Fermentation secondaire"
  })
  myBeerStep.valid?
  myBeerStep.save!
@@ -215,35 +215,29 @@ myBeerSubStep = BeerSubStep.new({
   beer_id: 1,
   sub_step: '{'\
     '"5": {'\
-      '"title": "Matériel dont vous aurez besoin pour cette étape:",'\
-      '"content": "Vous aurez besoin de vous munir de votre produit de rinçage. Dans le kit vous est fourni un flacon d\'Oxy. C\'est une solution à base d\'oxygène actif qui va permettre de désinfecter votre matériel qui sera en contact avec le moût afin d\'éviter tout risque d\'infection. Vous aurez également besoin de votre seau de fermentation, d\'un récipient de 7 litres minimum, de votre ispindle, de votre syphon et de votre barboteur.",'\
-      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056251/Step_1_-_Substep_0_-_om78un.jpg",'\
+      '"title": "Concasser les grains:",'\
+      '"content": "Pour cette étape vous aurez besoin de vous munir d\'un grinder pour pouvoir concasser les grains afin d\'obtenir un ensemble homogène. La pâte obtenue doit être lisse comme de la peau de bébé et dégage une odeur houbloneuse caractéristique.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582386890/Step_2_-_Substep_0_cvjcxa.jpg",'\
       '"time": "0"'\
     '},'\
     '"6": {'\
-      '"title": "Nettoyage des éléments de brassage",'\
-      '"content": "Munissez-vous d\'un seau et remplissez-le d\'eau. Lorsque celui-ci est plein, mélangez votre produit de rinçage dans l\'eau et mélangez bien. Prenez ensuite l\'ensemble des ustensiles que vous avez précédement réunis et plongez-les dans l\'eau. L\'oxygène actif que vous utilisez lors de cette étape de brassage doit agir durant une durée d\'au moins 10 minutes. Pendant que le produit agit, vous pouvez passer à l\'étape suivante.",'\
-      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056329/Step_1_-_Substep_1_agw9rg.jpg",'\
-      '"time": 900'\
+      '"title": "Gestion des paliers",'\
+      '"content": "Saisissez la cuve et versez la préparation concassé dedans puis compléter avec un volume de 17L d\'eau puis portez l\'ensemble à une température de 50°C pendant une minute (gardez les yeux sur le thermomètre et sur le chronomètre). Cela va permettre d\'atteindre ce que les scientifiques appellent le palier protéinique. Au terme de cette minute, portez l\'ensemble à une température de 66°C pendant 40 minutes pour atteindre le 2e palier qui n\'est que le début d\'une longue étape. Cette étape est dite palier de saccharificcation. Une fois ce palier franchi, portez enfin le mélange à 76°C pendant 10 minutes pour lancer la désactivation des enzymes.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582387970/Step_2_-_Substep_1_jyhsab.jpg",'\
+      '"time": 3060'\
     '},'\
     '"7": {'\
-      '"title": "Préparation de l\'eau de rinçage",'\
-      '"content": "Munissez-vous d\'un seau et placez-y 7L d\'eau. Cette eau devra être portée à une température de 82°C lors de votre rinçage et permettra d\'extraire un maximum de sucre du moût.",'\
-      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056451/Step_1_-_Substep_2_geieqa.jpg",'\
+      '"title": "Rinçage",'\
+      '"content": "A l\'issue de la désactivation des enzymes, filtrer et rincer les drèches (ce qui ressemble donc à du grain mouillé) avec 17,3L d\'eau portée à une température de 75°C.",'\
+      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582388453/Step_2_-_Substep_2_v8hgub.jpg",'\
       '"time": 0'\
     '},'\
     '"8": {'\
-      '"title": "Préchauffe de l\'eau de brassage",'\
+      '"title": "Ebullition",'\
       '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
       '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
       '"time": "900"'\
     '},'\
-    '"9": {'\
-      '"title": "Préparation du matériel de brassage",'\
-      '"content": "Pendant que votre eau préchauffe, munissez-vous de : votre grain concassé, votre houblon, votre spatule de brassage et votre sac de brassage.",'\
-      '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056527/Step_1_-_Substep_4_qqavw6.jpg",'\
-      '"time": "0"'\
-    '}'\
   '}'
 })
  p myBeerSubStep.valid?
