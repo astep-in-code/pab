@@ -29,6 +29,7 @@ class BrewsController < ApplicationController
   def index
     @user = current_user
     @brews = Brew.where(user_id: @user.id)
+    @title = "Mes brassins"
   end
 
   def show
@@ -40,6 +41,7 @@ class BrewsController < ApplicationController
     sub_step = @beer_sub_step[0].sub_step
     @hash_sub_step = JSON.parse(sub_step, symbolize_keys: true)
     @hash_sub_step.deep_symbolize_keys!
+    @title = "Mon brassin : #{@brew.beer.name}"
   end
 
   def edit
