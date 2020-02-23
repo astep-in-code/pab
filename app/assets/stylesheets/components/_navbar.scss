@@ -1,27 +1,33 @@
 .navbar-pab {
   justify-content: space-between;
+  align-items: baseline;
   background: $pab;
-}
 
-.navbar-pab .navbar-collapse {
-  flex-grow: 0;
-  .nav-link {
+  h1{
     color: #fff;
+    font-size: 1.8em;
+    font-family: lato;
+    flex-grow: 8;
   }
-}
-
-.navbar-pab .navbar-brand img {
-  width: 69px;
-}
-
-.navbar-light .navbar-toggler-icon{
-  background-image: asset-url('navbaricon.png')!important;
-  color: #fff;
-}
-
-.navbar-toggler-icon {
-  width: 3rem;
-  height: 3rem;
+  .navbar-collapse {
+    flex-grow: 0;
+    .nav-link {
+      color: #fff;
+    }
+  }
+  .navbar-brand img{
+    width: 69px;
+    flex-grow: 1
+  }
+  .navbar-toggler{
+    .navbar-toggler-icon{
+      background-image: asset-url('navbaricon.png')!important;
+      color: #fff;
+      width: 3rem;
+      height: 3rem;
+      flex-grow: 1;
+    }
+  }
 }
 
 
