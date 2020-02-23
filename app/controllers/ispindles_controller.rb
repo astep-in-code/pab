@@ -27,7 +27,7 @@ class IspindlesController < ApplicationController
   def index
     @ispindles = Ispindle.where(brew_id: @brew.id)
     @beer = @brew.beer
-    @title = "Mon brassin : #{@brew.beer.name}"
+    @title = "Mon brassin : <br />#{@brew.beer.name}" 
   end
 
   def show
