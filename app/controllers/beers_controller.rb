@@ -42,7 +42,7 @@ class BeersController < ApplicationController
     # embouteillage
     @hash_embouteillage = @hash_recipe[:Embouteillage]
 
-    @title = "Recette : #{@beer.name}"
+    @title = "Recette : <br />#{@beer.name}"
   end
 
   def edit
