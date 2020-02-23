@@ -224,20 +224,20 @@ myBeerSubStep = BeerSubStep.new({
       '"title": "Gestion des paliers",'\
       '"content": "Saisissez la cuve et versez la préparation concassé dedans puis compléter avec un volume de 17L d\'eau puis portez l\'ensemble à une température de 50°C pendant une minute (gardez les yeux sur le thermomètre et sur le chronomètre). Cela va permettre d\'atteindre ce que les scientifiques appellent le palier protéinique. Au terme de cette minute, portez l\'ensemble à une température de 66°C pendant 40 minutes pour atteindre le 2e palier qui n\'est que le début d\'une longue étape. Cette étape est dite palier de saccharificcation. Une fois ce palier franchi, portez enfin le mélange à 76°C pendant 10 minutes pour lancer la désactivation des enzymes.",'\
       '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582387970/Step_2_-_Substep_1_jyhsab.jpg",'\
-      '"time": 3060'\
+      '"time": "3060"'\
     '},'\
     '"7": {'\
       '"title": "Rinçage",'\
       '"content": "A l\'issue de la désactivation des enzymes, filtrer et rincer les drèches (ce qui ressemble donc à du grain mouillé) avec 17,3L d\'eau portée à une température de 75°C.",'\
       '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582388453/Step_2_-_Substep_2_v8hgub.jpg",'\
-      '"time": 0'\
+      '"time": "0"'\
     '},'\
     '"8": {'\
       '"title": "Ebullition",'\
       '"content": "Préchauffer les 15L d\'eau de brassage dont vous aurez besoin à une température de 69°C. La température est légèrement plus chaude que la température cible d\'empâtage car le grain va refroidir votre volume d\'eau en y étant mélangé. Pendant que l\'eau chauffe, munissez-vous de votre matériel de brassage dans l\'étape suivante",'\
       '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582056494/Step_1_-_Substep_3_suzsaa.jpg",'\
       '"time": "900"'\
-    '},'\
+    '}'\
   '}'
 })
  p myBeerSubStep.valid?
