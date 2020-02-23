@@ -1,3 +1,168 @@
+const inputSearchTemperature = 'temperature';
+const inputSearchDensity = 'gravity';
+
+
+const getMyChartTemp = () => {
+        var array_h_temp = [];
+        var array_h_temp_target = [];
+        var temp_target = <%= @beer_fermentation_temp_target %>;
+        // var temp = collect_temp;
+        var date = collect_time;
+
+        for (let i=0; i < temp.length; i++){
+          array_h_temp.push({x: date[i], y: parseFloat(temp[i])});
+          array_h_temp_target.push({x: date[i], y: temp_target });
+        };
+        console.log(array_h_temp);
+        console.log(array_h_temp_target);
+
+        // array_h_temp.sort(function(a, b) {
+        //   parseInt(a, 10).x - parseInt(b, 10).x;
+        // });
+
+        // console.log(array_h_temp);
+        console.log('oki');
+
+        const colors = {
+          green: {
+            fill: '#e0eadf',
+            stroke: '#5eb84d',
+          },
+          lightBlue: {
+            stroke: '#6fccdd',
+            fill: '#6fccdd',
+          },
+          darkBlue: {
+            fill: '#92bed2',
+            stroke: '#3282bf',
+          },
+          purple: {
+            fill: '#8fa8c8',
+            stroke: '#75539e',
+          },
+        };
+
+        var ctx = document.getElementById("myChartTemp");
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            datasets: [
+              {
+                label: 'Temperature constatée',
+                data: array_h_temp,
+                showLine: true,
+                fill: false,
+                borderColor: colors.darkBlue.stroke,
+                backgroundColor: colors.lightBlue.fill
+              },
+              {
+                label: 'Temperature cible',
+                data: array_h_temp_target,
+                showLine: true,
+                fill: false,
+                borderColor: 'red'
+              }
+            ]
+          },
+          options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+              type: 'time',
+              time: {
+                  parser: 'YYYY-MM-DD HH:mm:ss',
+                  unit: 'minute',
+                  displayFormats: {
+                      'minute': 'YYYY-MM-DD HH:mm:ss',
+                      'hour': 'YYYY-MM-DD HH:mm:ss'
+                  }
+              },
+            }],
+              yAxes: [{
+                  ticks: {
+                      suggestedMin: 19
+                  }
+              }]
+            },
+          }
+        });
+};
+
+const myChartDensFunc = () => {
+  var array_dens = [];
+  var array_h_dens = [];
+  var array_h_dens_target = [];
+  var dens_cible = <%= @beer_initial_dens %>;
+  // var dens = collect_dens;
+  var date = collect_time;
+  // date.replace(/&quot;/g, '"');
+
+  for (let i=0; i < date.length; i++){
+    array_h_dens.push({x: date[i], y: dens[i]});
+    array_h_dens_target.push({x: date[i], y: dens_cible });
+  };
+  console.log(array_h_dens);
+  console.log(array_h_dens_target);
+
+  var ctx = document.getElementById("myChartDens");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      datasets: [
+        {
+          label: 'Density constatée',
+          data: array_h_dens,
+          showLine: true,
+          fill: false,
+          borderColor: '#3FBF7F'
+        },
+        {
+          label: 'Density cible',
+          data: array_h_dens_target,
+          showLine: true,
+          fill: false,
+          borderColor: '#3F3FBF'
+        }
+      ]
+    },
+    options: {
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        xAxes: [{
+          type: 'time',
+          time: {
+              parser: 'YYYY-MM-DD HH:mm:ss',
+              unit: 'minute',
+              displayFormats: {
+                  'minute': 'YYYY-MM-DD HH:mm:ss',
+                  'hour': 'YYYY-MM-DD HH:mm:ss'
+              }
+          },
+        }],
+        yAxes: [{
+            ticks: {
+                suggestedMin: 1013
+            }
+        }]
+      },
+    }
+  });
+};
+
 const sendOnSubmitSearch = () => {
 
   let inputNameApp = document.getElementById('nameIspindle').value;
@@ -207,10 +372,7 @@ const sendOnSubmitSearch = () => {
 };
 
 if (document.getElementById('clickme') != null){
-  document.getElementById('clickme').addEventListener('click', (event) => {
-    sendOnSubmitSearch();
-  });
+document.getElementById('clickme').addEventListener('click', (event) => {
+sendOnSubmitSearch();
+});
 };
-
-
-export { sendOnSubmitSearch };
