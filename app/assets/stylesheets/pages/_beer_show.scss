@@ -110,3 +110,40 @@ strong{
 .table-borders-corners {
   border-radius: 10px!important;
 }
+
+.accordion{
+  position: relative;
+  .leftruler{
+    position: absolute;
+    width: 4px;
+    background-color: #E67E22;
+    height: 91%;
+    left: 37px;
+    display: block;
+    z-index: 1;
+    margin: 15px 0;
+  }
+  .card{
+    border: none;
+
+    .card-header{
+      background: #fff;
+      .step-title{
+        color: $orange;
+      }
+
+      .fas{
+        z-index: 2;
+
+        &.fa-circle{
+        color: $orange;
+
+        }
+      }
+    }
+    .show-beer{
+      margin-left: 37px;
+    }
+  }
+
+}
