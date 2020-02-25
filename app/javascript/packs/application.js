@@ -57,10 +57,28 @@ for (var i  = 0; i < beersubnav.length; i++) {
   });
 }
 // Ispindle
-// import { sendOnSubmitSearch } from '../component/_ispindle.js';
-// sendOnSubmitSearch();
+import { sendOnSubmitSearch } from '../component/_ispindle.js';
+if (document.getElementById('clickme') != null){
+  document.getElementById('clickme').addEventListener('click', (event) => {
+    sendOnSubmitSearch();
+  });
+};
 
-// SubSteps
+import { sendOnSearchData } from '../component/_searchData.js';
+if (document.getElementById('clickdata') != null){
+  document.getElementById('clickdata').addEventListener('click', (event) => {
+    sendOnSearchData();
+  });
+};
+
+import { sendOnSubmitToDB } from '../component/_sendToDB.js';
+if (document.getElementById('clicktoDB') != null){
+document.getElementById('clicktoDB').addEventListener('click', (event) => {
+    sendOnSubmitToDB();
+  });
+};
+
+// BrewSteps
 import { brewStepsGestion } from '../component/_brews.js';
 let val = brewStepsGestion();
 

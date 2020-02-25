@@ -27,7 +27,7 @@ class IspindlesController < ApplicationController
   def index
     @ispindles = Ispindle.where(brew_id: @brew.id)
     @beer = @brew.beer
-    @title = "Mon brassin : <br />#{@brew.beer.name}" 
+    @title = "Mon brassin : <br />#{@brew.beer.name}"
   end
 
   def show
@@ -55,6 +55,8 @@ class IspindlesController < ApplicationController
 
   def parametrage
     @brew = Brew.find(params[:id])
+    @ispindles = Ispindle.where(brew_id: @brew.id)
+    @beer = @brew.beer
   end
 
   def send_to_DB
@@ -75,6 +77,7 @@ class IspindlesController < ApplicationController
     data_d = JSON.parse(serialized_urld)
     length = data_t["results"].length
 
+    raise
     i = 0
     while i < length
       @ispindle.name = @inputNameApp
@@ -88,7 +91,7 @@ class IspindlesController < ApplicationController
       @ispindle.update(created_at: date)
     end
 
-    raise
+    # raise
   end
 
   def destroy_all_ispindle
@@ -118,9 +121,9 @@ class IspindlesController < ApplicationController
     # @ispindle.beer = @beer
     respond_to do |format|
       if @ispindle.save
-        format.html { redirect_to brew_ispindles_path(@brew), notice: 'Datas was successfully created.' }
+        format.html { redirect_to parametrage_path(@brew), notice: 'Datas was successfully created.' }
       else
-        format.html { redirect_to brew_ispindles_path(@brew), notice: 'Datas can not be created.' }
+        format.html { redirect_to parametrage_path(@brew), notice: 'Datas can not be created.' }
       end
     end
     # raise
