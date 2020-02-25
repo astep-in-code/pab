@@ -6,7 +6,6 @@
           <h5 class="card-title text-center"><%= image_tag 'logo.png', width: '100' %></h5>
           <h4 style="text-align: center;">Collecte des données du Ispindle</h4>
           <div class="form-signin">
-          <form action="#" style="padding: 5px;">
           <div class="form-label-group">
             <br>
             <% @num = Brew.find(params[:id]) %>
@@ -14,54 +13,252 @@
             <div class="form-actions">
               <%= link_to 'Cleaner la DB', destroy_all_ispindle_path(@brew), class: 'btn btn-danger btn-lg btn-block', id: 'destroy_all' %>
             </div>
+            <br>
             <div id="search_control" data-value='<%= @num.id %>'>
               <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
               <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
             </div>
             <br>
-            <p><button id="search_data" class="btn btn-success btn-lg">
-              Récupérer les données
-            </button><p>
-            <button id="clickme" class="btn btn-primary btn-lg">
+            <!-- <form action="#" style="padding: 5px;">
+              <p><input class="btn btn-success" type="submit" value="Récupérer les données">
+            </form> -->
+            <p><button id="clickdata" class="btn btn-success btn-lg">
+              Récupérer les données ...
+            </button></p>
+            <p><button id="clicktoDB" class="btn btn-primary btn-lg">
               Send to DB!
             </button></p>
           </div>
-          </form>
+
           <%# raise %>
           <br>
-          <div class="text-center" style="background-color: grey; color: black;">
-            <ul class="list-unstyled" id="Ispindle">
-              <!-- Append here -->
-            </ul>
-          </div>
-          <br>
-          <br>
-          <div class="text-center" style="background-color: grey; color: black;">
-            <ul class="list-unstyled-d" id="Ispindle">
-              <!-- Append here -->
-            </ul>
-          </div>
-          <br>
-          <hr class="my-4">
-          <div class="form-label-group">
-          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% @brew = Brew.find(params[:id]) %>
+
+
+<% @collect_temp = [] %>
+<% @collect_dens = [] %>
+<% @collect_date_temp = [] %>
+<% @collect_date = [] %>
+<% @test = @ispindles.sort_by { |obj| obj.created_at } %>
+<% @test.each do |ip| %>
+<% ip.name %>
+<% @collect_temp << ip.temperature %>
+<% @collect_dens << ip.density.to_f %>
+<% @collect_date_temp << ip.created_at.strftime("%Y-%m-%d" "%H-%M-%s") %>
+<% @collect_date << ip.created_at.strftime("%Y-%m-%d") %>
+<% end %>
+<%# raise %>
+<% @brew = Brew.find(params[:id]) %>
+<% @beer_id = @brew.beer_id %>
+<% @beer = Beer.find(@beer_id) %>
+<% @beer_fermentation_temp_target = @beer.fermentation_temperature_target.to_f / 100 %>
+<% @beer_final_dens = @beer.final_density_target %>
+<% @beer_initial_dens = @beer.initial_density_target %>
+<%# @collect_date.sort %>
+<%# raise %>
+
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5>Data from DB : Temperature</h5> <br>
+      <canvas id="myChartTemp" style="background-color: #fff;"></canvas>
+      <script>
+
+        var array_h_temp = [];
+        var array_h_temp_target = [];
+        var temp_target = <%= @beer_fermentation_temp_target %>;
+        var temp = <%= raw @collect_temp  %>;
+        var date = <%= raw @collect_date_temp %>;
+        // date.replace(/&quot;/g, '"');
+
+        for (let i=0; i < temp.length; i++){
+          array_h_temp.push({x: date[i], y: parseFloat(temp[i])});
+          array_h_temp_target.push({x: date[i], y: temp_target });
+        };
+        console.log(array_h_temp);
+        console.log(array_h_temp_target);
+
+        // array_h_temp.sort(function(a, b) {
+        //   parseInt(a, 10).x - parseInt(b, 10).x;
+        // });
+
+        // console.log(array_h_temp);
+        console.log('oki');
+
+        const colors = {
+          green: {
+            fill: '#e0eadf',
+            stroke: '#5eb84d',
+          },
+          lightBlue: {
+            stroke: '#6fccdd',
+            fill: '#6fccdd',
+          },
+          darkBlue: {
+            fill: '#92bed2',
+            stroke: '#3282bf',
+          },
+          purple: {
+            fill: '#8fa8c8',
+            stroke: '#75539e',
+          },
+        };
+
+        var ctx = document.getElementById("myChartTemp");
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            datasets: [
+              {
+                label: 'Temperature constatée',
+                data: array_h_temp,
+                showLine: true,
+                fill: false,
+                borderColor: colors.darkBlue.stroke,
+                backgroundColor: colors.lightBlue.fill
+              },
+              {
+                label: 'Temperature cible',
+                data: array_h_temp_target,
+                showLine: true,
+                fill: false,
+                borderColor: 'red'
+              }
+            ]
+          },
+          options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+              type: 'time',
+              time: {
+                  parser: 'YYYY-MM-DD HH:mm:ss',
+                  unit: 'minute',
+                  displayFormats: {
+                      'minute': 'YYYY-MM-DD HH:mm:ss',
+                      'hour': 'YYYY-MM-DD HH:mm:ss'
+                  }
+              },
+            }],
+              yAxes: [{
+                  ticks: {
+                      suggestedMin: 19
+                  }
+              }]
+            },
+          }
+        });
+      </script>
+    </section>
+  </div>
+  <br>
+  <br>
+  <div class="col-md-12">
+    <section class="profil-panel profils-widget">
+      <h5>Data from DB : Density</h5> <br>
+      <canvas id="myChartDens" style="background-color: #fff;"></canvas>
+      <script>
+
+        var array_dens = [];
+        var array_h_dens = [];
+        var array_h_dens_target = [];
+        var dens_cible = <%= @beer_final_dens %>;
+        var dens = <%= raw @collect_dens %>;
+        var date = <%= raw @collect_date_temp %>;
+        // date.replace(/&quot;/g, '"');
+
+        for (let i=0; i < date.length; i++){
+          array_h_dens.push({x: date[i], y: dens[i]});
+          array_h_dens_target.push({x: date[i], y: dens_cible });
+        };
+        console.log(array_h_dens);
+        console.log(array_h_dens_target);
+
+        var ctx = document.getElementById("myChartDens");
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            datasets: [
+              {
+                label: 'Density constatée',
+                data: array_h_dens,
+                showLine: true,
+                fill: false,
+                borderColor: '#3FBF7F'
+              },
+              {
+                label: 'Density cible',
+                data: array_h_dens_target,
+                showLine: true,
+                fill: false,
+                borderColor: '#3F3FBF'
+              }
+            ]
+          },
+          options: {
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+                type: 'time',
+                time: {
+                    parser: 'YYYY-MM-DD HH:mm:ss',
+                    unit: 'minute',
+                    displayFormats: {
+                        'minute': 'YYYY-MM-DD HH:mm:ss',
+                        'hour': 'YYYY-MM-DD HH:mm:ss'
+                    }
+                },
+              }],
+              yAxes: [{
+                  ticks: {
+                      suggestedMin: 1008
+                  }
+              }]
+            },
+          }
+        });
+      </script>
+    </section>
+  </div>
+  <br>
+
+<div class="text-center" style="background-color: grey; color: black;">
+  <ul class="list-unstyled" id="Ispindle">
+    <!-- Append here -->
+  </ul>
+</div>
 
 <br>
 <br>
 
-<script>
-  document.getElementById('clickme').addEventListener('click', function(e) {
-    let mname = document.getElementById('nameIspindle').value
-    let mtoken =document.getElementById('token').value
-    let mnum = document.getElementById('search_control').dataset.value
-    if (mname && mtoken && mnum) {
-      window.open("/brews/:id/ispindles/parametrage/send_to_DB?mname="+mname+"&mtoken="+mtoken+"&mnum="+mnum,"_self")
-    };
-  });
-</script>
+<div class="text-center" style="background-color: grey; color: black;">
+  <ul class="list-unstyled-d" id="Ispindle">
+    <!-- Append here -->
+  </ul>
+</div>
+<br>
+
+<hr class="my-4">
+<div class="form-label-group">
+</div>
+
+

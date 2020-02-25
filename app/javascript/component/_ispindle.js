@@ -1,5 +1,7 @@
 const sendOnSubmitSearch = () => {
 
+  const inputSearchTemperature = 'temperature';
+  const inputSearchDensity = 'gravity';
   let inputNameApp = document.getElementById('nameIspindle').value;
   let tokenSearch = document.getElementById('token').value;
   let temp_target_input = document.getElementById('temp_target').value;
@@ -39,11 +41,6 @@ const sendOnSubmitSearch = () => {
     console.log(array_h_temp);
     console.log(array_h_temp_target);
 
-    // array_h_temp.sort(function(a, b) {
-    //   parseInt(a, 10).x - parseInt(b, 10).x;
-    // });
-
-    // console.log(array_h_temp);
     console.log('oki');
 
     const colors = {
@@ -143,7 +140,6 @@ const sendOnSubmitSearch = () => {
       var dens_cible = dens_target_input;
       var dens = collect_dens;
       var date = collect_time_d;
-      // date.replace(/&quot;/g, '"');
 
       for (let i=0; i < date.length; i++){
         array_h_dens.push({x: date[i], y: dens[i]});
@@ -196,7 +192,7 @@ const sendOnSubmitSearch = () => {
             }],
             yAxes: [{
                 ticks: {
-                    suggestedMin: 1013
+                    suggestedMin: 1008
                 }
             }]
           },
@@ -204,12 +200,6 @@ const sendOnSubmitSearch = () => {
       });
   });
 // End of Function
-};
-
-if (document.getElementById('clickme') != null){
-  document.getElementById('clickme').addEventListener('click', (event) => {
-    sendOnSubmitSearch();
-  });
 };
 
 

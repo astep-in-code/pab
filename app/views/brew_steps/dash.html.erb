@@ -1,7 +1,7 @@
 <div class="body-background" style="padding: 5px">
 <br>
 
-  <div class="col-md-12">
+  <div class="col-md-12" style="padding: 0;">
       <section class="profil-panel profils-widget">
         <h5><strong>Légende</strong></h5><br>
         <div class="accordion" style="display: flex; justify-content: space-between;">
@@ -32,7 +32,7 @@
 
   <br>
   <!--main content start-->
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding: 0;">
       <section class="profil-panel profils-widget">
         <h5><strong>Timeline du Brassin</strong></h5><br>
         <div class="accordion" id="accordionDash">
@@ -69,7 +69,6 @@
                       <% v.each do |k,v| %>
                         <% if k.to_s == "title" %>
                           <%= v %>
-                          <span class="badge badge-secondary">à faire</span>
                         <% end %>
                       <% end %>
                     <% end %>

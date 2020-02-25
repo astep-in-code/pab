@@ -1,21 +1,21 @@
 <div class="body-background" style="padding: 5px">
 <br>
 
-<%= link_to brew_path(@brew), method: :delete, data: { confirm: "Do you really want to delete this Brew ?" } do %>
-        <i class="fas fa-trash-alt fa-2x" style="color: grey; float: right;" aria-hidden="true"></i><% end %>
-<br>
-<%# raise %>
+<%#= link_to brew_path(@brew), method: :delete, data: { confirm: "Do you really want to delete this Brew ?" } do %>
+<!--         <i class="fas fa-trash-alt fa-2x" style="color: grey; float: right;" aria-hidden="true"></i><%# end %> -->
+
+  <%# raise %>
   <% @brew_steps.each do |step|  %>
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding: 0;">
       <section class="profil-panel profils-widget">
           <% @beer_step = BeerStep.find(step.beer_step_id) %>
           <%# raise %>
           <div id="card" class="card" style="padding: 10px" data-value="<%= step.status.to_i %>">
-          <!-- Brew_steps Status : <%= step.status %> <br>
-          Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
+            <!-- Brew_steps Status : <%= step.status %> <br>
+            Brew_steps => Beer_step ID : <%= step.beer_step_id %> -->
 
-          <h5><%= image_tag "#{step.beer_step_id}.png", width: '30', height: '30' %> <strong><span id="stepname"><%= @beer_step.description %></span></strong></h5>
-          <%  @hash_sub_step.each_with_index do |(k,v), index| %>
+            <h5><%= image_tag "#{step.beer_step_id}.png", width: '30', height: '30' %> <strong><span id="stepname"><%= @beer_step.description %></span></strong></h5>
+            <%  @hash_sub_step.each_with_index do |(k,v), index| %>
             <div class="substep" style="display: none;">
               <strong style="color: grey;">Etape <%= k.to_s.to_i + 1 %> : </strong>
               <p>
@@ -42,10 +42,10 @@
                 <%# raise %>
               </p>
             </div>
-          <% end %>
+            <% end %>
           </div>
 
-<br>
+        <br>
         <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
           <ul class="pagination justify-content-end">
             <li class="page-item disabled" id="previous-substep">
@@ -60,9 +60,8 @@
             <li class="page-item" id="next-substep" >
               <a class="page-link" id="next-substep-link" href="#">Etape suivante</a>
             </li>
-            </ul>
+          </ul>
         </nav>
-        </div>
       </section>
     </div>
     <!--/col-md-12 -->
