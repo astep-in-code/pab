@@ -9,7 +9,7 @@
             </div>
           <% end %>
         </li>
-        <li class="tab-underlined <%= "active" if params[:controller] == 'brews' || params[:controller] == 'ispindles' %>">
+        <li class="tab-underlined <%= "active" if params[:controller] == 'brews' || params[:controller] == 'ispindles' || params[:action] == 'dash' %>">
           <%= link_to brews_path do %>
             <div>
               <%= image_tag '2navIcon2.png',
