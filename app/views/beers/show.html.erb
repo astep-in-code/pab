@@ -97,21 +97,21 @@
       <section class="profil-panel profils-widget" id="resume">
         <h5><strong>Résumé du Brassin</strong></h5>
         <div class="accordion" id="accordionExample">
-
+          <span class="leftruler"></span>
           <div class="card">
             <div class="card-header" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <span class="fa-stack fa-sm">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-minus fa-stack-1x fa-inverse"></i>
                   </span>
-                  Préparation #1
+                  <span class="step-title">Préparation</span>
                 </button>
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div id="collapseOne" class="collapse show  " aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body show-beer">
                 <!-- <h5>Les Ingredients</h5>
                 <%  @hash_ingredients.each do |k,v| %>
@@ -148,7 +148,7 @@
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                   </span>
-                  Empâtage #2
+                  <span class="step-title">Empâtage</span>
                 </button>
               </h5>
             </div>
@@ -176,7 +176,7 @@
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                   </span>
-                  L'Ebullition #3
+                  <span class="step-title">L'Ebullition</span>
                 </button>
               </h5>
             </div>
@@ -204,7 +204,7 @@
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                   </span>
-                  Fermentation #4
+                  <span class="step-title">Fermentation</span>
                 </button>
               </h5>
             </div>
@@ -232,7 +232,7 @@
                     <i class="fas fa-circle fa-stack-2x"></i>
                     <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
                   </span>
-                  Embouteillage #5
+                  <span class="step-title">Embouteillage</span>
                 </button>
               </h5>
             </div>
@@ -289,4 +289,3 @@
   <br>
   <br>
 </div>
-
