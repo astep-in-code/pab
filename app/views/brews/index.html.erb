@@ -85,6 +85,10 @@
                 type: 'doughnut',
                 data: data,
                 options: {
+                  responsive: true,
+                  legend: {
+                    display: false
+                  },
                   elements: {
                     center: {
                         text: '<%= @percentage %>'

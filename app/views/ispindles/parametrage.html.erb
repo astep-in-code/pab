@@ -14,18 +14,14 @@
               <%= link_to 'Cleaner la DB', destroy_all_ispindle_path(@brew), class: 'btn btn-danger btn-lg btn-block', id: 'destroy_all' %>
             </div>
             <br>
-            <div id="search_control" data-value='<%= @num.id %>'>
-              <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="40" style="padding: 5px;"></p>
-              <p><strong>Token API : </strong><input type="text" id="token" size="40" style="padding: 5px;"></p>
+            <div id="search_control" data-value='<%= @num.id %>' style="padding: 0.5rem;">
+              <p><strong>Nom du Ispindle : </strong><br><input type="text" id="nameIspindle" style="padding: 1rem; width: 100%;"></p>
+              <p><strong>Token API : </strong><br><input type="text" id="token" style="padding: 1rem; width: 100%"></p>
             </div>
-            <br>
-            <!-- <form action="#" style="padding: 5px;">
-              <p><input class="btn btn-success" type="submit" value="Récupérer les données">
-            </form> -->
-            <p><button id="clickdata" class="btn btn-success btn-lg">
+            <p><button id="clickdata" class="btn btn-success btn-block btn-lg">
               Récupérer les données ...
             </button></p>
-            <p><button id="clicktoDB" class="btn btn-primary btn-lg">
+            <p><button id="clicktoDB" class="btn btn-primary btn-block btn-lg">
               Send to DB!
             </button></p>
           </div>

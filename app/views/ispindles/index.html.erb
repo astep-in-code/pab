@@ -9,18 +9,18 @@
 <% @beer_initial_dens = @beer.initial_density_target %>
 <%# @collect_date.sort %>
 <%# raise %>
-<div class="row">
-
-  <div class="col-md-6">
+  <div class="col-md-12" style="padding: 0;">
     <section class="profil-panel profils-widget">
-    <br>
-      <div style="display: flex; justify-content: space-between;">
-        <%= image_tag @beer.photo, width: 150, height: 150 %>
-        <h5><strong>Ispindle du Brassin : </strong><%= @beer.name %>
-      <br><br>
-        <p><strong>Collecte Data Ispindle </strong>
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"><i style="color: #282F44;" class="fas fa-cloud-download-alt fa-2x"></i>
-        </button></p>
+
+        <div class="card-product-ispindle">
+          <%= image_tag @beer.photo, width: 150, height: 150 %>
+          <div class="card-product-infos-ispindle">
+            <h2><strong>Ispindle du Brassin : </strong><span><%= @beer.name %></span></h2>
+            <p><strong>Collecte Data </strong>
+              <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"><i style="color: #282F44;" class="fas fa-cloud-download-alt fa-2x"></i>
+              </button></p>
+          </div>
+        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,7 +35,7 @@
               <div class="modal-body">
                 <div id="search_control">
                   <p><strong>Nom du Ispindle : </strong><input type="text" id="nameIspindle" size="25" style="padding: 5px; border-color: #D3D3D3"></p>
-                  <p><strong>Token API : </strong><input type="text" id="token" size="25" style="padding: 5px; border-color: #D3D3D3"></p>
+                  <p><strong>Token API : </strong><br><input type="text" id="token" size="25" style="padding: 5px; border-color: #D3D3D3"></p>
                   <p><strong>Temp Target : </strong><input type="text" id="temp_target" size="25" style="padding: 5px; border-color: #D3D3D3" value='<%= @beer_fermentation_temp_target %>'></p>
                   <p><strong>Dens Target : </strong><input type="text" id="dens_target" size="25" style="padding: 5px; border-color: #D3D3D3" value='<%= @beer_final_dens %>'></p>
                 </div>
@@ -52,10 +52,10 @@
           </div>
         </div>
         </h5>
-      </div>
+
     </section>
   </div>
-</div>
+
 
 <div class="row">
   <div class="col-md-6">
