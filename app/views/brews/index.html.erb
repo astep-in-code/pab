@@ -6,7 +6,7 @@
     <section class="profil-panel profils-widget m-10">
     <div class="myDash">
       <%= link_to "", brew_path(br) %>
-    <br>
+      <br>
       <div class="row no-gutters">
         <div class="col-6">
           <h2 class="beer_title"><%= br.beer.name %>
@@ -16,13 +16,13 @@
           <p><%#= br.status %><%= @beer_step[0].description %></p>
         </div>
         <div class="col-6">
-          <canvas id="myChart" width="100" height="100"></canvas>
+          <canvas id="myChart-<%= br.id %>" width="100" height="100"></canvas>
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col-md-6">
-           <table cellpadding="6" class="table-beers-shows">
+          <table cellpadding="6" class="table-beers-shows">
             <thead>
               <tr>
                 <th colspan="2"><strong>Densité : <span style="color: #FFC65A">1041</span></strong></th>
@@ -44,13 +44,9 @@
             </tbody>
           </table>
           <br>
-
         </div>
         <div class="col-md-6">
           <div class="white-panel pn">
-            <!-- <div class="white-header">
-              <h5>Avancement du Brassin</h5> -->
-            </div>
 
             <% @step = @beer_step[0].step %>
             <% case @step %>
@@ -82,7 +78,7 @@
                     }],
                   };
 
-              var myDoughnutChart = new Chart(document.getElementById('myChart'), {
+              var myDoughnutChart = new Chart(document.getElementById('myChart-<%= br.id %>'), {
                 type: 'doughnut',
                 data: data,
                 options: {
