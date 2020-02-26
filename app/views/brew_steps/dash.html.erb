@@ -2,32 +2,15 @@
 <br>
 
   <div class="col-md-12" style="padding: 0;">
-      <section class="profil-panel profils-widget">
-        <h5><strong>Légende</strong></h5><br>
-        <div class="accordion" style="display: flex; justify-content: space-between;">
-          <button class="btn btn-link">
-          <span class="fa-stack fa-sm">
-            <i class="fas fa-circle fa-stack-2x success"></i>
-            <i class="fas fa-plus fa-stack-1x"></i>
-          </span>
-          <p>Etape complétée</p>
-          </button>
-          <button class="btn btn-link">
-          <span class="fa-stack fa-sm">
-            <i class="fas fa-circle fa-stack-2x info"></i>
-            <i class="fas fa-plus fa-stack-1x"></i>
-          </span>
-          <p>Etape en cours ..</p>
-          </button>
-          <button class="btn btn-link">
-          <span class="fa-stack fa-sm">
-            <i class="fas fa-circle fa-stack-2x warning"></i>
-            <i class="fas fa-plus fa-stack-1x"></i>
-          </span>
-          <p>Etapes suivantes</p>
-          </button>
+    <section class="profil-panel profils-widget">
+      <div class="myDash card-product-dash">
+        <%= link_to "", beer_path(@beer) %>
+        <%= image_tag @beer.photo %>
+        <div class="card-product-infos-dash">
+          <h2>Voir la fiche de la <span style="color: #E67E22"><strong><%= @beer.name %></strong></span></h2>
         </div>
-      </section>
+      </div>
+    </section>
   </div>
 
   <br>

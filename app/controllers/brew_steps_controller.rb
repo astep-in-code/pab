@@ -5,10 +5,11 @@ class BrewStepsController < ApplicationController
   def dash
     @beerStep = BeerStep.all
     @brew = Brew.find(params[:id])
+    @beer = @brew.beer
     @brew_step = BrewStep.where(brew_id: @brew.id)
     @brewSteps = BrewStep.all
     @beer_sub_step = BeerSubStep.where(beer_id: @brew.beer.id)
-    @title = "Mon brassin : <br />#{@brew.beer.name}" 
+    @title = "Mon brassin : <br />#{@brew.beer.name}"
   end
 
   def update_step

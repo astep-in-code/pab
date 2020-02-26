@@ -29,6 +29,12 @@ $("#accordionDash").on("hide.bs.collapse show.bs.collapse", e => {
     .toggleClass("fa-minus fa-plus");
 });
 
+// Div cliquable
+$(".myDash").click(function() {
+  window.location = $(this).find("a").attr("href");
+  return false;
+});
+
 // Show Beer + Display Bloc logic with Nav Tab-underlined
 const beersubnav = document.getElementsByClassName("tab-underlined-beer");
 const toggleWithMenu = document.getElementsByClassName("toggleWithMenu");
