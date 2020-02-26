@@ -2,124 +2,125 @@
   <br>
 
   <% @brews.each do |br|  %>
-  <%= link_to brew_path(br) do %>
   <div class="col-md-12 p-0">
     <section class="profil-panel profils-widget m-10">
+    <div class="myDash">
+      <%= link_to "", brew_path(br) %>
     <br>
-    <div class="row no-gutters">
-      <div class="col-6">
-        <h2 class="beer_title"><%= br.beer.name %>
-        </h2>
-        <% @brew_step = BrewStep.find(br.id) %>
-        <% @beer_step = BeerStep.where(step: @brew_step.status) %>
-        <p><%#= br.status %><%= @beer_step[0].description %></p>
+      <div class="row no-gutters">
+        <div class="col-6">
+          <h2 class="beer_title"><%= br.beer.name %>
+          </h2>
+          <% @brew_step = BrewStep.find(br.id) %>
+          <% @beer_step = BeerStep.where(step: @brew_step.status) %>
+          <p><%#= br.status %><%= @beer_step[0].description %></p>
+        </div>
+        <div class="col-6">
+          <canvas id="myChart" width="100" height="100"></canvas>
+        </div>
       </div>
-      <div class="col-6">
-        <canvas id="myChart" width="100" height="100"></canvas>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-6">
-         <table cellpadding="6" class="table-beers-shows">
-          <thead>
-            <tr>
-              <th colspan="2"><strong>Densité : <span style="color: #FFC65A">1041</span></strong></th>
-              <th><strong>Température : <span style="color: #FFC65A">22°C</span></strong></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <% @start_date = br.beer.created_at %>
-              <% @date_now = DateTime.now %>
-              <% days_between = (@date_now - @start_date.to_date).to_i %>
-              <%#= raise %>
-              <td><strong>Volume : </strong><%= br.beer.volume %>L</td>
-              <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jour)</td>
-              <% @step_next = @brew_step.status + 1 %>
-              <% @beer_step_next = BeerStep.where(step: @step_next) %>
-              <td><strong>Suivant : </strong><%= @beer_step_next[0].description %> </td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-
-      </div>
-      <div class="col-md-6">
-        <div class="white-panel pn">
-          <!-- <div class="white-header">
-            <h5>Avancement du Brassin</h5> -->
-          </div>
-
-<% @step = @beer_step[0].step %>
-<% case @step %>
-<% when 0 %>
-<% @percentage = '20%' %>
-<% when 1 %>
-<% @percentage = '40%' %>
-<% when 2 %>
-<% @percentage = '60%' %>
-<% when 3 %>
-<% @percentage = '80%' %>
-<% when 4 %>
-<% @percentage = '100%' %>
-<% else %>
-<% "Error: capacity has an invalid value (#{@step}" %>
-<% end %>
-<%# raise %>
-          <script>
-            var data = {
-              labels: [
-                "Brassin : <%= br.beer.name %>"
-              ],
-              datasets: [
-                {
-                  data: [40, 60],
-                  backgroundColor: ["#FCB844", "#FFF"],
-                  borderWidth: ['1px', '1px'],
-                  borderColor: ["#FCB844", "#FCB844"]
-                  }],
-                };
-
-            var myDoughnutChart = new Chart(document.getElementById('myChart'), {
-              type: 'doughnut',
-              data: data,
-              options: {
-                responsive: true,
-                legend: {
-                  display: false
-                },
-                cutoutPercentage: 75
-              }
-            });
-
-            Chart.pluginService.register({
-              beforeDraw: function(chart) {
-                var width = chart.chart.width,
-                    height = chart.chart.height,
-                    ctx = chart.chart.ctx;
-
-                ctx.restore();
-                var fontSize = (height / 114).toFixed(2);
-                ctx.font = fontSize + "em sans-serif";
-                ctx.textBaseline = "middle";
-
-                var text = "<%= @percentage %>",
-                    textX = Math.round((width - ctx.measureText(text).width) / 2),
-                    textY = height / 2;
-
-                ctx.fillText(text, textX, textY);
-                ctx.save();
-              }
-            });
-          </script>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+           <table cellpadding="6" class="table-beers-shows">
+            <thead>
+              <tr>
+                <th colspan="2"><strong>Densité : <span style="color: #FFC65A">1041</span></strong></th>
+                <th><strong>Température : <span style="color: #FFC65A">22°C</span></strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% @start_date = br.beer.created_at %>
+                <% @date_now = DateTime.now %>
+                <% days_between = (@date_now - @start_date.to_date).to_i %>
+                <%#= raise %>
+                <td><strong>Volume : </strong><%= br.beer.volume %>L</td>
+                <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jour)</td>
+                <% @step_next = @brew_step.status + 1 %>
+                <% @beer_step_next = BeerStep.where(step: @step_next) %>
+                <td><strong>Suivant : </strong><%= @beer_step_next[0].description %> </td>
+              </tr>
+            </tbody>
+          </table>
           <br>
+
+        </div>
+        <div class="col-md-6">
+          <div class="white-panel pn">
+            <!-- <div class="white-header">
+              <h5>Avancement du Brassin</h5> -->
+            </div>
+
+            <% @step = @beer_step[0].step %>
+            <% case @step %>
+            <% when 0 %>
+            <% @percentage = '20%' %>
+            <% when 1 %>
+            <% @percentage = '40%' %>
+            <% when 2 %>
+            <% @percentage = '60%' %>
+            <% when 3 %>
+            <% @percentage = '80%' %>
+            <% when 4 %>
+            <% @percentage = '100%' %>
+            <% else %>
+            <% "Error: capacity has an invalid value (#{@step}" %>
+            <% end %>
+            <%# raise %>
+            <script>
+              var data = {
+                labels: [
+                  "Brassin : <%= br.beer.name %>"
+                ],
+                datasets: [
+                  {
+                    data: [40, 60],
+                    backgroundColor: ["#FCB844", "#FFF"],
+                    borderWidth: ['1px', '1px'],
+                    borderColor: ["#FCB844", "#FCB844"]
+                    }],
+                  };
+
+              var myDoughnutChart = new Chart(document.getElementById('myChart'), {
+                type: 'doughnut',
+                data: data,
+                options: {
+                  responsive: true,
+                  legend: {
+                    display: false
+                  },
+                  cutoutPercentage: 75
+                }
+              });
+
+              Chart.pluginService.register({
+                beforeDraw: function(chart) {
+                  var width = chart.chart.width,
+                      height = chart.chart.height,
+                      ctx = chart.chart.ctx;
+
+                  ctx.restore();
+                  var fontSize = (height / 114).toFixed(2);
+                  ctx.font = fontSize + "em sans-serif";
+                  ctx.textBaseline = "middle";
+
+                  var text = "<%= @percentage %>",
+                      textX = Math.round((width - ctx.measureText(text).width) / 2),
+                      textY = height / 2;
+
+                  ctx.fillText(text, textX, textY);
+                  ctx.save();
+                }
+              });
+            </script>
+            <br>
+          </div>
         </div>
       </div>
     </div>
     </section>
   </div>
-  <% end %>
   <br>
   <!--/col-md-6 -->
   <% end %>
