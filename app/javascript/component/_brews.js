@@ -5,7 +5,8 @@ const brewStepsGestion = () => {
 };
 const substep_navigation = () => {
   var sub_steps = document.getElementsByClassName("substep");
-  var current_substep = document.getElementById("card").dataset.value;
+  // var current_substep = document.getElementById("card").dataset.value;
+  var current_substep = 0;
   var mySubStep = parseInt(current_substep, 10);
   var button_next = document.getElementById("next-substep");
   var button_next_step = document.getElementById("next-step");

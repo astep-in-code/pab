@@ -37,11 +37,11 @@ class BrewsController < ApplicationController
     @brew_steps = BrewStep.where(brew_id: @brew.id)
 
     @beer_sub_step = BeerSubStep.where(beer_id: @brew.beer.id)
-
-    sub_step = @beer_sub_step[0].sub_step
+    current_substep = BrewStep.find(id = params[:id]).beer_step_id
+    sub_step = @beer_sub_step[current_substep - 1].sub_step
     @hash_sub_step = JSON.parse(sub_step, symbolize_keys: true)
     @hash_sub_step.deep_symbolize_keys!
-    @title = "Mon brassin : <br />#{@brew.beer.name}" 
+    @title = "Mon brassin : <br />#{@brew.beer.name}"
   end
 
   def edit
