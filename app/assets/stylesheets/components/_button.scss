@@ -1,15 +1,16 @@
 .page-link {
-  color: #4A4A4A;
-  border: 1px solid #FFC65A;
+  color: white !important;
+  border: 1px solid white;
   padding: 8px 24px;
   border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
+  font-weight: bold;
+  // opacity: 0.6;
+  background: #272f43 !important;
   transition: opacity 0.3s ease;
 }
 
 .page-link:hover {
-  opacity: 1;
+  // opacity: 1;
 }
 
 .start-a-batch-btn {
@@ -18,6 +19,7 @@
   color: white;
   padding: 11px;
   text-align: center;
+  font-weight: bold;
   text-decoration: none;
   display: inline-block;
   font-size: 24px;
