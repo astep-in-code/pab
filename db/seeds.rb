@@ -30,7 +30,7 @@ myBeer = Beer.new({
   fermentation: "Mixte",
   initial_density_target: 1066,
   final_density_target: 1010,
-  fermentation_temperature_target: 2025,
+  fermentation_temperature_target: 2000,
   color: 8,
   bitterness: 28,
   bitterness_ratio: 047,
@@ -96,6 +96,8 @@ myBeer = Beer.new({
 })
 
 p "Biere sauvegardee" if myBeer.save
+myBeer.update_attribute :created_at, (4).days.ago
+
 
 myBrew = Brew.new({
   beer_id: myBeer.id,
