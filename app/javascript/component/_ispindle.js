@@ -99,11 +99,11 @@ const sendOnSubmitSearch = () => {
           xAxes: [{
           type: 'time',
           time: {
-              parser: 'YYYY-MM-DD HH:mm:ss',
+              parser: 'D MMM HH:mm',
               unit: 'minute',
               displayFormats: {
-                  'minute': 'YYYY-MM-DD HH:mm:ss',
-                  'hour': 'YYYY-MM-DD HH:mm:ss'
+                  'minute': 'D MMM HH:mm',
+                  'hour': 'D MMM HH:mm'
               }
           },
         }],
@@ -184,11 +184,11 @@ const sendOnSubmitSearch = () => {
             xAxes: [{
               type: 'time',
               time: {
-                  parser: 'YYYY-MM-DD HH:mm:ss',
+                  parser: 'MMM HH:mm',
                   unit: 'minute',
                   displayFormats: {
-                      'minute': 'YYYY-MM-DD HH:mm:ss',
-                      'hour': 'YYYY-MM-DD HH:mm:ss'
+                      'minute': 'MMM HH:mm',
+                      'hour': 'MMM HH:mm'
                   }
               },
             }],
