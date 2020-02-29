@@ -36,7 +36,7 @@
                 <% days_between = (@date_now - @start_date.to_date).to_i %>
                 <%#= raise %>
                 <td><strong>Volume : </strong><%= br.beer.volume %>L</td>
-                <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jour)</td>
+                <td><strong>Brassée le :</strong> <%= br.beer.created_at.strftime("%d-%m-%Y") %> <br>(il y a <%= days_between %> jours)</td>
                 <% @step_next = @brew_step.status + 1 %>
                 <% @beer_step_next = BeerStep.where(step: @step_next) %>
                 <td><strong>Suivant : </strong><%= @beer_step_next[0].description %> </td>
