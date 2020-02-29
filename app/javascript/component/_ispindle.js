@@ -2,8 +2,10 @@ const sendOnSubmitSearch = () => {
 
   const inputSearchTemperature = 'temperature';
   const inputSearchDensity = 'gravity';
-  let inputNameApp = document.getElementById('nameIspindle').value;
-  let tokenSearch = document.getElementById('token').value;
+  // let inputNameApp = document.getElementById('nameIspindle').value;
+  let inputNameApp = "ispindel_";
+  // let tokenSearch = document.getElementById('token').value;
+  let tokenSearch = "BBFF-GvDLGepz14b4F7ivNDNnWh3Z4Btn6EEaWqd2rhvzq9jbbaSVMwtksYF";
   let temp_target_input = document.getElementById('temp_target').value;
   let dens_target_input = document.getElementById('dens_target').value;
   let collect_time_t = [];
