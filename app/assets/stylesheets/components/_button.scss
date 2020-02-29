@@ -1,17 +1,37 @@
-.page-link {
-  color: white !important;
-  border: 1px solid white;
-  padding: 8px 24px;
-  border-radius: 50px;
-  font-weight: bold;
-  // opacity: 0.6;
-  background: #272f43 !important;
-  transition: opacity 0.3s ease;
+.page-item{
+
+  &.disabled{
+    .page-link {
+      color: white !important;
+      border: 1px solid white;
+      font-weight: bold;
+      opacity: 0.6;
+      background: #272f43;
+      border: 1px solid #272f43;
+      transition: opacity 0.3s ease;
+    }
+  }
+  .page-link {
+    color: white !important;
+    border: 1px solid white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    // opacity: 0.6;
+    background: #272f43;
+    transition: opacity 0.3s ease;
+
+    &.validatingstep{
+      background-color: #5cb85c;
+    }
+  }
+
+  .page-link:hover {
+    // opacity: 1;
+  }
 }
 
-.page-link:hover {
-  // opacity: 1;
-}
+
 
 .start-a-batch-btn {
   background-color: #d9b00d;

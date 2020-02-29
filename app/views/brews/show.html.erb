@@ -55,7 +55,7 @@
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item"><a class="" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
             <li class="page-item" id="next-step" style="display: none;">
-              <%= link_to 'Valider les étapes', update_step_path(@brew), data: { confirm: "Do you really want to go to the Next Step ?" }, class: "page-link", style: "background: #5cb85c;color: #fff; border: #5cb85c;" %>
+              <%= link_to 'Valider les étapes', update_step_path(@brew), data: { confirm: "Confirmez-vous avoir réaliser toutes les étapes ?" }, class: "page-link validatingstep", style: "background: #5cb85c important!;color: #fff; border: #5cb85c;" %>
             </li>
             <li class="page-item" id="next-substep" >
               <a class="page-link" id="next-substep-link" href="#">Etape suivante</a>
