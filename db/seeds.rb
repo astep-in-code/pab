@@ -257,7 +257,7 @@ myBeerSubStep = BeerSubStep.new({
     '},'\
     '"10": {'\
       '"title": "La fermentation",'\
-      '"content": "Une fois l’oxygène consommée, la levure va entrer en fermentation. Lors de cette étape les sucres vont être transformés en alcool mais aussi en CO2 et en chaleur. C’est lors de cette étape également que se développe certains arômes complémentaires comme les esters. La bière « verte » à cette étape va commencer à se saturer en CO2, néanmoins selon la température de fermentation cette saturation peut être limitée. Le CO2 échappé lors de cette étape pourra être récupéré pour être réinjecté lors de l’étape de filtration de la bière. La température pour la SmaSH 66 doit être de 20.4°C en fermentation. La durée est de 4 jours plein.",'\
+      '"content": "Une fois l’oxygène consommée, la levure va entrer en fermentation. Lors de cette étape les sucres vont être transformés en alcool mais aussi en CO2 et en chaleur. C’est lors de cette étape également que se développe certains arômes complémentaires comme les esters. La bière « verte » à cette étape va commencer à se saturer en CO2, néanmoins selon la température de fermentation cette saturation peut être limitée. Le CO2 échappé lors de cette étape pourra être récupéré pour être réinjecté lors de l’étape de filtration de la bière. La température pour la SmaSH 66 doit être de 20°C en fermentation. La durée est de 4 jours plein.",'\
       '"photo": "https://res.cloudinary.com/dqyudfjjy/image/upload/v1582660656/Step_3_-_Substep_1_uzroap.jpg",'\
       '"time": 0'\
     '},'\
