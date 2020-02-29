@@ -65,7 +65,10 @@ for (var i  = 0; i < beersubnav.length; i++) {
 // Ispindle
 import { sendOnSubmitSearch } from '../component/_ispindle.js';
 if (document.getElementById('clickme') != null){
-  document.getElementById('clickme').addEventListener('click', (event) => {
+  // document.getElementById('clickme').addEventListener('click', (event) => {
+  //   sendOnSubmitSearch();
+  // });
+  document.addEventListener('DOMContentLoaded', (event) => {
     sendOnSubmitSearch();
   });
 };
